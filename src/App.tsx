@@ -212,11 +212,14 @@ export default function App() {
         style={{ fontFamily: "'Open Sans', sans-serif" }}
       >
         <header className="flex flex-col items-center gap-5 px-6 pb-6 pt-8 text-center sm:px-8 md:flex-row md:items-start md:gap-8 md:px-10 md:pb-6 md:pt-10 md:text-left">
-          <img
-            src={profileImage}
-            alt="Ignacio Perez Roca"
-            className="h-[124px] w-[124px] rounded-full object-cover sm:h-[140px] sm:w-[140px] md:h-[150px] md:w-[150px]"
-          />
+          <div className="h-[124px] w-[124px] shrink-0 overflow-hidden rounded-full bg-white sm:h-[140px] sm:w-[140px] md:h-[150px] md:w-[150px]">
+            <img
+              src={profileImage}
+              alt="Ignacio Perez Roca"
+              className="h-full w-full scale-[1.06] object-cover"
+              style={{ objectPosition: "50% 16%" }}
+            />
+          </div>
 
           <div className="pt-0 md:pt-2">
             <h1 className="text-[28px] font-light tracking-wide text-[hsl(var(--cv-section-title))] sm:text-[30px] md:text-[32px]">
@@ -239,7 +242,9 @@ export default function App() {
         <div className="flex flex-col gap-10 px-6 pb-8 sm:px-8 md:flex-row md:gap-8 md:px-10">
           <div className="flex w-full flex-col md:w-[55%]">
             <section>
-              <h2 className="cv-section-title mb-2">PERSONAL STATEMENT</h2>
+              <h2 className="cv-section-title mb-2 text-center">
+                PERSONAL STATEMENT
+              </h2>
               <DottedSeparator />
 
               <div className="mt-3 space-y-3">
@@ -460,7 +465,7 @@ export default function App() {
                   className="h-8 w-8"
                 />
               </div>
-              <h2 className="cv-section-title mb-2">EDUCATION</h2>
+              <h2 className="cv-section-title mb-2 text-center">EDUCATION</h2>
               <DottedSeparator />
 
               <div className="mt-3 space-y-3">

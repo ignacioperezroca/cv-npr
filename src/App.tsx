@@ -1,3 +1,5 @@
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import profileImage from "./assets/profile.png";
 import educationIcon from "./assets/education-icon.png";
 import ittiLogo from "./assets/itti-logo.png";
@@ -206,73 +208,75 @@ function LanguageCircle({ label, sublabel, percentage }: Language) {
 
 export default function App() {
   return (
-    <main className="min-h-screen bg-background px-0 py-0 md:flex md:justify-center md:px-4">
-      <article
-        className="w-full bg-background md:my-0 md:w-[850px]"
-        style={{ fontFamily: "'Open Sans', sans-serif" }}
-      >
-        <header className="flex flex-col items-center gap-5 px-6 pb-6 pt-8 text-center sm:px-8 md:flex-row md:items-start md:gap-8 md:px-10 md:pb-6 md:pt-10 md:text-left">
-          <div className="h-[124px] w-[124px] shrink-0 overflow-hidden rounded-full bg-white sm:h-[140px] sm:w-[140px] md:h-[150px] md:w-[150px]">
-            <img
-              src={profileImage}
-              alt="Ignacio Perez Roca"
-              className="h-full w-full scale-[1.06] object-cover"
-              style={{ objectPosition: "46% 16%" }}
-            />
-          </div>
+    <>
+      <main className="min-h-screen bg-background px-0 py-0 md:flex md:justify-center md:px-4">
+        <article
+          className="w-full bg-background md:my-0 md:w-[850px]"
+          style={{ fontFamily: "'Open Sans', sans-serif" }}
+        >
+          <header className="flex flex-col items-center gap-5 px-6 pb-6 pt-8 text-center sm:px-8 md:flex-row md:items-start md:gap-8 md:px-10 md:pb-6 md:pt-10 md:text-left">
+            <div className="h-[124px] w-[124px] shrink-0 overflow-hidden rounded-full bg-white sm:h-[140px] sm:w-[140px] md:h-[150px] md:w-[150px]">
+              <img
+                src={profileImage}
+                alt="Ignacio Perez Roca"
+                className="h-full w-full scale-[1.06] object-cover"
+                style={{ objectPosition: "46% 16%" }}
+              />
+            </div>
 
-          <div className="pt-0 md:pt-2">
-            <h1 className="text-[28px] font-light tracking-wide text-[hsl(var(--cv-section-title))] sm:text-[30px] md:text-[32px]">
-              Ignacio Perez Roca
-            </h1>
-            <p className="mt-0.5 text-[14px] text-[hsl(var(--cv-light-text))]">
-              Product Manager
-            </p>
+            <div className="pt-0 md:pt-2">
+              <h1 className="text-[28px] font-light tracking-wide text-[hsl(var(--cv-section-title))] sm:text-[30px] md:text-[32px]">
+                Ignacio Perez Roca
+              </h1>
+              <p className="mt-0.5 text-[14px] text-[hsl(var(--cv-light-text))]">
+                Product Manager
+              </p>
 
-            <div className="mt-4 flex items-start justify-center gap-3 md:mt-5 md:justify-start">
-              <div className="w-[3px] self-stretch rounded bg-[hsl(var(--cv-contact-bar))]" />
-              <div className="flex flex-col gap-1 text-left text-[12px] text-[hsl(var(--cv-body))]">
-                <span>+54 911 5807 7847</span>
-                <span>medium.com/@ignacio-perezroca</span>
+              <div className="mt-4 flex items-start justify-center gap-3 md:mt-5 md:justify-start">
+                <div className="w-[3px] self-stretch rounded bg-[hsl(var(--cv-contact-bar))]" />
+                <div className="flex flex-col gap-1 text-left text-[12px] text-[hsl(var(--cv-body))]">
+                  <span>+54 911 5807 7847</span>
+                  <span>medium.com/@ignacio-perezroca</span>
+                </div>
               </div>
             </div>
-          </div>
-        </header>
+          </header>
 
-        <div className="flex flex-col gap-10 px-6 pb-8 sm:px-8 md:flex-row md:gap-8 md:px-10">
-          <div className="flex w-full flex-col md:w-[55%]">
-            <section>
-              <h2 className="cv-section-title mb-2">PERSONAL STATEMENT</h2>
-              <DottedSeparator />
+          <div className="flex flex-col gap-10 px-6 pb-8 sm:px-8 md:flex-row md:gap-8 md:px-10">
+            <div className="flex w-full flex-col md:w-[55%]">
+              <section>
+                <h2 className="cv-section-title mb-2">PERSONAL STATEMENT</h2>
+                <DottedSeparator />
 
-              <div className="mt-3 space-y-3">
-                <p className="cv-body-text">
-                  As an Acquisition Product Manager at Bitso, I am reinventing
-                  crypto by creating user-focused products that are easier and
-                  more intuitive to use. I have a CSPO® certification and a
-                  strong background in UX/UI design and frontend development,
-                  which enable me to deliver impactful solutions that meet user
-                  needs and business goals.
-                </p>
-                <p className="cv-body-text">
-                  Working on various projects from scratch in different roles,
-                  such as product designer, frontend developer, and product
-                  manager, gave me a holistic view in the digital products. I
-                  focus my work on users needs and creating the journey from
-                  there. When it comes to building products, my thing is using
-                  data that exposes a problem or opportunity to solve real user
-                  problems and create products that simplify people&apos;s daily
-                  lives and empower them to access the crypto revolution.
-                </p>
-                <p className="cv-body-text">
-                  Working in the digital ecosystem for 11 years, I was able to
-                  gather a wide range of tools, tactics and experience. Building
-                  trust and equipping my teammates to develop game-changing
-                  solutions, I&apos;ve repeatedly proven innovation, customer
-                  centricity, drive and motivation.
-                </p>
-              </div>
-            </section>
+                <div className="mt-3 space-y-3">
+                  <p className="cv-body-text">
+                    As an Acquisition Product Manager at Bitso, I am reinventing
+                    crypto by creating user-focused products that are easier and
+                    more intuitive to use. I have a CSPO® certification and a
+                    strong background in UX/UI design and frontend development,
+                    which enable me to deliver impactful solutions that meet
+                    user needs and business goals.
+                  </p>
+                  <p className="cv-body-text">
+                    Working on various projects from scratch in different roles,
+                    such as product designer, frontend developer, and product
+                    manager, gave me a holistic view in the digital products. I
+                    focus my work on users needs and creating the journey from
+                    there. When it comes to building products, my thing is using
+                    data that exposes a problem or opportunity to solve real
+                    user problems and create products that simplify
+                    people&apos;s daily lives and empower them to access the
+                    crypto revolution.
+                  </p>
+                  <p className="cv-body-text">
+                    Working in the digital ecosystem for 11 years, I was able
+                    to gather a wide range of tools, tactics and experience.
+                    Building trust and equipping my teammates to develop
+                    game-changing solutions, I&apos;ve repeatedly proven
+                    innovation, customer centricity, drive and motivation.
+                  </p>
+                </div>
+              </section>
 
             <section className="mt-5">
               <p className="cv-body-text mb-1 font-bold">
@@ -542,8 +546,11 @@ export default function App() {
           </div>
         </div>
 
-        <div className="h-10" />
-      </article>
-    </main>
+          <div className="h-10" />
+        </article>
+      </main>
+      <Analytics />
+      <SpeedInsights />
+    </>
   );
 }

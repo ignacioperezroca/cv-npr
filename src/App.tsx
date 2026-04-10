@@ -217,7 +217,7 @@ export default function App() {
               src={profileImage}
               alt="Ignacio Perez Roca"
               className="h-full w-full scale-[1.06] object-cover"
-              style={{ objectPosition: "50% 16%" }}
+              style={{ objectPosition: "46% 16%" }}
             />
           </div>
 
@@ -242,9 +242,7 @@ export default function App() {
         <div className="flex flex-col gap-10 px-6 pb-8 sm:px-8 md:flex-row md:gap-8 md:px-10">
           <div className="flex w-full flex-col md:w-[55%]">
             <section>
-              <h2 className="cv-section-title mb-2 text-center">
-                PERSONAL STATEMENT
-              </h2>
+              <h2 className="cv-section-title mb-2">PERSONAL STATEMENT</h2>
               <DottedSeparator />
 
               <div className="mt-3 space-y-3">
@@ -465,7 +463,7 @@ export default function App() {
                   className="h-8 w-8"
                 />
               </div>
-              <h2 className="cv-section-title mb-2 text-center">EDUCATION</h2>
+              <h2 className="cv-section-title mb-2">EDUCATION</h2>
               <DottedSeparator />
 
               <div className="mt-3 space-y-3">

@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 20%;
+  --border: 0 0% 85%;
+  --cv-timeline-dot: 190 15% 50%;
+  --cv-section-title: 0 0% 25%;
+  --cv-body: 0 0% 30%;
+  --cv-light-text: 0 0% 55%;
+  --cv-dotted-line: 0 0% 75%;
+  --cv-skill-dot-filled: 190 15% 50%;
+  --cv-skill-dot-empty: 0 0% 85%;
+  --cv-contact-bar: 190 15% 50%;
+  --cv-lang-circle: 190 30% 55%;
+  font-family: "Open Sans", ui-sans-serif, system-ui, sans-serif;
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: hsl(var(--background));
+}
+
+* {
+  box-sizing: border-box;
+  border-color: hsl(var(--border));
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cv-section-title {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: hsl(var(--cv-section-title));
+}
+
+.cv-dotted-separator {
+  margin: 0;
+  border: none;
+  border-top: 1.5px dotted hsl(var(--cv-dotted-line));
+}
+
+.cv-body-text {
+  font-size: 11px;
+  line-height: 1.6;
+  color: hsl(var(--cv-body));
+}
+
+.cv-timeline-dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background: hsl(var(--cv-timeline-dot));
+}
+
+.cv-timeline-line {
+  width: 2px;
+  flex-shrink: 0;
+  background: hsl(var(--cv-dotted-line));
+}
+
+.cv-skill-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 9999px;
+}
+
+.cv-skill-dot-filled {
+  background: hsl(var(--cv-skill-dot-filled));
+}
+
+.cv-skill-dot-empty {
+  background: hsl(var(--cv-skill-dot-empty));
+}

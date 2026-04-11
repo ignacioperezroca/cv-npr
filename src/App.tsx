@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import profileImage from "./assets/profile.png";
 import educationIcon from "./assets/education-icon.png";
+import bitsoLogo from "./assets/bitso-logo.png";
 import ittiLogo from "./assets/itti-logo.png";
 import lemonLogo from "./assets/lemon-logo.png";
 import personalPayLogo from "./assets/personalpay-logo.png";
@@ -88,9 +89,6 @@ const education: EducationItem[] = [
     org: "Universidad de Buenos Aires. Argentina",
   },
 ];
-
-const bitsoLogo =
-  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADUAAAA1CAIAAABuhDQnAAAAA3NCSVQICAjb4U/gAAABNklEQVRoQ+2Yuw6DMAxF3ccfVOrSmY2Z/5+Z2ZhZGPiGDpEQMsGxcRL34TNVpr0cbioiAHAc51u54AFA03Z4FGMc+vAh+v31qJI7HmRiK61xveJBAaIFMynVH2JVlHZZo78t0i5r+4FQ0cAPJIo2fsBWNPMDnqKlHwdjv2SFxn5J7P3oCjPsH/stgT6liCL9jUO/lyYgrqeIX0CkeERBP8ihWNZPz9/7KZe4uJ+S3/UjbloZifgp/zF5ifh9FCq/pu2yrDKxYiq/QC7LKJH3GwH9KekXICtEeUD0R/+sGod+dUi2YOyXhPJLXpwSTj7lB7yIczCTE37ADhLBz0z7gSSOgyiN5QfCUAJpjuD5MkTTN1sCqVngcP+g4VieE0Lc8IDHMk/LPD2eL3xgwzJPeOQ4juNweQP9clymOlZCTQAAAABJRU5ErkJggg==";
 
 const experience: ExperienceItem[] = [
   {

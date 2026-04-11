@@ -227,7 +227,7 @@ export default function App() {
                 Ignacio Perez Roca
               </h1>
               <p className="mt-0.5 text-[14px] text-[hsl(var(--cv-light-text))]">
-                Product Manager
+                Senior Product Manager
               </p>
 
               <div className="mt-4 flex items-start justify-center gap-3 md:mt-5 md:justify-start">

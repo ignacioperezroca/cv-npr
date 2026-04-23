@@ -218,7 +218,7 @@ export default function App() {
                 src={profileImage}
                 alt="Ignacio Perez Roca"
                 className="h-full w-full scale-[1.06] object-cover"
-                style={{ objectPosition: "48% 16%" }}
+                style={{ objectPosition: "46% 16%" }}
               />
             </div>
 

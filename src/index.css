@@ -76,17 +76,21 @@ a {
 }
 
 .cv-skill-dot {
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   border-radius: 9999px;
+  border: 1px solid transparent;
+  transition: transform 200ms ease, background-color 200ms ease, border-color 200ms ease;
 }
 
 .cv-skill-dot-filled {
   background: hsl(var(--cv-skill-dot-filled));
+  border-color: hsl(var(--cv-skill-dot-filled));
 }
 
 .cv-skill-dot-empty {
   background: hsl(var(--cv-skill-dot-empty));
+  border-color: hsl(var(--cv-skill-dot-empty));
 }
 
 .cv-language-ring {

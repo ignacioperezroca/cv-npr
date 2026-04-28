@@ -417,7 +417,7 @@ const languages: Language[] = [
 
 function SkillDots({ filled }: { filled: number }) {
   return (
-    <div className="flex gap-[3px]">
+    <div className="flex gap-[4px]">
       {Array.from({ length: 10 }, (_, index) => (
         <span
           key={index}
@@ -649,7 +649,7 @@ export default function App() {
           </header>
 
           <div className="flex flex-col gap-10 px-6 pb-8 sm:px-8 md:flex-row md:gap-8 md:px-10">
-            <div className="flex w-full flex-col md:w-[55%]">
+            <div className="flex w-full flex-col md:order-1 md:w-[55%]">
               <section data-section="Personal Statement">
                 <h2 className="cv-section-title mb-2">PERSONAL STATEMENT</h2>
                 <DottedSeparator />
@@ -691,7 +691,7 @@ export default function App() {
                 </div>
               </section>
 
-            <section className="mt-5" data-section="Key Achievements">
+            <section className="mt-5 order-2 md:order-none" data-section="Key Achievements">
               <p className="cv-body-text mb-1 font-bold">Key achievements</p>
               <ul className="cv-body-text list-none space-y-0.5">
                 <li>
@@ -726,7 +726,7 @@ export default function App() {
               </ul>
             </section>
 
-            <section className="mt-6" data-section="Specialty">
+            <section className="mt-6 order-1 md:order-none" data-section="Specialty">
               <h2 className="cv-section-title mb-2">SPECIALTY</h2>
               <DottedSeparator />
 
@@ -828,8 +828,8 @@ export default function App() {
             
           </div>
 
-          <div className="flex w-full flex-col md:w-[45%]">
-            <section data-section="Experience">
+          <div className="flex w-full flex-col md:order-2 md:w-[45%]">
+            <section className="order-1 md:order-none" data-section="Experience">
               <h2 className="cv-section-title mb-2">EXPERIENCE</h2>
               <DottedSeparator />
 
@@ -866,7 +866,7 @@ export default function App() {
               </div>
             </section>
 
-            <section className="mt-6" data-section="Education">
+            <section className="mt-6 order-2 md:order-none" data-section="Education">
               <h2
                 data-animate
                 className="cv-section-title mb-2 education-title"
@@ -886,7 +886,7 @@ export default function App() {
               </ul>
             </section>
 
-            <section className="mt-6" data-section="Languages">
+            <section className="mt-6 order-3 md:order-none" data-section="Languages">
               <h2 className="cv-section-title mb-2">LANGUAGES</h2>
               <DottedSeparator />
 
@@ -897,7 +897,7 @@ export default function App() {
               </div>
             </section>
 
-            <section className="mt-6" data-section="Skills">
+            <section className="mt-6 order-4 md:order-none" data-section="Skills">
               <h2 className="cv-section-title mb-2">SKILLS</h2>
               <DottedSeparator />
 

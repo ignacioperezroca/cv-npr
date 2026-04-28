@@ -648,48 +648,48 @@ export default function App() {
             </div>
           </header>
 
-          <div className="flex flex-col gap-10 px-6 pb-8 sm:px-8 md:flex-row md:gap-8 md:px-10">
-            <div className="flex w-full flex-col md:w-[55%]">
-              <section data-section="Personal Statement">
-                <h2 className="cv-section-title mb-2">PERSONAL STATEMENT</h2>
-                <DottedSeparator />
+          <div className="flex flex-col gap-10 px-6 pb-8 sm:px-8 md:grid md:grid-cols-[minmax(0,1.06fr)_minmax(0,0.94fr)] md:grid-rows-3 md:gap-x-[44px] md:gap-y-[56px] md:px-10 lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] lg:gap-x-[48px] lg:gap-y-[60px]">
+            <section
+              className="order-1 md:col-start-1 md:row-start-1"
+              data-section="Personal Statement"
+            >
+              <h2 className="cv-section-title mb-2">PERSONAL STATEMENT</h2>
+              <DottedSeparator />
 
-                <div className="mt-3 space-y-3">
-                  <p className="cv-body-text">
-                    I&apos;m a Senior Product Manager with 16+ years of
-                    experience building human-first, scalable onboarding
-                    journeys.
-                  </p>
-                  <p className="cv-body-text">
-                    Over the years, I&apos;ve acquired a wide range of tools,
-                    tactics, and experience across various roles and industries.
-                    I specialize in digital identity, KYC, authentication, and
-                    product-led growth. I&apos;ve led international teams from
-                    0 to 18+ across Argentina, Brazil, Mexico, Paraguay, and
-                    Colombia, successfully onboarding over 8 million users in
-                    fintech, crypto, and Web3.
-                  </p>
-                  <p className="cv-body-text">
-                    Having built products from scratch in various roles, my
-                    strength lies in combining empathy and visual thinking (User
-                    Experience Design) with technical experience (8 years as a
-                    developer). This holistic perspective allows me to
-                    translate metrics into meaningful product experiences that
-                    drive acquisition, retention, and long-term impact.
-                  </p>
-                  <p className="cv-body-text">
-                    When it comes to building, I rely on data to surface real
-                    problems and opportunities, and I craft products that
-                    simplify people&apos;s lives. I hold a Certified Scrum
-                    Product Owner (CSPO®), Certified Scrum Trainer (CST®), and
-                    several other certifications from world-class universities.
-                  </p>
-                  <p className="cv-body-text">
-                    My mission is to build trust, empower teams, and deliver
-                    products that people love.
-                  </p>
-                </div>
-              </section>
+              <div className="mt-3 space-y-3">
+                <p className="cv-body-text">
+                  I&apos;m a Senior Product Manager with 16+ years of experience
+                  building human-first, scalable onboarding journeys.
+                </p>
+                <p className="cv-body-text">
+                  Over the years, I&apos;ve acquired a wide range of tools,
+                  tactics, and experience across various roles and industries. I
+                  specialize in digital identity, KYC, authentication, and
+                  product-led growth. I&apos;ve led international teams from 0
+                  to 18+ across Argentina, Brazil, Mexico, Paraguay, and
+                  Colombia, successfully onboarding over 8 million users in
+                  fintech, crypto, and Web3.
+                </p>
+                <p className="cv-body-text">
+                  Having built products from scratch in various roles, my
+                  strength lies in combining empathy and visual thinking (User
+                  Experience Design) with technical experience (8 years as a
+                  developer). This holistic perspective allows me to translate
+                  metrics into meaningful product experiences that drive
+                  acquisition, retention, and long-term impact.
+                </p>
+                <p className="cv-body-text">
+                  When it comes to building, I rely on data to surface real
+                  problems and opportunities, and I craft products that
+                  simplify people&apos;s lives. I hold a Certified Scrum Product
+                  Owner (CSPO®), Certified Scrum Trainer (CST®), and several
+                  other certifications from world-class universities.
+                </p>
+                <p className="cv-body-text">
+                  My mission is to build trust, empower teams, and deliver
+                  products that people love.
+                </p>
+              </div>
 
               <section className="mt-5" data-section="Key Achievements">
                 <p className="cv-body-text mb-1 font-bold">Key achievements</p>
@@ -703,107 +703,151 @@ export default function App() {
                   <li>• Led cross-functional teams from 0 to 18+ across Argentina, Brazil, Mexico, Paraguay, Colombia and United States.</li>
                 </ul>
               </section>
+            </section>
 
-              <section className="mt-6" data-section="Specialty">
-                <h2 className="cv-section-title mb-2">SPECIALTY</h2>
-                <DottedSeparator />
+            <section
+              className="order-2 md:col-start-1 md:row-start-2"
+              data-section="Specialty"
+            >
+              <h2 className="cv-section-title mb-2">SPECIALTY</h2>
+              <DottedSeparator />
 
-                <div className="mt-6 flex flex-col items-center gap-8 px-3 sm:gap-10 md:flex-row md:items-start md:justify-between md:gap-0">
-                  <SpecialtyNode label="Product" iconClassName="text-[hsl(201_85%_52%)]" icon={/* omitted for brevity in patch context */ <></>} />
-                  <SpecialtyNode label="Development" iconClassName="text-[hsl(201_85%_52%)]" icon={/* omitted */ <></>} />
-                  <SpecialtyNode label="Product Design" iconClassName="text-[hsl(201_85%_52%)]" icon={/* omitted */ <></>} />
-                </div>
-              </section>
-            </div>
+              <div className="mt-6 flex flex-col items-center gap-8 px-3 sm:gap-10 md:flex-row md:items-start md:justify-between md:gap-0 lg:px-4">
+                <SpecialtyNode
+                  label="Product"
+                  iconClassName="text-[hsl(201_85%_52%)]"
+                  icon={<Route className="h-10 w-10" strokeWidth={1.8} />}
+                />
+                <SpecialtyNode
+                  label="Development"
+                  iconClassName="text-[hsl(201_85%_52%)]"
+                  icon={<Code2 className="h-10 w-10" strokeWidth={1.8} />}
+                />
+                <SpecialtyNode
+                  label="Product Design"
+                  iconClassName="text-[hsl(201_85%_52%)]"
+                  icon={<LayoutGrid className="h-10 w-10" strokeWidth={1.8} />}
+                />
+              </div>
+            </section>
 
-            <div className="flex w-full flex-col md:w-[45%]">
-              <section className="order-1 md:order-none" data-section="Experience">
-                <h2 className="cv-section-title mb-2">EXPERIENCE</h2>
-                <DottedSeparator />
+            <section
+              className="order-3 md:col-start-2 md:row-start-1"
+              data-section="Experience"
+            >
+              <h2 className="cv-section-title mb-2">EXPERIENCE</h2>
+              <DottedSeparator />
 
-                <div className="mt-3 space-y-4">
-                  {experience.map((item) => (
-                    <div key={`${item.company}-${item.role}`} className="flex items-start gap-3 rounded-[12px] px-2 py-1">
-                      <div className="flex flex-col items-center">
-                        <span className="text-[8px] text-[hsl(var(--cv-timeline-dot))]">▲</span>
-                        <img src={item.logo} alt={item.company} className="mt-0.5 h-8 w-8 rounded object-contain" />
-                      </div>
-                      <div>
-                        <p className="text-[11px] font-bold text-[hsl(var(--cv-section-title))]">{item.role}</p>
-                        <p className="text-[10px] text-[hsl(var(--cv-body))]">{item.company}</p>
-                        <p className="text-[9px] text-[hsl(var(--cv-light-text))]">{item.period}</p>
-                      </div>
+              <div className="mt-3 space-y-4">
+                {experience.map((item) => (
+                  <div
+                    key={`${item.company}-${item.role}`}
+                    className="flex items-start gap-3 rounded-[12px] px-2 py-1"
+                  >
+                    <div className="flex flex-col items-center">
+                      <span className="text-[8px] text-[hsl(var(--cv-timeline-dot))]">▲</span>
+                      <img
+                        src={item.logo}
+                        alt={item.company}
+                        className="mt-0.5 h-8 w-8 rounded object-contain"
+                      />
                     </div>
-                  ))}
-                </div>
-              </section>
-
-              <section className="mt-6 order-2 md:order-none" data-section="Education">
-                <h2 data-animate className="cv-section-title mb-2 education-title">EDUCATION &amp; CERTIFICATIONS</h2>
-                <DottedSeparator />
-                <ul className="education-list mt-3 list-none">
-                  {education.map((item, index) => (
-                    <EducationTimelineItem key={`${item.year}-${item.title}`} item={item} index={index} />
-                  ))}
-                </ul>
-              </section>
-
-              <section className="mt-6 order-3 md:order-none" data-section="Languages">
-                <h2 className="cv-section-title mb-2">LANGUAGES</h2>
-                <DottedSeparator />
-                <div className="mt-4 grid grid-cols-1 gap-6 px-2 min-[420px]:grid-cols-3 min-[420px]:gap-2">
-                  {languages.map((language) => (
-                    <LanguageCircle key={language.label} {...language} />
-                  ))}
-                </div>
-              </section>
-
-              <section className="mt-6 order-4 md:order-none" data-section="Skills">
-                <h2 className="cv-section-title mb-2">SKILLS</h2>
-                <DottedSeparator />
-                <div className="mt-4 flex flex-col gap-6">
-                  <div className="min-w-0">
-                    <p className="mb-4 text-[11px] italic text-[hsl(var(--cv-light-text))]">Knowledge</p>
-                    <div className="grid grid-cols-1 gap-x-4 gap-y-3 text-[10px] text-[hsl(var(--cv-body))] md:grid-cols-3">
-                      {knowledge.map((item) => (
-                        <div key={item.name} className="grid grid-cols-[22px_minmax(0,1fr)] items-center gap-3 rounded-[10px] px-2 py-1">
-                          <div className="flex h-6 w-6 items-center justify-center text-[hsl(var(--cv-contact-bar))]">{item.icon}</div>
-                          <p className="leading-[1.6]">{item.name}</p>
-                        </div>
-                      ))}
+                    <div>
+                      <p className="text-[11px] font-bold text-[hsl(var(--cv-section-title))]">
+                        {item.role}
+                      </p>
+                      <p className="text-[10px] text-[hsl(var(--cv-body))]">{item.company}</p>
+                      <p className="text-[9px] text-[hsl(var(--cv-light-text))]">{item.period}</p>
                     </div>
                   </div>
-                  <div>
-                    <p className="mb-4 text-[11px] italic text-[hsl(var(--cv-light-text))]">Tools</p>
-                    <div className="grid grid-cols-2 gap-2">
-                      {skills.map((skill) => (
-                        <div key={skill.name} className="grid grid-cols-[108px_minmax(0,1fr)] items-center gap-3 rounded-[10px] px-2 py-1">
-                          <div className="flex items-center gap-3">
-                            <SkillIcon name={skill.name} />
-                            <span className="text-[10px] text-[hsl(var(--cv-body))]">{skill.name}</span>
-                          </div>
-                          <SkillDots filled={skill.level} />
+                ))}
+              </div>
+            </section>
+
+            <section
+              className="order-4 md:col-start-2 md:row-start-2"
+              data-section="Languages"
+            >
+              <h2 className="cv-section-title mb-2">LANGUAGES</h2>
+              <DottedSeparator />
+              <div className="mt-4 grid grid-cols-1 gap-6 px-2 min-[420px]:grid-cols-3 min-[420px]:gap-2 md:px-0">
+                {languages.map((language) => (
+                  <LanguageCircle key={language.label} {...language} />
+                ))}
+              </div>
+            </section>
+
+            <section
+              className="order-5 md:col-start-1 md:row-start-3"
+              data-section="Skills"
+            >
+              <h2 className="cv-section-title mb-2">SKILLS</h2>
+              <DottedSeparator />
+              <div className="mt-4 flex flex-col gap-6">
+                <div className="min-w-0">
+                  <p className="mb-4 text-[11px] italic text-[hsl(var(--cv-light-text))]">Knowledge</p>
+                  <div className="grid grid-cols-1 gap-x-4 gap-y-3 text-[10px] text-[hsl(var(--cv-body))] md:grid-cols-3">
+                    {knowledge.map((item) => (
+                      <div
+                        key={item.name}
+                        className="grid grid-cols-[22px_minmax(0,1fr)] items-center gap-3 rounded-[10px] px-2 py-1"
+                      >
+                        <div className="flex h-6 w-6 items-center justify-center text-[hsl(var(--cv-contact-bar))]">
+                          {item.icon}
                         </div>
-                      ))}
-                    </div>
+                        <p className="leading-[1.6]">{item.name}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
-                <div className="mt-6 space-y-3">
-                  {skillsGroups.filter((group) => group.title === "Business Analytics").map((group) => (
-                    <div key={group.title} className="space-y-3">
-                      <p className="text-[11px] italic text-[hsl(var(--cv-light-text))]">{group.title}</p>
-                      {group.tools?.length ? (
-                        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
-                          {group.tools.map((tool) => (
-                            <ToolCard key={tool.name} {...tool} />
-                          ))}
+                <div>
+                  <p className="mb-4 text-[11px] italic text-[hsl(var(--cv-light-text))]">Tools</p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {skills.map((skill) => (
+                      <div
+                        key={skill.name}
+                        className="grid grid-cols-[108px_minmax(0,1fr)] items-center gap-3 rounded-[10px] px-2 py-1"
+                      >
+                        <div className="flex items-center gap-3">
+                          <SkillIcon name={skill.name} />
+                          <span className="text-[10px] text-[hsl(var(--cv-body))]">{skill.name}</span>
                         </div>
-                      ) : null}
-                    </div>
-                  ))}
+                        <SkillDots filled={skill.level} />
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </section>
-            </div>
+              </div>
+              <div className="mt-6 space-y-3">
+                {skillsGroups.filter((group) => group.title === "Business Analytics").map((group) => (
+                  <div key={group.title} className="space-y-3">
+                    <p className="text-[11px] italic text-[hsl(var(--cv-light-text))]">{group.title}</p>
+                    {group.tools?.length ? (
+                      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
+                        {group.tools.map((tool) => (
+                          <ToolCard key={tool.name} {...tool} />
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section
+              className="order-6 md:col-start-2 md:row-start-3"
+              data-section="Education"
+            >
+              <h2 data-animate className="education-title cv-section-title mb-2">
+                EDUCATION &amp; CERTIFICATIONS
+              </h2>
+              <DottedSeparator />
+              <ul className="education-list mt-3 list-none">
+                {education.map((item, index) => (
+                  <EducationTimelineItem key={`${item.year}-${item.title}`} item={item} index={index} />
+                ))}
+              </ul>
+            </section>
           </div>
 
           <div className="h-10" />

@@ -391,7 +391,7 @@ function DottedSeparator() {
 
 function TagPill({ children }: { children: string }) {
   return (
-    <span className="rounded-full border border-[rgba(17,24,39,0.08)] bg-white px-3 py-1 text-[9px] font-medium tracking-[0.01em] text-[hsl(var(--cv-light-text))] shadow-[0_0_0_1px_rgba(255,255,255,0.4)] transition duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:text-[hsl(var(--cv-section-title))] motion-reduce:transition-none">
+    <span className="rounded-full border border-[rgba(17,24,39,0.08)] bg-white px-3 py-1 text-[9px] font-medium tracking-[0.01em] text-[hsl(var(--cv-light-text))] shadow-[0_0_0_1px_rgba(255,255,255,0.4)]">
       {children}
     </span>
   );
@@ -454,10 +454,10 @@ function LanguageCircle({ label, sublabel, percentage }: Language) {
       ? "hsl(201 85% 52%)"
       : label === "ENGLISH"
         ? "hsl(211 73% 45%)"
-        : "hsl(126 47% 38%)";
+        : "hsl(128 52% 34%)";
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="cv-language-ring-wrap flex flex-col items-center">
       <svg width="90" height="90" viewBox="0 0 90 90" aria-hidden="true">
         <circle
           cx="45"
@@ -466,6 +466,7 @@ function LanguageCircle({ label, sublabel, percentage }: Language) {
           fill="none"
           stroke="hsl(var(--cv-skill-dot-empty))"
           strokeWidth="6"
+          className="cv-language-ring"
         />
         <circle
           cx="45"
@@ -478,6 +479,7 @@ function LanguageCircle({ label, sublabel, percentage }: Language) {
           strokeDashoffset={dashOffset}
           strokeLinecap="round"
           transform="rotate(-90 45 45)"
+          className="cv-language-ring"
         />
       </svg>
       <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-[hsl(var(--cv-section-title))]">
@@ -506,7 +508,7 @@ function EducationTimelineItem({ item, index }: { item: EducationItem; index: nu
         {item.year}
       </div>
 
-      <div className="rounded-[12px] px-0 py-0 transition-colors duration-200 group-hover:bg-[rgba(29,164,237,0.03)] motion-reduce:transition-none">
+      <div className="rounded-[12px] px-0 py-0">
         <p className="text-[13px] font-semibold leading-[1.3] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))] motion-reduce:transition-none">
           {item.title}
         </p>
@@ -644,6 +646,41 @@ export default function App() {
                 </div>
               </section>
 
+            <section className="mt-5" data-section="Key Achievements">
+              <p className="cv-body-text mb-1 font-bold">Key achievements</p>
+              <ul className="cv-body-text list-none space-y-0.5">
+                <li>
+                  • Boosted Bitso&apos;s onboarding conversion by +262% for
+                  over 8M users.
+                </li>
+                <li>
+                  • Scaled Lemon from 60k to 2M users in 6 months (+3200%
+                  growth).
+                </li>
+                <li>
+                  • Built and scaled UNID (Unified Identity), unifying ~3M
+                  users across 30 companies within the Grupo Vázquez
+                  ecosystem.
+                </li>
+                <li>
+                  • Led multi-country onboarding launches across LatAm,
+                  acquiring over 1M users in the first year.
+                </li>
+                <li>
+                  • Led Bitso&apos;s product expansion, scaling from 4 million
+                  to nearly 7 million users (+75% annual growth).
+                </li>
+                <li>
+                  • Developed a new home screen for an exchange with over 8M
+                  users, driving a 35% increase in product activation.
+                </li>
+                <li>
+                  • Led cross-functional teams from 0 to 18+ across Argentina,
+                  Brazil, Mexico, Paraguay, Colombia and United States.
+                </li>
+              </ul>
+            </section>
+
             <section className="mt-6" data-section="Specialty">
               <h2 className="cv-section-title mb-2">SPECIALTY</h2>
               <DottedSeparator />
@@ -743,60 +780,25 @@ export default function App() {
               </div>
             </section>
 
-            <section className="mt-5" data-section="Key Achievements">
-              <p className="cv-body-text mb-1 font-bold">Key achievements</p>
-              <ul className="cv-body-text list-none space-y-0.5">
-                <li>
-                  • Boosted Bitso&apos;s onboarding conversion by +262% for
-                  over 8M users.
-                </li>
-                <li>
-                  • Scaled Lemon from 60k to 2M users in 6 months (+3200%
-                  growth).
-                </li>
-                <li>
-                  • Built and scaled UNID (Unified Identity), unifying ~3M
-                  users across 30 companies within the Grupo Vázquez
-                  ecosystem.
-                </li>
-                <li>
-                  • Led multi-country onboarding launches across LatAm,
-                  acquiring over 1M users in the first year.
-                </li>
-                <li>
-                  • Led Bitso&apos;s product expansion, scaling from 4 million
-                  to nearly 7 million users (+75% annual growth).
-                </li>
-                <li>
-                  • Developed a new home screen for an exchange with over 8M
-                  users, driving a 35% increase in product activation.
-                </li>
-                <li>
-                  • Led cross-functional teams from 0 to 18+ across Argentina,
-                  Brazil, Mexico, Paraguay, Colombia and United States.
-                </li>
-              </ul>
-            </section>
-
             <section className="mt-6" data-section="Skills">
               <h2 className="cv-section-title mb-2">SKILLS</h2>
               <DottedSeparator />
 
-              <div className="mt-4 flex flex-col gap-8 lg:flex-row lg:gap-10">
+              <div className="mt-4 flex flex-col gap-6">
                 <div className="min-w-0">
                   <p className="mb-4 text-[11px] italic text-[hsl(var(--cv-light-text))]">
-                    Tools
+                    Knowledge
                   </p>
-                  <div className="space-y-3 text-[10px] text-[hsl(var(--cv-body))]">
+                  <div className="grid grid-cols-1 gap-x-4 gap-y-3 text-[10px] text-[hsl(var(--cv-body))] md:grid-cols-3">
                     {knowledge.map((item) => (
                       <div
                         key={item.name}
-                        className="group grid grid-cols-[22px_minmax(0,1fr)] items-center gap-3 rounded-[10px] px-2 py-1 transition-colors duration-200 hover:bg-[rgba(29,164,237,0.03)] motion-reduce:transition-none"
+                        className="grid grid-cols-[22px_minmax(0,1fr)] items-center gap-3 rounded-[10px] px-2 py-1"
                       >
                         <div className="flex h-6 w-6 items-center justify-center text-[hsl(var(--cv-contact-bar))]">
                           {item.icon}
                         </div>
-                        <p className="leading-[1.6] transition-colors duration-200 group-hover:text-[hsl(var(--cv-section-title))] motion-reduce:transition-none">
+                        <p className="leading-[1.6]">
                           {item.name}
                         </p>
                       </div>
@@ -806,17 +808,17 @@ export default function App() {
 
                 <div>
                   <p className="mb-4 text-[11px] italic text-[hsl(var(--cv-light-text))]">
-                    Knowledge
+                    Tools
                   </p>
                   <div className="space-y-2">
                     {skills.map((skill) => (
                       <div
                         key={skill.name}
-                        className="group grid grid-cols-[108px_minmax(0,1fr)] items-center gap-3 rounded-[10px] px-2 py-1 transition-colors duration-200 hover:bg-[rgba(29,164,237,0.03)] motion-reduce:transition-none"
+                        className="grid grid-cols-[108px_minmax(0,1fr)] items-center gap-3 rounded-[10px] px-2 py-1"
                       >
                         <div className="flex items-center gap-3">
                           <SkillIcon name={skill.name} />
-                          <span className="text-[10px] text-[hsl(var(--cv-body))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-section-title))] motion-reduce:transition-none">
+                          <span className="text-[10px] text-[hsl(var(--cv-body))]">
                             {skill.name}
                           </span>
                         </div>
@@ -850,44 +852,7 @@ export default function App() {
           </div>
 
           <div className="flex w-full flex-col md:w-[45%]">
-            <section data-section="Experience">
-              <h2 className="cv-section-title mb-2">EXPERIENCE</h2>
-              <DottedSeparator />
-
-              <div className="mt-3 space-y-4">
-                {experience.map((item) => (
-                  <div
-                    key={`${item.company}-${item.role}`}
-                    className="group flex items-start gap-3 rounded-[12px] px-2 py-1 transition-colors duration-200 hover:bg-[rgba(29,164,237,0.03)] motion-reduce:transition-none"
-                  >
-                    <div className="flex flex-col items-center">
-                      <span className="text-[8px] text-[hsl(var(--cv-timeline-dot))] transition duration-200 group-hover:scale-110 group-hover:brightness-110 motion-reduce:transition-none">
-                        ▲
-                      </span>
-                      <img
-                        src={item.logo}
-                        alt={item.company}
-                        className="mt-0.5 h-8 w-8 rounded object-contain transition duration-200 group-hover:scale-[1.03] motion-reduce:transition-none"
-                      />
-                    </div>
-
-                    <div>
-                      <p className="text-[11px] font-bold text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))] motion-reduce:transition-none">
-                        {item.role}
-                      </p>
-                      <p className="text-[10px] text-[hsl(var(--cv-body))]">
-                        {item.company}
-                      </p>
-                      <p className="text-[9px] text-[hsl(var(--cv-light-text))]">
-                        {item.period}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section className="mt-6" data-section="Education">
+            <section data-section="Education">
               <h2
                 data-animate
                 className="cv-section-title mb-2 education-title"
@@ -905,6 +870,43 @@ export default function App() {
                   />
                 ))}
               </ul>
+            </section>
+
+            <section className="mt-6" data-section="Experience">
+              <h2 className="cv-section-title mb-2">EXPERIENCE</h2>
+              <DottedSeparator />
+
+              <div className="mt-3 space-y-4">
+                {experience.map((item) => (
+                  <div
+                    key={`${item.company}-${item.role}`}
+                    className="flex items-start gap-3 rounded-[12px] px-2 py-1"
+                  >
+                    <div className="flex flex-col items-center">
+                      <span className="text-[8px] text-[hsl(var(--cv-timeline-dot))]">
+                        ▲
+                      </span>
+                      <img
+                        src={item.logo}
+                        alt={item.company}
+                        className="mt-0.5 h-8 w-8 rounded object-contain"
+                      />
+                    </div>
+
+                    <div>
+                      <p className="text-[11px] font-bold text-[hsl(var(--cv-section-title))]">
+                        {item.role}
+                      </p>
+                      <p className="text-[10px] text-[hsl(var(--cv-body))]">
+                        {item.company}
+                      </p>
+                      <p className="text-[9px] text-[hsl(var(--cv-light-text))]">
+                        {item.period}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </section>
 
             <section className="mt-6" data-section="Languages">

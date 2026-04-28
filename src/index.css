@@ -89,6 +89,24 @@ a {
   background: hsl(var(--cv-skill-dot-empty));
 }
 
+.cv-language-ring {
+  transition:
+    stroke-dashoffset 300ms ease,
+    stroke 300ms ease,
+    transform 300ms ease;
+}
+
+.cv-language-ring-wrap {
+  transition: transform 300ms ease, opacity 300ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-language-ring,
+  .cv-language-ring-wrap {
+    transition: none;
+  }
+}
+
 .education-title,
 .education-list > li {
   opacity: 0;

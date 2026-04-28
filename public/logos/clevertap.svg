@@ -1,0 +1,6 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CleverTap logo">
+  <rect width="32" height="32" rx="8" fill="#ffffff"/>
+  <path d="M22.5 8.5C20.25 6.25 15.75 6.25 13.5 8.5C11.25 10.75 11.25 15.25 13.5 17.5C15.75 19.75 20.25 19.75 22.5 17.5" stroke="#FF572A" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M10.2 22.2C11.2 22.2 12 21.4 12 20.4C12 19.4 11.2 18.6 10.2 18.6C9.2 18.6 8.4 19.4 8.4 20.4C8.4 21.4 9.2 22.2 10.2 22.2Z" fill="#FF572A"/>
+  <path d="M16.8 10.2H24.1" stroke="#FF572A" stroke-width="2.4" stroke-linecap="round"/>
+</svg>

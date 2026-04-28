@@ -75,7 +75,7 @@ const tools: ToolItem[] = [
   {
     name: "ChatGPT",
     category: "AI Copilot & Product Strategy",
-    logo: "https://cdn.simpleicons.org/openai/ffffff",
+    logo: "/logos/openai.svg",
   },
   {
     name: "Claude",
@@ -105,12 +105,12 @@ const tools: ToolItem[] = [
   {
     name: "Slack",
     category: "Team Communication",
-    logo: "https://cdn.simpleicons.org/slack",
+    logo: "/logos/slack.svg",
   },
   {
     name: "Amplitude",
     category: "Product Analytics",
-    logo: "https://cdn.simpleicons.org/amplitude/ffffff",
+    logo: "/logos/amplitude.svg",
   },
   {
     name: "Looker",
@@ -120,7 +120,7 @@ const tools: ToolItem[] = [
   {
     name: "CleverTap",
     category: "Lifecycle & Engagement",
-    logo: "https://logo.clearbit.com/clevertap.com",
+    logo: "/logos/clevertap.svg",
   },
   {
     name: "Keycloak",

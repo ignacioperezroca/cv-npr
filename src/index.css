@@ -88,3 +88,60 @@ a {
 .cv-skill-dot-empty {
   background: hsl(var(--cv-skill-dot-empty));
 }
+
+.education-title,
+.education-list > li {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 260ms ease,
+    transform 260ms ease,
+    background-color 200ms ease,
+    color 200ms ease,
+    filter 200ms ease;
+}
+
+.education-title.is-visible,
+.education-list > li.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.education-list > li:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+.education-list > li:nth-child(2) {
+  transition-delay: 70ms;
+}
+
+.education-list > li:nth-child(3) {
+  transition-delay: 140ms;
+}
+
+.education-list > li:nth-child(4) {
+  transition-delay: 210ms;
+}
+
+.education-list > li:nth-child(5) {
+  transition-delay: 280ms;
+}
+
+.education-list > li:nth-child(6) {
+  transition-delay: 350ms;
+}
+
+.education-list > li:nth-child(7) {
+  transition-delay: 420ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .education-title,
+  .education-list > li,
+  .education-title.is-visible,
+  .education-list > li.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

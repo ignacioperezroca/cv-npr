@@ -2,7 +2,6 @@ import { useEffect, type ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import profileImage from "./assets/profile.png";
-import educationIcon from "./assets/education-icon.png";
 import bitsoLogo from "./assets/bitso-logo.png";
 import ittiLogo from "./assets/itti-logo.png";
 import lemonLogo from "./assets/lemon-logo.png";
@@ -44,6 +43,7 @@ type EducationItem = {
   year: string;
   title: string;
   org: string;
+  tags: string[];
 };
 
 type ExperienceItem = {
@@ -225,32 +225,47 @@ function SkillIcon({ name }: { name: string }) {
 }
 
 const education: EducationItem[] = [
-  { year: "2023", title: "Growth Product Management", org: "Reforge®" },
+  {
+    year: "2023",
+    title: "Growth Product Management",
+    org: "Reforge®",
+    tags: ["Product", "Growth", "Strategy"],
+  },
   {
     year: "2019",
     title: "Certified Scrum Product Owner (CSPO®)",
     org: "Scrum Alliance. International Certified",
+    tags: ["Agile", "Product Ownership"],
   },
   {
     year: "2016",
     title: "Scrum Master Certified (SMC ®)",
     org: "Scrum Alliance. International Certified",
+    tags: ["Agile", "Delivery"],
   },
-  { year: "2015", title: "Angular", org: "Udemy. International Certified" },
+  {
+    year: "2015",
+    title: "Angular",
+    org: "Udemy. International Certified",
+    tags: ["Frontend", "Frameworks"],
+  },
   {
     year: "2012",
     title: "Frontend Developer",
     org: "Coderhouse, Buenos Aires. Argentina",
+    tags: ["Frontend", "Web"],
   },
   {
     year: "2012",
     title: "Web development",
     org: "Code Academy. International Certified",
+    tags: ["HTML", "CSS", "JavaScript"],
   },
   {
     year: "2009",
     title: "Bachelor in Graphic Design",
     org: "Universidad de Buenos Aires. Argentina",
+    tags: ["Design", "UX", "Visual Systems"],
   },
 ];
 
@@ -330,9 +345,17 @@ function DottedSeparator() {
   return <hr className="cv-dotted-separator" />;
 }
 
+function TagPill({ children }: { children: string }) {
+  return (
+    <span className="rounded-full border border-[rgba(17,24,39,0.08)] bg-white px-3 py-1 text-[9px] font-medium tracking-[0.01em] text-[hsl(var(--cv-light-text))] shadow-[0_0_0_1px_rgba(255,255,255,0.4)] transition duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:text-[hsl(var(--cv-section-title))] motion-reduce:transition-none">
+      {children}
+    </span>
+  );
+}
+
 function ToolCard({ name, logo }: ToolCard) {
   return (
-    <div className="flex h-[78px] flex-col items-center justify-center rounded-[14px] bg-white px-3 py-2 text-center shadow-[0_0_0_1px_rgba(17,24,39,0.06)] transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_rgba(29,164,237,0.25)]">
+    <div className="flex h-[78px] flex-col items-center justify-center rounded-[14px] bg-white px-3 py-2 text-center shadow-[0_0_0_1px_rgba(17,24,39,0.06)] transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_rgba(29,164,237,0.25)] motion-reduce:transition-none">
       <div className="flex h-8 items-center justify-center">{logo}</div>
       <span className="mt-2 text-[10px] font-medium leading-tight text-[hsl(var(--cv-body))]">
         {name}
@@ -423,6 +446,40 @@ function LanguageCircle({ label, sublabel, percentage }: Language) {
   );
 }
 
+function EducationTimelineItem({ item, index }: { item: EducationItem; index: number }) {
+  return (
+    <li
+      data-animate
+      className="group grid grid-cols-[18px_54px_minmax(0,1fr)] gap-x-4 border-t border-[rgba(17,24,39,0.06)] py-5 first:border-t-0 first:pt-0 transition-colors duration-200 hover:bg-[rgba(29,164,237,0.025)] motion-reduce:transition-none"
+      style={{ animationDelay: `${index * 80}ms` }}
+    >
+      <div className="relative flex justify-center pt-1">
+        <span className="h-2.5 w-2.5 rounded-full bg-[hsl(var(--cv-contact-bar))] transition duration-300 group-hover:scale-110 group-hover:brightness-110 motion-reduce:transition-none" />
+        <span className="absolute top-4 h-full w-px bg-[rgba(17,24,39,0.08)]" />
+      </div>
+
+      <div className="pt-0.5 text-[13px] font-medium tracking-[0.01em] text-[hsl(var(--cv-contact-bar))]">
+        {item.year}
+      </div>
+
+      <div className="rounded-[12px] px-0 py-0 transition-colors duration-200 group-hover:bg-[rgba(29,164,237,0.03)] motion-reduce:transition-none">
+        <p className="text-[14px] font-semibold leading-[1.35] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))] motion-reduce:transition-none">
+          {item.title}
+        </p>
+        <p className="mt-1 text-[13px] leading-[1.45] text-[hsl(var(--cv-light-text))]">
+          {item.org}
+        </p>
+
+        <div className="mt-3 flex flex-wrap gap-2">
+          {item.tags.map((tag) => (
+            <TagPill key={tag}>{tag}</TagPill>
+          ))}
+        </div>
+      </div>
+    </li>
+  );
+}
+
 export default function App() {
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -440,6 +497,27 @@ export default function App() {
       { threshold: 0.2 },
     );
     document.querySelectorAll("[data-section]").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const section = document.querySelector<HTMLElement>('[data-section="Education"]');
+    if (!section) return;
+
+    const nodes = section.querySelectorAll("[data-animate]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+
+    nodes.forEach((node) => observer.observe(node));
     return () => observer.disconnect();
   }, []);
 
@@ -522,41 +600,6 @@ export default function App() {
                 </div>
               </section>
 
-            <section className="mt-5" data-section="Key Achievements">
-              <p className="cv-body-text mb-1 font-bold">Key achievements</p>
-              <ul className="cv-body-text list-none space-y-0.5">
-                <li>
-                  • Boosted Bitso&apos;s onboarding conversion by +262% for
-                  over 8M users.
-                </li>
-                <li>
-                  • Scaled Lemon from 60k to 2M users in 6 months (+3200%
-                  growth).
-                </li>
-                <li>
-                  • Built and scaled UNID (Unified Identity), unifying ~3M
-                  users across 30 companies within the Grupo Vázquez
-                  ecosystem.
-                </li>
-                <li>
-                  • Led multi-country onboarding launches across LatAm,
-                  acquiring over 1M users in the first year.
-                </li>
-                <li>
-                  • Led Bitso&apos;s product expansion, scaling from 4 million
-                  to nearly 7 million users (+75% annual growth).
-                </li>
-                <li>
-                  • Developed a new home screen for an exchange with over 8M
-                  users, driving a 35% increase in product activation.
-                </li>
-                <li>
-                  • Led cross-functional teams from 0 to 18+ across Argentina,
-                  Brazil, Mexico, Paraguay, Colombia and United States.
-                </li>
-              </ul>
-            </section>
-
             <section className="mt-6" data-section="Specialty">
               <h2 className="cv-section-title mb-2">SPECIALTY</h2>
               <DottedSeparator />
@@ -564,7 +607,7 @@ export default function App() {
               <div className="mt-6 flex flex-col items-center gap-8 px-3 sm:gap-10 md:flex-row md:items-start md:justify-between md:gap-0">
                 <SpecialtyNode
                   label="Product"
-                  iconClassName="text-[hsl(201_85%_52%)]"
+                  iconClassName="text-[hsl(201_85%_52%)] transition-transform duration-200 group-hover:scale-105 motion-reduce:transition-none"
                   icon={
                     <svg
                       width="34"
@@ -584,7 +627,7 @@ export default function App() {
 
                 <SpecialtyNode
                   label="Development"
-                  iconClassName="text-[hsl(201_85%_52%)]"
+                  iconClassName="text-[hsl(201_85%_52%)] transition-transform duration-200 group-hover:scale-105 motion-reduce:transition-none"
                   icon={
                     <svg
                       width="46"
@@ -617,7 +660,7 @@ export default function App() {
 
                 <SpecialtyNode
                   label="Product Design"
-                  iconClassName="text-[hsl(201_85%_52%)]"
+                  iconClassName="text-[hsl(201_85%_52%)] transition-transform duration-200 group-hover:scale-105 motion-reduce:transition-none"
                   icon={
                     <svg
                       width="44"
@@ -656,11 +699,67 @@ export default function App() {
               </div>
             </section>
 
+            <section className="mt-5" data-section="Key Achievements">
+              <p className="cv-body-text mb-1 font-bold">Key achievements</p>
+              <ul className="cv-body-text list-none space-y-0.5">
+                <li>
+                  • Boosted Bitso&apos;s onboarding conversion by +262% for
+                  over 8M users.
+                </li>
+                <li>
+                  • Scaled Lemon from 60k to 2M users in 6 months (+3200%
+                  growth).
+                </li>
+                <li>
+                  • Built and scaled UNID (Unified Identity), unifying ~3M
+                  users across 30 companies within the Grupo Vázquez
+                  ecosystem.
+                </li>
+                <li>
+                  • Led multi-country onboarding launches across LatAm,
+                  acquiring over 1M users in the first year.
+                </li>
+                <li>
+                  • Led Bitso&apos;s product expansion, scaling from 4 million
+                  to nearly 7 million users (+75% annual growth).
+                </li>
+                <li>
+                  • Developed a new home screen for an exchange with over 8M
+                  users, driving a 35% increase in product activation.
+                </li>
+                <li>
+                  • Led cross-functional teams from 0 to 18+ across Argentina,
+                  Brazil, Mexico, Paraguay, Colombia and United States.
+                </li>
+              </ul>
+            </section>
+
             <section className="mt-6" data-section="Skills">
               <h2 className="cv-section-title mb-2">SKILLS</h2>
               <DottedSeparator />
 
               <div className="mt-4 flex flex-col gap-8 lg:flex-row lg:gap-10">
+                <div className="min-w-0">
+                  <p className="mb-4 text-[11px] italic text-[hsl(var(--cv-light-text))]">
+                    Knowledge
+                  </p>
+                  <div className="space-y-3 text-[10px] text-[hsl(var(--cv-body))]">
+                    {knowledge.map((item) => (
+                      <div
+                        key={item.name}
+                        className="group grid grid-cols-[22px_minmax(0,1fr)] items-center gap-3 rounded-[10px] px-2 py-1 transition-colors duration-200 hover:bg-[rgba(29,164,237,0.03)] motion-reduce:transition-none"
+                      >
+                        <div className="flex h-6 w-6 items-center justify-center text-[hsl(var(--cv-contact-bar))]">
+                          {item.icon}
+                        </div>
+                        <p className="leading-[1.6] transition-colors duration-200 group-hover:text-[hsl(var(--cv-section-title))] motion-reduce:transition-none">
+                          {item.name}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
                 <div>
                   <p className="mb-4 text-[11px] italic text-[hsl(var(--cv-light-text))]">
                     Languages
@@ -669,33 +768,15 @@ export default function App() {
                     {skills.map((skill) => (
                       <div
                         key={skill.name}
-                        className="grid grid-cols-[108px_minmax(0,1fr)] items-center gap-3"
+                        className="group grid grid-cols-[108px_minmax(0,1fr)] items-center gap-3 rounded-[10px] px-2 py-1 transition-colors duration-200 hover:bg-[rgba(29,164,237,0.03)] motion-reduce:transition-none"
                       >
                         <div className="flex items-center gap-3">
                           <SkillIcon name={skill.name} />
-                          <span className="text-[10px] text-[hsl(var(--cv-body))]">
+                          <span className="text-[10px] text-[hsl(var(--cv-body))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-section-title))] motion-reduce:transition-none">
                             {skill.name}
                           </span>
                         </div>
                         <SkillDots filled={skill.level} />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="min-w-0">
-                  <p className="mb-4 text-[11px] italic text-[hsl(var(--cv-light-text))]">
-                    Knowledge
-                  </p>
-                  <div className="space-y-3 text-[10px] text-[hsl(var(--cv-body))]">
-                    {knowledge.map((item) => (
-                      <div key={item.name} className="grid grid-cols-[22px_minmax(0,1fr)] items-center gap-3">
-                        <div className="flex h-6 w-6 items-center justify-center text-[hsl(var(--cv-contact-bar))]">
-                          {item.icon}
-                        </div>
-                        <p className="leading-[1.6]">
-                          {item.name}
-                        </p>
                       </div>
                     ))}
                   </div>
@@ -725,37 +806,7 @@ export default function App() {
           </div>
 
           <div className="flex w-full flex-col md:w-[45%]">
-            <section data-section="Education">
-              <h2 className="cv-section-title mb-2">EDUCATION</h2>
-              <DottedSeparator />
-
-              <div className="mt-3 space-y-3">
-                {education.map((item, index) => (
-                  <div key={`${item.year}-${item.title}`} className="flex gap-3">
-                    <div className="mt-1 flex flex-col items-center">
-                      <span className="cv-timeline-dot" />
-                      {index < education.length - 1 ? (
-                        <span className="cv-timeline-line mt-1 h-8" />
-                      ) : null}
-                    </div>
-
-                    <div>
-                      <p className="text-[11px] font-bold text-[hsl(var(--cv-section-title))]">
-                        {item.year}
-                      </p>
-                      <p className="text-[10px] font-semibold text-[hsl(var(--cv-body))]">
-                        {item.title}
-                      </p>
-                      <p className="text-[10px] text-[hsl(var(--cv-light-text))]">
-                        {item.org}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section className="mt-6" data-section="Experience">
+            <section data-section="Experience">
               <h2 className="cv-section-title mb-2">EXPERIENCE</h2>
               <DottedSeparator />
 
@@ -763,21 +814,21 @@ export default function App() {
                 {experience.map((item) => (
                   <div
                     key={`${item.company}-${item.role}`}
-                    className="flex items-start gap-3"
+                    className="group flex items-start gap-3 rounded-[12px] px-2 py-1 transition-colors duration-200 hover:bg-[rgba(29,164,237,0.03)] motion-reduce:transition-none"
                   >
                     <div className="flex flex-col items-center">
-                      <span className="text-[8px] text-[hsl(var(--cv-timeline-dot))]">
+                      <span className="text-[8px] text-[hsl(var(--cv-timeline-dot))] transition duration-200 group-hover:scale-110 group-hover:brightness-110 motion-reduce:transition-none">
                         ▲
                       </span>
                       <img
                         src={item.logo}
                         alt={item.company}
-                        className="mt-0.5 h-8 w-8 rounded object-contain"
+                        className="mt-0.5 h-8 w-8 rounded object-contain transition duration-200 group-hover:scale-[1.03] motion-reduce:transition-none"
                       />
                     </div>
 
                     <div>
-                      <p className="text-[11px] font-bold text-[hsl(var(--cv-section-title))]">
+                      <p className="text-[11px] font-bold text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))] motion-reduce:transition-none">
                         {item.role}
                       </p>
                       <p className="text-[10px] text-[hsl(var(--cv-body))]">
@@ -790,6 +841,26 @@ export default function App() {
                   </div>
                 ))}
               </div>
+            </section>
+
+            <section className="mt-6" data-section="Education">
+              <h2
+                data-animate
+                className="cv-section-title mb-2 education-title"
+              >
+                EDUCATION &amp; CERTIFICATIONS
+              </h2>
+              <DottedSeparator />
+
+              <ul className="education-list mt-3 list-none">
+                {education.map((item, index) => (
+                  <EducationTimelineItem
+                    key={`${item.year}-${item.title}`}
+                    item={item}
+                    index={index}
+                  />
+                ))}
+              </ul>
             </section>
 
             <section className="mt-6" data-section="Languages">

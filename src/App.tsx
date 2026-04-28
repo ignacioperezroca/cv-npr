@@ -294,6 +294,7 @@ function TagPill({ children }: { children: string }) {
 }
 
 function ToolLogo({ name, logo }: ToolItem) {
+  const prefersReducedMotion = false;
   const [status, setStatus] = useState<"loading" | "loaded" | "error">("loading");
   const fallbackLabel = name.slice(0, 1).toUpperCase();
 
@@ -347,6 +348,7 @@ function ExperienceLogo({
   alt: string;
   delay?: number;
 }) {
+  const prefersReducedMotion = false;
   const [loaded, setLoaded] = useState(false);
 
   return (
@@ -452,6 +454,7 @@ function LanguageCircle({ label, sublabel, percentage }: Language) {
 }
 
 function EducationTimelineItem({ item, index }: { item: EducationItem; index: number }) {
+  const prefersReducedMotion = false;
 
   return (
     <li

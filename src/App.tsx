@@ -265,7 +265,7 @@ const experience: ExperienceItem[] = [
 
 const languages: Language[] = [
   { code: "ES", name: "Español", level: "Native", value: 100, accent: "blue" },
-  { code: "EN", name: "English", level: "Advanced", value: 95, accent: "blue", highlighted: true },
+  { code: "EN", name: "English", level: "Advanced", value: 90, accent: "blue", highlighted: true },
   { code: "PT", name: "Portuguese", level: "Basic", value: 45, accent: "green" },
 ];
 
@@ -473,12 +473,12 @@ function LanguageCard({
             />
           </svg>
           <span className="absolute text-[14px] font-light tracking-[-0.04em] text-[hsl(var(--cv-section-title))]">
-            {language.value}%
+            {language.value}
           </span>
         </div>
 
         <div className="flex flex-col items-center gap-2 pb-1">
-          <h3 className="text-[19px] font-semibold tracking-[-0.02em] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))] sm:text-[20px] md:text-[21px]">
+          <h3 className="text-[18px] font-semibold tracking-[-0.02em] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))]">
             {language.name}
           </h3>
           <span

@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import profileImage from "./assets/profile.png";
@@ -11,6 +11,29 @@ import iunigoLogo from "./assets/iunigo-logo.png";
 import ripioLogo from "./assets/ripio-logo.png";
 import telecomLogo from "./assets/telecom-logo.png";
 import thetLogo from "./assets/thet-logo.png";
+import {
+  Brain,
+  BriefcaseBusiness,
+  Code2,
+  Eye,
+  LayoutGrid,
+  Map,
+  MessageSquareText,
+  MonitorSmartphone,
+  Route,
+  Users,
+  Target,
+  Workflow,
+  GitBranch,
+  Sparkles,
+  Boxes,
+  BarChart3,
+  Database,
+  Asterisk,
+  Triangle,
+  Bot,
+  Diamond,
+} from "lucide-react";
 
 type Skill = {
   name: string;
@@ -47,50 +70,39 @@ type ToolGroup = {
   tools?: ToolCard[];
 };
 
+type KnowledgeItem = {
+  name: string;
+  icon: ReactNode;
+};
+
 const skills: Skill[] = [
-  { name: "HTML5", level: 10 },
-  { name: "CSS3", level: 10 },
+  { name: "Ai", level: 10 },
+  { name: "ChatGPT", level: 10 },
+  { name: "Gemini", level: 10 },
+  { name: "Claude", level: 10 },
   { name: "Javascript", level: 9 },
   { name: "Typescript", level: 8 },
   { name: "Angular", level: 8 },
   { name: "Solidity", level: 6 },
   { name: "Bootstrap", level: 9 },
-  { name: "Adobe Photoshop", level: 10 },
-  { name: "Adobe Illustrator", level: 10 },
+  { name: "Figma", level: 10 },
+  { name: "Miro", level: 10 },
 ];
 
-const knowledge = [
-  "Product Strategy",
-  "Product Vision",
-  "Roadmap",
-  "Team Leadership",
-  "Scrum Master",
-  "User Experience",
-  "Web Development",
-  "Product Development",
-  "Product Management",
-  "Blockchain | DEFI",
+const knowledge: KnowledgeItem[] = [
+  { name: "Product Strategy", icon: <Target className="h-4 w-4" /> },
+  { name: "Product Vision", icon: <Eye className="h-4 w-4" /> },
+  { name: "Roadmap", icon: <Route className="h-4 w-4" /> },
+  { name: "Team Leadership", icon: <Users className="h-4 w-4" /> },
+  { name: "Scrum Master", icon: <Workflow className="h-4 w-4" /> },
+  { name: "User Experience", icon: <Brain className="h-4 w-4" /> },
+  { name: "Web Development", icon: <Code2 className="h-4 w-4" /> },
+  { name: "Product Development", icon: <Boxes className="h-4 w-4" /> },
+  { name: "Product Management", icon: <BriefcaseBusiness className="h-4 w-4" /> },
+  { name: "Blockchain | DEFI", icon: <BarChart3 className="h-4 w-4" /> },
 ];
 
 const skillsGroups: ToolGroup[] = [
-  {
-    title: "Frameworks",
-    concepts: ["Material Design", "Angular", "React"],
-  },
-  {
-    title: "Product Strategy",
-    concepts: ["Roadmap", "Prioritization + Slicing"],
-    tools: [
-      {
-        name: "Jira / Trello / Notion",
-        logo: (
-          <span className="text-[11px] font-semibold tracking-tight text-[hsl(var(--cv-body))]">
-            Jira
-          </span>
-        ),
-      },
-    ],
-  },
   {
     title: "Business Analytics",
     tools: [
@@ -107,75 +119,110 @@ const skillsGroups: ToolGroup[] = [
       {
         name: "Amplitude",
         logo: (
-          <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
-            <circle cx="12" cy="12" r="10" fill="#6c3fd4" />
-            <path d="M6 14c1.5 0 2.1-6 4-6s2 8 4 8 2.4-4 4-4" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          <div className="flex h-7 w-7 items-center justify-center rounded bg-[#f0ecff] text-[#6b52ff]">
+            <BarChart3 className="h-4 w-4" />
+          </div>
         ),
       },
       {
         name: "Looker",
         logo: (
-          <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
-            <circle cx="12" cy="12" r="9" fill="none" stroke="#1da4ed" strokeWidth="2.5" />
-            <circle cx="12" cy="12" r="3.2" fill="#1da4ed" />
-            <circle cx="17" cy="7" r="1.6" fill="#1da4ed" />
-          </svg>
+          <div className="flex h-7 w-7 items-center justify-center rounded bg-[#eaf6ff] text-[#1da4ed]">
+            <LayoutGrid className="h-4 w-4" />
+          </div>
         ),
       },
       {
         name: "Mixpanel",
         logo: (
-          <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
-            <circle cx="5.5" cy="6" r="2" fill="#6b52ff" />
-            <circle cx="12" cy="12" r="2" fill="#6b52ff" />
-            <circle cx="18.5" cy="6" r="2" fill="#6b52ff" />
-            <circle cx="5.5" cy="18" r="2" fill="#6b52ff" />
-            <circle cx="12" cy="18" r="2" fill="#6b52ff" />
-            <circle cx="18.5" cy="18" r="2" fill="#6b52ff" />
-          </svg>
+          <div className="flex h-7 w-7 items-center justify-center rounded bg-[#f2ecff] text-[#7c3aed]">
+            <Sparkles className="h-4 w-4" />
+          </div>
         ),
       },
       {
         name: "SQL basics",
         logo: (
-          <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
-            <ellipse cx="12" cy="5.5" rx="6.5" ry="2.8" fill="none" stroke="#d34d2a" strokeWidth="2" />
-            <path d="M5.5 5.5v11c0 1.6 2.9 2.8 6.5 2.8s6.5-1.2 6.5-2.8v-11" fill="none" stroke="#d34d2a" strokeWidth="2" />
-            <ellipse cx="12" cy="16.5" rx="6.5" ry="2.8" fill="none" stroke="#d34d2a" strokeWidth="2" />
-          </svg>
+          <div className="flex h-7 w-7 items-center justify-center rounded bg-[#f2f2f2] text-[#444]">
+            <Database className="h-4 w-4" />
+          </div>
         ),
       },
       {
         name: "A/B Testing",
         logo: (
-          <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
-            <path d="M6 18l4-12 4 12" fill="none" stroke="#e11d48" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M14 6h4a2 2 0 0 1 0 4h-4V6Zm0 6h4a2 2 0 0 1 0 4h-4v-4Z" fill="none" stroke="#e11d48" strokeWidth="2" strokeLinejoin="round" />
-          </svg>
+          <div className="flex h-7 w-7 items-center justify-center rounded bg-[#fff1f2] text-[#e11d48]">
+            <Asterisk className="h-4 w-4" />
+          </div>
         ),
       },
       {
         name: "Clevertap",
         logo: (
-          <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
-            <path d="M14 5.5a6 6 0 1 0 4.8 9.6" fill="none" stroke="#f43f5e" strokeWidth="2.2" strokeLinecap="round" />
-            <path d="M16.5 8.5h3.2l-1.1 3.1" fill="none" stroke="#f43f5e" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          <div className="flex h-7 w-7 items-center justify-center rounded bg-[#fff4ec] text-[#ff6b2d]">
+            <Triangle className="h-4 w-4 rotate-180" />
+          </div>
         ),
       },
       {
         name: "Keycloak",
         logo: (
-          <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
-            <path d="M12 3.5l5.7 3.3v6.6L12 16.7 6.3 13.4V6.8L12 3.5Z" fill="none" stroke="#2563eb" strokeWidth="2.1" />
-            <path d="M12 7.2v9.6" stroke="#2563eb" strokeWidth="2.1" strokeLinecap="round" />
-          </svg>
+          <div className="flex h-7 w-7 items-center justify-center rounded bg-[#eef2ff] text-[#2563eb]">
+            <GitBranch className="h-4 w-4" />
+          </div>
         ),
       },
     ],
   },
+  {
+    title: "Product Strategy",
+    concepts: ["Roadmap", "Prioritization + Slicing"],
+    tools: [
+      {
+        name: "Jira",
+        logo: <span className="text-[11px] font-semibold text-[#d3452f]">J</span>,
+      },
+      {
+        name: "Confluence",
+        logo: <span className="text-[11px] font-semibold text-[#185bcd]">C</span>,
+      },
+    ],
+  },
+  {
+    title: "Frameworks",
+    concepts: ["Material Design", "Angular", "React"],
+  },
 ];
+
+function SkillIcon({ name }: { name: string }) {
+  const base = "flex h-7 w-7 items-center justify-center rounded-[6px] text-[10px] font-semibold";
+  switch (name) {
+    case "Ai":
+      return <div className={`${base} bg-[#5b2a12] text-[#ffbf1f]`}>Ai</div>;
+    case "ChatGPT":
+      return <div className={`${base} bg-[#ecfdf5] text-[#10a37f]`}><Bot className="h-4 w-4" /></div>;
+    case "Gemini":
+      return <div className={`${base} bg-[#eff6ff] text-[#2563eb]`}><Sparkles className="h-4 w-4" /></div>;
+    case "Claude":
+      return <div className={`${base} bg-[#fff7ed] text-[#f97316]`}><Diamond className="h-4 w-4" /></div>;
+    case "Javascript":
+      return <div className={`${base} bg-[#fef08a] text-[#111827]`}>JS</div>;
+    case "Typescript":
+      return <div className={`${base} bg-[#1d4ed8] text-white`}>TS</div>;
+    case "Angular":
+      return <div className={`${base} bg-[#dc2626] text-white`}>A</div>;
+    case "Solidity":
+      return <div className={`${base} bg-[#f5f5f5] text-[#222]`}>S</div>;
+    case "Bootstrap":
+      return <div className={`${base} bg-[#7c3aed] text-white`}>B</div>;
+    case "Figma":
+      return <div className={`${base} bg-[#fff] text-[#111]`}>F</div>;
+    case "Miro":
+      return <div className={`${base} bg-[#fde047] text-[#111827]`}>M</div>;
+    default:
+      return <div className={`${base} bg-[#f3f4f6] text-[#374151]`}>•</div>;
+  }
+}
 
 const education: EducationItem[] = [
   { year: "2023", title: "Growth Product Management", org: "Reforge®" },
@@ -285,7 +332,7 @@ function DottedSeparator() {
 
 function ToolCard({ name, logo }: ToolCard) {
   return (
-    <div className="flex h-[84px] flex-col items-center justify-center rounded-[8px] border border-[hsl(var(--cv-dotted-line))] bg-white px-3 py-2 text-center transition-colors duration-200 hover:border-[hsl(var(--cv-contact-bar))]">
+    <div className="flex h-[78px] flex-col items-center justify-center rounded-[14px] bg-white px-3 py-2 text-center shadow-[0_0_0_1px_rgba(17,24,39,0.06)] transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_rgba(29,164,237,0.25)]">
       <div className="flex h-8 items-center justify-center">{logo}</div>
       <span className="mt-2 text-[10px] font-medium leading-tight text-[hsl(var(--cv-body))]">
         {name}
@@ -296,11 +343,11 @@ function ToolCard({ name, logo }: ToolCard) {
 
 function ConceptList({ items }: { items: string[] }) {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-x-4 gap-y-2">
       {items.map((item) => (
         <span
           key={item}
-          className="rounded-full border border-[hsl(var(--cv-dotted-line))] bg-white px-3 py-1 text-[10px] text-[hsl(var(--cv-body))]"
+          className="text-[10px] text-[hsl(var(--cv-body))]"
         >
           {item}
         </span>
@@ -377,6 +424,25 @@ function LanguageCircle({ label, sublabel, percentage }: Language) {
 }
 
 export default function App() {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const sectionName = entry.target.getAttribute("data-section");
+            if (sectionName) {
+              amplitude.track("cv section reached", { section_name: sectionName });
+              observer.unobserve(entry.target);
+            }
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    document.querySelectorAll("[data-section]").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <main className="min-h-screen bg-background px-0 py-0 md:flex md:justify-center md:px-4">
@@ -385,7 +451,7 @@ export default function App() {
           style={{ fontFamily: "'Open Sans', sans-serif" }}
         >
           <header className="flex flex-col items-center gap-5 px-6 pb-6 pt-8 text-center sm:px-8 md:flex-row md:items-start md:gap-8 md:px-10 md:pb-6 md:pt-10 md:text-left">
-            <div className="h-[124px] w-[124px] shrink-0 overflow-hidden rounded-full bg-white sm:h-[140px] sm:w-[140px] md:h-[150px] md:w-[150px]">
+            <div className="h-[150px] w-[150px] shrink-0 overflow-hidden rounded-full bg-white sm:h-[168px] sm:w-[168px] md:h-[180px] md:w-[180px]">
               <img
                 src={profileImage}
                 alt="Ignacio Perez Roca"
@@ -415,7 +481,7 @@ export default function App() {
 
           <div className="flex flex-col gap-10 px-6 pb-8 sm:px-8 md:flex-row md:gap-8 md:px-10">
             <div className="flex w-full flex-col md:w-[55%]">
-              <section>
+              <section data-section="Personal Statement">
                 <h2 className="cv-section-title mb-2">PERSONAL STATEMENT</h2>
                 <DottedSeparator />
 
@@ -456,7 +522,7 @@ export default function App() {
                 </div>
               </section>
 
-            <section className="mt-5">
+            <section className="mt-5" data-section="Key Achievements">
               <p className="cv-body-text mb-1 font-bold">Key achievements</p>
               <ul className="cv-body-text list-none space-y-0.5">
                 <li>
@@ -491,7 +557,7 @@ export default function App() {
               </ul>
             </section>
 
-            <section className="mt-6">
+            <section className="mt-6" data-section="Specialty">
               <h2 className="cv-section-title mb-2">SPECIALTY</h2>
               <DottedSeparator />
 
@@ -550,7 +616,7 @@ export default function App() {
                 />
 
                 <SpecialtyNode
-                  label="UX / UI Design"
+                  label="Product Design"
                   iconClassName="text-[hsl(201_85%_52%)]"
                   icon={
                     <svg
@@ -590,45 +656,53 @@ export default function App() {
               </div>
             </section>
 
-            <section className="mt-6">
+            <section className="mt-6" data-section="Skills">
               <h2 className="cv-section-title mb-2">SKILLS</h2>
               <DottedSeparator />
 
-              <div className="mt-3 flex flex-col gap-6 lg:flex-row lg:gap-8">
+              <div className="mt-4 flex flex-col gap-8 lg:flex-row lg:gap-10">
                 <div>
-                  <p className="mb-2 text-[11px] italic text-[hsl(var(--cv-light-text))]">
+                  <p className="mb-4 text-[11px] italic text-[hsl(var(--cv-light-text))]">
                     Languages
                   </p>
-                  <div className="space-y-1.5">
+                  <div className="space-y-2">
                     {skills.map((skill) => (
                       <div
                         key={skill.name}
-                        className="flex items-center gap-3"
+                        className="grid grid-cols-[108px_minmax(0,1fr)] items-center gap-3"
                       >
-                        <span className="w-[100px] text-[10px] text-[hsl(var(--cv-body))]">
-                          {skill.name}
-                        </span>
+                        <div className="flex items-center gap-3">
+                          <SkillIcon name={skill.name} />
+                          <span className="text-[10px] text-[hsl(var(--cv-body))]">
+                            {skill.name}
+                          </span>
+                        </div>
                         <SkillDots filled={skill.level} />
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div>
-                  <p className="mb-2 text-[11px] italic text-[hsl(var(--cv-light-text))]">
+                <div className="min-w-0">
+                  <p className="mb-4 text-[11px] italic text-[hsl(var(--cv-light-text))]">
                     Knowledge
                   </p>
-                  <div className="space-y-1.5 text-[10px] text-[hsl(var(--cv-body))]">
+                  <div className="space-y-3 text-[10px] text-[hsl(var(--cv-body))]">
                     {knowledge.map((item) => (
-                      <p key={item} className="leading-[1.8]">
-                        {item}
-                      </p>
+                      <div key={item.name} className="grid grid-cols-[22px_minmax(0,1fr)] items-center gap-3">
+                        <div className="flex h-6 w-6 items-center justify-center text-[hsl(var(--cv-contact-bar))]">
+                          {item.icon}
+                        </div>
+                        <p className="leading-[1.6]">
+                          {item.name}
+                        </p>
+                      </div>
                     ))}
                   </div>
                 </div>
               </div>
 
-              <div className="mt-5 space-y-5">
+              <div className="mt-6 space-y-3">
                 {skillsGroups
                   .filter((group) => group.title === "Business Analytics")
                   .map((group) => (
@@ -651,14 +725,7 @@ export default function App() {
           </div>
 
           <div className="flex w-full flex-col md:w-[45%]">
-            <section>
-              <div className="mb-2 flex items-center gap-2">
-                <img
-                  src={educationIcon}
-                  alt="Education"
-                  className="h-8 w-8"
-                />
-              </div>
+            <section data-section="Education">
               <h2 className="cv-section-title mb-2">EDUCATION</h2>
               <DottedSeparator />
 
@@ -688,7 +755,7 @@ export default function App() {
               </div>
             </section>
 
-            <section className="mt-6">
+            <section className="mt-6" data-section="Experience">
               <h2 className="cv-section-title mb-2">EXPERIENCE</h2>
               <DottedSeparator />
 
@@ -725,7 +792,7 @@ export default function App() {
               </div>
             </section>
 
-            <section className="mt-6">
+            <section className="mt-6" data-section="Languages">
               <h2 className="cv-section-title mb-2">LANGUAGES</h2>
               <DottedSeparator />
 

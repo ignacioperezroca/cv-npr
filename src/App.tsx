@@ -150,7 +150,7 @@ const knowledge: KnowledgeItem[] = [
 
 function ToolIcon({ name, icon }: ToolItem) {
   return (
-    <div className="skills-icon flex h-10 w-10 shrink-0 items-center justify-center rounded-[12px] border border-[rgba(17,24,39,0.08)] bg-white text-[hsl(var(--cv-contact-bar))] transition-colors duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:bg-[rgba(29,164,237,0.04)]">
+    <div className="skills-icon flex h-12 w-12 shrink-0 items-center justify-center rounded-[12px] border border-[rgba(17,24,39,0.08)] bg-white text-[hsl(var(--cv-contact-bar))] transition-colors duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:bg-[rgba(29,164,237,0.04)]">
       {icon || <span className="text-[11px] font-semibold">{name.slice(0, 1)}</span>}
     </div>
   );
@@ -663,7 +663,7 @@ export default function App() {
                     <li
                       key={tool.name}
                       data-animate
-                      className="group grid grid-cols-1 gap-3 border-t border-[rgba(17,24,39,0.06)] py-4 first:border-t-0 first:pt-0 md:grid-cols-[180px_minmax(0,1fr)_56px] md:items-center md:gap-5 md:py-5"
+                      className="group grid grid-cols-1 gap-3 border-t border-[rgba(17,24,39,0.06)] py-4 first:border-t-0 first:pt-0 md:grid-cols-[174px_minmax(0,1fr)_56px] md:items-center md:gap-4 md:py-[18px]"
                       style={{ animationDelay: `${index * 60}ms` }}
                     >
                       <div className="flex items-center gap-3">
@@ -674,7 +674,7 @@ export default function App() {
                       </div>
 
                       <div
-                        className="flex h-1.5 items-center overflow-hidden rounded-full bg-[rgba(17,24,39,0.08)]"
+                        className="flex h-[5px] items-center overflow-hidden rounded-full bg-[rgba(17,24,39,0.08)]"
                         aria-hidden="true"
                       >
                         <span

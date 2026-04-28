@@ -198,27 +198,71 @@ function SkillIcon({ name }: { name: string }) {
   const base = "flex h-7 w-7 items-center justify-center rounded-[6px] text-[10px] font-semibold";
   switch (name) {
     case "Ai":
-      return <div className={`${base} bg-[#5b2a12] text-[#ffbf1f]`}>Ai</div>;
+      return (
+        <div className={`${base} bg-[#5b2a12] text-[#ffbf1f]`}>
+          <span className="text-[11px] font-bold">Ai</span>
+        </div>
+      );
     case "ChatGPT":
-      return <div className={`${base} bg-[#ecfdf5] text-[#10a37f]`}><Bot className="h-4 w-4" /></div>;
+      return (
+        <div className={`${base} bg-[#ecfdf5] text-[#10a37f]`}>
+          <Bot className="h-4 w-4" />
+        </div>
+      );
     case "Gemini":
-      return <div className={`${base} bg-[#eff6ff] text-[#2563eb]`}><Sparkles className="h-4 w-4" /></div>;
+      return (
+        <div className={`${base} bg-[#eff6ff] text-[#2563eb]`}>
+          <Sparkles className="h-4 w-4" />
+        </div>
+      );
     case "Claude":
-      return <div className={`${base} bg-[#fff7ed] text-[#f97316]`}><Diamond className="h-4 w-4" /></div>;
+      return (
+        <div className={`${base} bg-[#fff7ed] text-[#f97316]`}>
+          <Diamond className="h-4 w-4" />
+        </div>
+      );
     case "Javascript":
-      return <div className={`${base} bg-[#fef08a] text-[#111827]`}>JS</div>;
+      return (
+        <div className={`${base} bg-[#fef08a] text-[#111827]`}>
+          <span className="text-[11px] font-bold">JS</span>
+        </div>
+      );
     case "Typescript":
-      return <div className={`${base} bg-[#1d4ed8] text-white`}>TS</div>;
+      return (
+        <div className={`${base} bg-[#1d4ed8] text-white`}>
+          <span className="text-[11px] font-bold">TS</span>
+        </div>
+      );
     case "Angular":
-      return <div className={`${base} bg-[#dc2626] text-white`}>A</div>;
+      return (
+        <div className={`${base} bg-[#dc2626] text-white`}>
+          <span className="text-[11px] font-bold">A</span>
+        </div>
+      );
     case "Solidity":
-      return <div className={`${base} bg-[#f5f5f5] text-[#222]`}>S</div>;
+      return (
+        <div className={`${base} bg-[#f5f5f5] text-[#222]`}>
+          <span className="text-[11px] font-bold">S</span>
+        </div>
+      );
     case "Bootstrap":
-      return <div className={`${base} bg-[#7c3aed] text-white`}>B</div>;
+      return (
+        <div className={`${base} bg-[#7c3aed] text-white`}>
+          <span className="text-[11px] font-bold">B</span>
+        </div>
+      );
     case "Figma":
-      return <div className={`${base} bg-[#fff] text-[#111]`}>F</div>;
+      return (
+        <div className={`${base} bg-[#fff] text-[#111]`}>
+          <span className="text-[11px] font-bold">F</span>
+        </div>
+      );
     case "Miro":
-      return <div className={`${base} bg-[#fde047] text-[#111827]`}>M</div>;
+      return (
+        <div className={`${base} bg-[#fde047] text-[#111827]`}>
+          <span className="text-[11px] font-bold">M</span>
+        </div>
+      );
     default:
       return <div className={`${base} bg-[#f3f4f6] text-[#374151]`}>•</div>;
   }
@@ -454,23 +498,23 @@ function EducationTimelineItem({ item, index }: { item: EducationItem; index: nu
       style={{ animationDelay: `${index * 80}ms` }}
     >
       <div className="relative flex justify-center pt-1">
-        <span className="h-2.5 w-2.5 rounded-full bg-[hsl(var(--cv-contact-bar))] transition duration-300 group-hover:scale-110 group-hover:brightness-110 motion-reduce:transition-none" />
+        <span className="h-2 w-2 rounded-full bg-[hsl(var(--cv-contact-bar))] transition duration-300 group-hover:scale-110 group-hover:brightness-110 motion-reduce:transition-none" />
         <span className="absolute top-4 h-full w-px bg-[rgba(17,24,39,0.08)]" />
       </div>
 
-      <div className="pt-0.5 text-[13px] font-medium tracking-[0.01em] text-[hsl(var(--cv-contact-bar))]">
+      <div className="pt-0.5 text-[12px] font-medium tracking-[0.01em] text-[hsl(var(--cv-contact-bar))]">
         {item.year}
       </div>
 
       <div className="rounded-[12px] px-0 py-0 transition-colors duration-200 group-hover:bg-[rgba(29,164,237,0.03)] motion-reduce:transition-none">
-        <p className="text-[14px] font-semibold leading-[1.35] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))] motion-reduce:transition-none">
+        <p className="text-[13px] font-semibold leading-[1.3] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))] motion-reduce:transition-none">
           {item.title}
         </p>
-        <p className="mt-1 text-[13px] leading-[1.45] text-[hsl(var(--cv-light-text))]">
+        <p className="mt-0.5 text-[12px] leading-[1.4] text-[hsl(var(--cv-light-text))]">
           {item.org}
         </p>
 
-        <div className="mt-3 flex flex-wrap gap-2">
+        <div className="mt-2.5 flex flex-wrap gap-2">
           {item.tags.map((tag) => (
             <TagPill key={tag}>{tag}</TagPill>
           ))}
@@ -741,7 +785,7 @@ export default function App() {
               <div className="mt-4 flex flex-col gap-8 lg:flex-row lg:gap-10">
                 <div className="min-w-0">
                   <p className="mb-4 text-[11px] italic text-[hsl(var(--cv-light-text))]">
-                    Knowledge
+                    Tools
                   </p>
                   <div className="space-y-3 text-[10px] text-[hsl(var(--cv-body))]">
                     {knowledge.map((item) => (
@@ -762,7 +806,7 @@ export default function App() {
 
                 <div>
                   <p className="mb-4 text-[11px] italic text-[hsl(var(--cv-light-text))]">
-                    Languages
+                    Knowledge
                   </p>
                   <div className="space-y-2">
                     {skills.map((skill) => (

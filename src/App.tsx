@@ -433,7 +433,7 @@ function LanguageCard({
           pillText: "text-[hsl(140_71%_29%)]",
           pillBorder: "rgba(23,166,95,0.16)",
         };
-  const radius = 46;
+  const radius = 40;
   const circumference = 2 * Math.PI * radius;
   const dashOffset = circumference - (language.value / 100) * circumference;
 
@@ -448,7 +448,7 @@ function LanguageCard({
       style={{ animationDelay: `${index * 60}ms` }}
     >
       <div className="flex flex-1 flex-col items-center justify-between gap-4 py-2">
-        <div className="relative flex h-[168px] w-[168px] items-center justify-center sm:h-[180px] sm:w-[180px] md:h-[186px] md:w-[186px]">
+        <div className="relative flex h-[138px] w-[138px] items-center justify-center sm:h-[150px] sm:w-[150px] md:h-[162px] md:w-[162px]">
           <svg width="100%" height="100%" viewBox="0 0 108 108" aria-hidden="true">
             <circle
               cx="54"
@@ -472,17 +472,17 @@ function LanguageCard({
               className="transition-[stroke-dashoffset,stroke] duration-300"
             />
           </svg>
-          <span className="absolute text-[30px] font-semibold tracking-[-0.04em] text-[hsl(var(--cv-section-title))] sm:text-[32px] md:text-[34px]">
+          <span className="absolute text-[28px] font-semibold tracking-[-0.04em] text-[hsl(var(--cv-section-title))] sm:text-[30px] md:text-[32px]">
             {language.value}%
           </span>
         </div>
 
         <div className="flex flex-col items-center gap-2 pb-1">
-          <h3 className="text-[22px] font-semibold tracking-[-0.02em] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))] sm:text-[24px] md:text-[25px]">
+          <h3 className="text-[21px] font-semibold tracking-[-0.02em] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))] sm:text-[22px] md:text-[23px]">
             {language.name}
           </h3>
           <span
-            className="rounded-full border px-4 py-2 text-[12px] font-medium"
+            className="rounded-full border px-4 py-2 text-[11px] font-medium"
             style={{
               backgroundColor: accent.pillBg,
               borderColor: accent.pillBorder,

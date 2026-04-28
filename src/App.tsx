@@ -64,6 +64,12 @@ type ToolCard = {
   logo: ReactNode;
 };
 
+type ToolItem = {
+  name: string;
+  level: number;
+  icon: ReactNode;
+};
+
 type ToolGroup = {
   title: string;
   concepts?: string[];
@@ -75,18 +81,58 @@ type KnowledgeItem = {
   icon: ReactNode;
 };
 
-const skills: Skill[] = [
-  { name: "Ai", level: 10 },
-  { name: "ChatGPT", level: 10 },
-  { name: "Gemini", level: 10 },
-  { name: "Claude", level: 10 },
-  { name: "Javascript", level: 9 },
-  { name: "Typescript", level: 8 },
-  { name: "Angular", level: 8 },
-  { name: "Solidity", level: 6 },
-  { name: "Bootstrap", level: 9 },
-  { name: "Figma", level: 10 },
-  { name: "Miro", level: 10 },
+const tools: ToolItem[] = [
+  { name: "ChatGPT", level: 10, icon: <Bot className="h-4 w-4" /> },
+  { name: "Gemini", level: 10, icon: <Sparkles className="h-4 w-4" /> },
+  { name: "Claude", level: 10, icon: <Asterisk className="h-4 w-4" /> },
+  {
+    name: "Figma",
+    level: 10,
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+        <path d="M8.2 3.2h4.4a3.1 3.1 0 0 1 0 6.2H8.2a3.1 3.1 0 0 1 0-6.2Z" fill="#f24e1e" />
+        <path d="M8.2 9.4h4.4a3.1 3.1 0 0 1 0 6.2H8.2a3.1 3.1 0 0 1 0-6.2Z" fill="#ff7262" />
+        <path d="M8.2 15.6h4.4a3.1 3.1 0 0 1 0 6.2H8.2a3.1 3.1 0 0 1 0-6.2Z" fill="#1abcfe" />
+        <path d="M12.6 9.4a3.1 3.1 0 1 0 0-6.2" fill="none" stroke="#a259ff" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    ),
+  },
+  {
+    name: "Miro",
+    level: 10,
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="4" fill="#ffd84d" />
+        <path d="M7 6l2.3 12L15 6" fill="none" stroke="#0f172a" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M12.1 6l2.3 12" fill="none" stroke="#0f172a" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    name: "JavaScript",
+    level: 9,
+    icon: <span className="text-[11px] font-bold">JS</span>,
+  },
+  {
+    name: "Bootstrap",
+    level: 9,
+    icon: <span className="text-[11px] font-bold">B</span>,
+  },
+  {
+    name: "TypeScript",
+    level: 8,
+    icon: <span className="text-[11px] font-bold">TS</span>,
+  },
+  {
+    name: "Angular",
+    level: 7,
+    icon: <span className="text-[11px] font-bold">A</span>,
+  },
+  {
+    name: "Solidity",
+    level: 6,
+    icon: <span className="text-[11px] font-bold">S</span>,
+  },
 ];
 
 const knowledge: KnowledgeItem[] = [
@@ -102,215 +148,12 @@ const knowledge: KnowledgeItem[] = [
   { name: "Blockchain | DEFI", icon: <BarChart3 className="h-4 w-4" /> },
 ];
 
-const skillsGroups: ToolGroup[] = [
-  {
-    title: "Business Analytics",
-    tools: [
-      {
-        name: "Google Analytics",
-        logo: (
-          <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
-            <path d="M14 4.5A2.5 2.5 0 0 1 16.5 2h1A2.5 2.5 0 0 1 20 4.5v15A2.5 2.5 0 0 1 17.5 22h-1A2.5 2.5 0 0 1 14 19.5v-15Z" fill="#fbbc04" />
-            <path d="M4 13.5A2.5 2.5 0 0 1 6.5 11h1A2.5 2.5 0 0 1 10 13.5v6A2.5 2.5 0 0 1 7.5 22h-1A2.5 2.5 0 0 1 4 19.5v-6Z" fill="#f29900" />
-            <circle cx="7" cy="5" r="2.2" fill="#1da4ed" />
-          </svg>
-        ),
-      },
-      {
-        name: "Amplitude",
-        logo: (
-          <div className="flex h-7 w-7 items-center justify-center rounded bg-[#f0ecff] text-[#6b52ff]">
-            <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
-              <path
-                d="M4 15c1.8 0 2.8-8 4.7-8s2.1 10 4.2 10 2.5-6 4.6-6 2.4 4 3.8 4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.9"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-        ),
-      },
-      {
-        name: "Looker",
-        logo: (
-          <div className="flex h-7 w-7 items-center justify-center rounded bg-[#eaf6ff] text-[#1da4ed]">
-            <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
-              <circle cx="12" cy="12" r="3" fill="currentColor" />
-              <circle cx="17" cy="7" r="1.6" fill="currentColor" />
-              <circle cx="7" cy="17" r="1.6" fill="currentColor" />
-              <circle cx="17" cy="17" r="1.4" fill="currentColor" />
-            </svg>
-          </div>
-        ),
-      },
-      {
-        name: "Mixpanel",
-        logo: (
-          <div className="flex h-7 w-7 items-center justify-center rounded bg-[#f2ecff] text-[#7c3aed]">
-            <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
-              <circle cx="5.5" cy="6" r="1.9" fill="currentColor" />
-              <circle cx="12" cy="12" r="1.9" fill="currentColor" />
-              <circle cx="18.5" cy="6" r="1.9" fill="currentColor" />
-              <circle cx="5.5" cy="18" r="1.9" fill="currentColor" />
-              <circle cx="12" cy="18" r="1.9" fill="currentColor" />
-              <circle cx="18.5" cy="18" r="1.9" fill="currentColor" />
-            </svg>
-          </div>
-        ),
-      },
-      {
-        name: "SQL basics",
-        logo: (
-          <div className="flex h-7 w-7 items-center justify-center rounded bg-[#f2f2f2] text-[#444]">
-            <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
-              <ellipse cx="12" cy="6" rx="6.2" ry="2.8" fill="none" stroke="currentColor" strokeWidth="1.8" />
-              <path d="M5.8 6v11c0 1.5 2.8 2.7 6.2 2.7s6.2-1.2 6.2-2.7V6" fill="none" stroke="currentColor" strokeWidth="1.8" />
-              <ellipse cx="12" cy="17" rx="6.2" ry="2.8" fill="none" stroke="currentColor" strokeWidth="1.8" />
-            </svg>
-          </div>
-        ),
-      },
-      {
-        name: "A/B Testing",
-        logo: (
-          <div className="flex h-7 w-7 items-center justify-center rounded bg-[#fff1f2] text-[#e11d48]">
-            <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
-              <path d="M6 18l4-12 4 12" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M14 6h4a2 2 0 0 1 0 4h-4V6Zm0 6h4a2 2 0 0 1 0 4h-4v-4Z" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinejoin="round" />
-            </svg>
-          </div>
-        ),
-      },
-      {
-        name: "Clevertap",
-        logo: (
-          <div className="flex h-7 w-7 items-center justify-center rounded bg-[#fff4ec] text-[#ff6b2d]">
-            <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
-              <path d="M14 5.5a6 6 0 1 0 4.8 9.6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-              <path d="M16.5 8.5h3.2l-1.1 3.1" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </div>
-        ),
-      },
-      {
-        name: "Keycloak",
-        logo: (
-          <div className="flex h-7 w-7 items-center justify-center rounded bg-[#eef2ff] text-[#2563eb]">
-            <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
-              <path d="M12 3.5l5.7 3.3v6.6L12 16.7 6.3 13.4V6.8L12 3.5Z" fill="none" stroke="currentColor" strokeWidth="1.9" />
-              <path d="M12 7.2v9.6" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" />
-            </svg>
-          </div>
-        ),
-      },
-    ],
-  },
-  {
-    title: "Product Strategy",
-    concepts: ["Roadmap", "Prioritization + Slicing"],
-    tools: [
-      {
-        name: "Jira",
-        logo: (
-          <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
-            <path d="M13.6 4L4.8 12l8.8 8 2.6-2.6-6.2-5.4 6.2-5.4L13.6 4Z" fill="#2684ff" />
-            <path d="M20.2 4l-8.8 8 8.8 8 2.6-2.6-6.2-5.4 6.2-5.4L20.2 4Z" fill="#1d66d1" />
-          </svg>
-        ),
-      },
-      {
-        name: "Confluence",
-        logo: (
-          <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
-            <path d="M4.4 8.1L12 4.1l4 7-7.4 3.9-4.2-6.9Z" fill="#1d4ed8" />
-            <path d="M12 4.1l7.6 4-4.2 6.9L8 11.1l4-7Z" fill="#60a5fa" />
-            <path d="M8.6 11.3l7.4-3.9 3.6 6.1-7.4 3.9-3.6-6.1Z" fill="#2563eb" />
-          </svg>
-        ),
-      },
-    ],
-  },
-  {
-    title: "Frameworks",
-    concepts: ["Material Design", "Angular", "React"],
-  },
-];
-
-function SkillIcon({ name }: { name: string }) {
-  const base = "flex h-7 w-7 items-center justify-center rounded-[6px] text-[10px] font-semibold";
-  switch (name) {
-    case "Ai":
-      return (
-        <div className={`${base} bg-[#5b2a12] text-[#ffbf1f]`}>
-          <span className="text-[11px] font-bold">Ai</span>
-        </div>
-      );
-    case "ChatGPT":
-      return (
-        <div className={`${base} bg-[#ecfdf5] text-[#10a37f]`}>
-          <Bot className="h-4 w-4" />
-        </div>
-      );
-    case "Gemini":
-      return (
-        <div className={`${base} bg-[#eff6ff] text-[#2563eb]`}>
-          <Sparkles className="h-4 w-4" />
-        </div>
-      );
-    case "Claude":
-      return (
-        <div className={`${base} bg-[#fff7ed] text-[#f97316]`}>
-          <Diamond className="h-4 w-4" />
-        </div>
-      );
-    case "Javascript":
-      return (
-        <div className={`${base} bg-[#fef08a] text-[#111827]`}>
-          <span className="text-[11px] font-bold">JS</span>
-        </div>
-      );
-    case "Typescript":
-      return (
-        <div className={`${base} bg-[#1d4ed8] text-white`}>
-          <span className="text-[11px] font-bold">TS</span>
-        </div>
-      );
-    case "Angular":
-      return (
-        <div className={`${base} bg-[#dc2626] text-white`}>
-          <span className="text-[11px] font-bold">A</span>
-        </div>
-      );
-    case "Solidity":
-      return (
-        <div className={`${base} bg-[#f5f5f5] text-[#222]`}>
-          <span className="text-[11px] font-bold">S</span>
-        </div>
-      );
-    case "Bootstrap":
-      return (
-        <div className={`${base} bg-[#7c3aed] text-white`}>
-          <span className="text-[11px] font-bold">B</span>
-        </div>
-      );
-    case "Figma":
-      return (
-        <div className={`${base} bg-[#fff] text-[#111]`}>
-          <span className="text-[11px] font-bold">F</span>
-        </div>
-      );
-    case "Miro":
-      return (
-        <div className={`${base} bg-[#fde047] text-[#111827]`}>
-          <span className="text-[11px] font-bold">M</span>
-        </div>
-      );
-    default:
-      return <div className={`${base} bg-[#f3f4f6] text-[#374151]`}>•</div>;
-  }
+function ToolIcon({ name, icon }: ToolItem) {
+  return (
+    <div className="skills-icon flex h-10 w-10 shrink-0 items-center justify-center rounded-[12px] border border-[rgba(17,24,39,0.08)] bg-white text-[hsl(var(--cv-contact-bar))] transition-colors duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:bg-[rgba(29,164,237,0.04)]">
+      {icon || <span className="text-[11px] font-semibold">{name.slice(0, 1)}</span>}
+    </div>
+  );
 }
 
 const education: EducationItem[] = [
@@ -612,6 +455,27 @@ export default function App() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const section = document.querySelector<HTMLElement>('[data-section="Skills"]');
+    if (!section) return;
+
+    const nodes = section.querySelectorAll("[data-animate]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+
+    nodes.forEach((node) => observer.observe(node));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <main className="min-h-screen bg-background px-0 py-0 md:flex md:justify-center md:px-4">
@@ -648,7 +512,7 @@ export default function App() {
             </div>
           </header>
 
-          <div className="flex flex-col gap-10 px-6 pb-8 sm:px-8 md:grid md:grid-cols-[minmax(0,1.06fr)_minmax(0,0.94fr)] md:grid-rows-3 md:gap-x-[44px] md:gap-y-[56px] md:px-10 lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] lg:gap-x-[48px] lg:gap-y-[60px]">
+          <div className="flex flex-col gap-10 px-6 pb-8 sm:px-8 md:grid md:grid-cols-[minmax(0,1.06fr)_minmax(0,0.94fr)] md:grid-rows-3 md:gap-x-[36px] md:gap-y-[28px] md:px-10 lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] lg:gap-x-[40px] lg:gap-y-[30px]">
             <section
               className="order-1 md:col-start-1 md:row-start-1"
               data-section="Personal Statement"
@@ -706,13 +570,13 @@ export default function App() {
             </section>
 
             <section
-              className="order-2 md:col-start-1 md:row-start-2"
+              className="order-2 md:col-start-1 md:row-start-2 md:h-full md:flex md:flex-col"
               data-section="Specialty"
             >
               <h2 className="cv-section-title mb-2">SPECIALTY</h2>
               <DottedSeparator />
 
-              <div className="mt-6 flex flex-col items-center gap-8 px-3 sm:gap-10 md:flex-row md:items-start md:justify-between md:gap-0 lg:px-4">
+              <div className="mt-6 flex flex-col items-center gap-8 px-3 sm:gap-10 md:flex-1 md:flex-row md:items-start md:justify-between md:gap-0 lg:px-4">
                 <SpecialtyNode
                   label="Product"
                   iconClassName="text-[hsl(201_85%_52%)]"
@@ -765,12 +629,12 @@ export default function App() {
             </section>
 
             <section
-              className="order-4 md:col-start-2 md:row-start-2"
+              className="order-4 md:col-start-2 md:row-start-2 md:h-full md:flex md:flex-col"
               data-section="Languages"
             >
               <h2 className="cv-section-title mb-2">LANGUAGES</h2>
               <DottedSeparator />
-              <div className="mt-4 grid grid-cols-1 gap-6 px-2 min-[420px]:grid-cols-3 min-[420px]:gap-2 md:px-0">
+              <div className="mt-4 grid grid-cols-1 gap-6 px-2 min-[420px]:grid-cols-3 min-[420px]:gap-2 md:flex-1 md:px-0">
                 {languages.map((language) => (
                   <LanguageCircle key={language.label} {...language} />
                 ))}
@@ -781,57 +645,51 @@ export default function App() {
               className="order-5 md:col-start-1 md:row-start-3"
               data-section="Skills"
             >
-              <h2 className="cv-section-title mb-2">SKILLS</h2>
+              <h2 data-animate className="cv-section-title skills-title mb-2">
+                TOOLS &amp; SKILLS
+              </h2>
+              <p
+                data-animate
+                className="skills-subtitle text-[11px] leading-[1.5] text-[hsl(var(--cv-light-text))]"
+              >
+                AI-native product work, design collaboration, and technical fluency.
+              </p>
               <DottedSeparator />
-              <div className="mt-4 flex flex-col gap-6">
-                <div className="min-w-0">
-                  <p className="mb-4 text-[11px] italic text-[hsl(var(--cv-light-text))]">Knowledge</p>
-                  <div className="grid grid-cols-1 gap-x-4 gap-y-3 text-[10px] text-[hsl(var(--cv-body))] md:grid-cols-3">
-                    {knowledge.map((item) => (
+
+              <ul className="skills-list mt-4 list-none">
+                {tools.map((tool, index) => {
+                  const fillWidth = `${(tool.level / 10) * 100}%`;
+                  return (
+                    <li
+                      key={tool.name}
+                      data-animate
+                      className="group grid grid-cols-1 gap-3 border-t border-[rgba(17,24,39,0.06)] py-4 first:border-t-0 first:pt-0 md:grid-cols-[180px_minmax(0,1fr)_56px] md:items-center md:gap-5 md:py-5"
+                      style={{ animationDelay: `${index * 60}ms` }}
+                    >
+                      <div className="flex items-center gap-3">
+                        <ToolIcon {...tool} />
+                        <span className="text-[13px] font-medium tracking-[0.01em] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))]">
+                          {tool.name}
+                        </span>
+                      </div>
+
                       <div
-                        key={item.name}
-                        className="grid grid-cols-[22px_minmax(0,1fr)] items-center gap-3 rounded-[10px] px-2 py-1"
+                        className="flex h-1.5 items-center overflow-hidden rounded-full bg-[rgba(17,24,39,0.08)]"
+                        aria-hidden="true"
                       >
-                        <div className="flex h-6 w-6 items-center justify-center text-[hsl(var(--cv-contact-bar))]">
-                          {item.icon}
-                        </div>
-                        <p className="leading-[1.6]">{item.name}</p>
+                        <span
+                          className="skills-bar h-full rounded-full bg-[hsl(var(--cv-contact-bar))]"
+                          style={{ ["--bar-width" as string]: fillWidth }}
+                        />
                       </div>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <p className="mb-4 text-[11px] italic text-[hsl(var(--cv-light-text))]">Tools</p>
-                  <div className="grid grid-cols-2 gap-2">
-                    {skills.map((skill) => (
-                      <div
-                        key={skill.name}
-                        className="grid grid-cols-[108px_minmax(0,1fr)] items-center gap-3 rounded-[10px] px-2 py-1"
-                      >
-                        <div className="flex items-center gap-3">
-                          <SkillIcon name={skill.name} />
-                          <span className="text-[10px] text-[hsl(var(--cv-body))]">{skill.name}</span>
-                        </div>
-                        <SkillDots filled={skill.level} />
+
+                      <div className="text-right text-[12px] font-medium text-[hsl(var(--cv-light-text))]">
+                        {tool.level}/10
                       </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="mt-6 space-y-3">
-                {skillsGroups.filter((group) => group.title === "Business Analytics").map((group) => (
-                  <div key={group.title} className="space-y-3">
-                    <p className="text-[11px] italic text-[hsl(var(--cv-light-text))]">{group.title}</p>
-                    {group.tools?.length ? (
-                      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
-                        {group.tools.map((tool) => (
-                          <ToolCard key={tool.name} {...tool} />
-                        ))}
-                      </div>
-                    ) : null}
-                  </div>
-                ))}
-              </div>
+                    </li>
+                  );
+                })}
+              </ul>
             </section>
 
             <section

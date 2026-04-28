@@ -132,7 +132,7 @@ const tools: ToolItem[] = [
   {
     name: "Firebase",
     category: "App Infrastructure",
-    logo: "https://cdn.simpleicons.org/firebase",
+    logo: "/logos/firebase.svg",
   },
   {
     name: "Postman",

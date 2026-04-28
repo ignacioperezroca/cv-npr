@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Firebase logo">
+  <path fill="#FFA000" d="M80 42.5 48.2 113.7 92.4 188.8 128 151.6z"/>
+  <path fill="#F57C00" d="M80 42.5 128 151.6 163.5 113.7z"/>
+  <path fill="#FFCA28" d="M128 151.6 92.4 188.8 128 214.5 207.8 128.4 163.5 113.7z"/>
+  <path fill="#FFC107" d="M48.2 113.7 128 151.6 80 42.5z"/>
+  <path fill="#FFF3B0" opacity=".18" d="M128 151.6 163.5 113.7 128 68.2 92.4 113.7z"/>
+</svg>

@@ -322,12 +322,12 @@ function SpecialtyNode({
 }) {
   return (
     <div className="flex w-full flex-col items-center md:w-auto">
-      <div className="flex h-[110px] w-[110px] items-center justify-center rounded-full border-[1.5px] border-[hsl(var(--cv-dotted-line))] sm:h-[118px] sm:w-[118px] md:h-[110px] md:w-[110px]">
+      <div className="flex h-[104px] w-[104px] items-center justify-center rounded-full border-[1.5px] border-[hsl(var(--cv-dotted-line))] sm:h-[110px] sm:w-[110px] md:h-[104px] md:w-[104px]">
         <div className={iconClassName}>{icon}</div>
       </div>
       <span className="-mt-[2px] h-[8px] w-[8px] rounded-full bg-[hsl(var(--cv-section-title))]" />
-      <span className="h-[30px] w-[1.5px] bg-[hsl(var(--cv-dotted-line))] sm:h-[40px] md:h-[48px]" />
-      <span className="mt-2 text-center text-[12px] font-normal text-[hsl(var(--cv-section-title))] sm:text-[13px] md:mt-3 md:text-[10px]">
+      <span className="h-[24px] w-[1.5px] bg-[hsl(var(--cv-dotted-line))] sm:h-[34px] md:h-[40px]" />
+      <span className="mt-1.5 text-center text-[12px] font-normal text-[hsl(var(--cv-section-title))] sm:text-[13px] md:mt-2 md:text-[10px]">
         {label}
       </span>
     </div>
@@ -512,7 +512,7 @@ export default function App() {
             </div>
           </header>
 
-          <div className="flex flex-col gap-10 px-6 pb-8 sm:px-8 md:grid md:grid-cols-[minmax(0,1.06fr)_minmax(0,0.94fr)] md:grid-rows-3 md:gap-x-[36px] md:gap-y-[28px] md:px-10 lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] lg:gap-x-[40px] lg:gap-y-[30px]">
+          <div className="flex flex-col gap-10 px-6 pb-8 sm:px-8 md:grid md:grid-cols-[minmax(0,1.06fr)_minmax(0,0.94fr)] md:grid-rows-3 md:gap-x-[34px] md:gap-y-[22px] md:px-10 lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] lg:gap-x-[36px] lg:gap-y-[24px]">
             <section
               className="order-1 md:col-start-1 md:row-start-1"
               data-section="Personal Statement"
@@ -576,7 +576,7 @@ export default function App() {
               <h2 className="cv-section-title mb-2">SPECIALTY</h2>
               <DottedSeparator />
 
-              <div className="mt-6 flex flex-col items-center gap-8 px-3 sm:gap-10 md:flex-1 md:flex-row md:items-start md:justify-between md:gap-0 lg:px-4">
+              <div className="mt-4 flex flex-col items-center gap-8 px-3 sm:gap-10 md:flex-1 md:flex-row md:items-start md:justify-between md:gap-0 lg:px-4">
                 <SpecialtyNode
                   label="Product"
                   iconClassName="text-[hsl(201_85%_52%)]"
@@ -634,7 +634,7 @@ export default function App() {
             >
               <h2 className="cv-section-title mb-2">LANGUAGES</h2>
               <DottedSeparator />
-              <div className="mt-4 grid grid-cols-1 gap-6 px-2 min-[420px]:grid-cols-3 min-[420px]:gap-2 md:flex-1 md:px-0">
+              <div className="mt-2 grid grid-cols-1 gap-6 px-2 min-[420px]:grid-cols-3 min-[420px]:gap-2 md:flex-1 md:px-0">
                 {languages.map((language) => (
                   <LanguageCircle key={language.label} {...language} />
                 ))}

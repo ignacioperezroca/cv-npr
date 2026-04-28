@@ -144,7 +144,7 @@ const experience: ExperienceItem[] = [
 const languages: Language[] = [
   { label: "ESPAÑOL", sublabel: "Native", percentage: 100 },
   { label: "ENGLISH", sublabel: "Advanced", percentage: 80 },
-  { label: "FRANÇAIS", sublabel: "Basic", percentage: 30 },
+  { label: "PORTUGUESE", sublabel: "Basic", percentage: 30 },
 ];
 
 function SkillDots({ filled }: { filled: number }) {
@@ -169,6 +169,12 @@ function DottedSeparator() {
 function LanguageCircle({ label, sublabel, percentage }: Language) {
   const circumference = 2 * Math.PI * 38;
   const dashOffset = circumference - (percentage / 100) * circumference;
+  const ringColor =
+    label === "ESPAÑOL"
+      ? "hsl(43 100% 51%)"
+      : label === "ENGLISH"
+        ? "hsl(211 73% 45%)"
+        : "hsl(126 47% 38%)";
 
   return (
     <div className="flex flex-col items-center">
@@ -186,7 +192,7 @@ function LanguageCircle({ label, sublabel, percentage }: Language) {
           cy="45"
           r="38"
           fill="none"
-          stroke="hsl(var(--cv-lang-circle))"
+          stroke={ringColor}
           strokeWidth="6"
           strokeDasharray={circumference}
           strokeDashoffset={dashOffset}

@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Amplitude logo">
   <rect width="128" height="128" rx="28" fill="#ffffff"/>
   <g transform="translate(18 18)" fill="none" stroke="#4C6FFF" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="46" cy="46" r="28" stroke-width="10"/>
-    <path d="M46 20v52" stroke-width="10"/>
-    <path d="M64 30v32" stroke-width="10"/>
-    <path d="M30 54c6-9 15-14 24-14s18 5 24 14" stroke-width="10"/>
+    <path d="M46 14c-15.5 0-28 12.5-28 28s12.5 28 28 28 28-12.5 28-28S61.5 14 46 14Z" stroke-width="10"/>
+    <path d="M46 24v32" stroke-width="10"/>
+    <path d="M29 40h34" stroke-width="10"/>
+    <path d="M46 72c8.8 0 16.7-4 22-10.3" stroke-width="10"/>
   </g>
 </svg>

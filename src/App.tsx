@@ -534,6 +534,10 @@ export default function App() {
                   data-section="Personal Statement"
                 >
                   <h2 className="cv-section-title mb-2">PERSONAL STATEMENT</h2>
+                  <p className="cv-section-subtitle">
+                    Human-first product leadership for scalable onboarding,
+                    identity, and growth systems.
+                  </p>
                   <DottedSeparator />
 
                   <div className="mt-2 space-y-2">
@@ -590,6 +594,10 @@ export default function App() {
                   data-section="Experience"
                 >
                   <h2 className="cv-section-title mb-2">EXPERIENCE</h2>
+                  <p className="cv-section-subtitle">
+                    A career focused on fintech, crypto, onboarding, growth,
+                    and digital identity across LatAm.
+                  </p>
                   <DottedSeparator />
 
                   <div className="mt-3 space-y-4">
@@ -625,6 +633,10 @@ export default function App() {
                   data-section="Specialty"
                 >
                   <h2 className="cv-section-title mb-2">SPECIALTY</h2>
+                  <p className="cv-section-subtitle">
+                    Core domains where I create the most impact as a Product
+                    Manager.
+                  </p>
                   <DottedSeparator />
 
                   <div className="mt-3 flex flex-1 flex-col items-center gap-8 px-3 sm:gap-10 md:flex-row md:items-start md:justify-between md:gap-0 lg:px-4">
@@ -651,6 +663,10 @@ export default function App() {
                   data-section="Languages"
                 >
                   <h2 className="cv-section-title mb-2">LANGUAGES</h2>
+                  <p className="cv-section-subtitle">
+                    Multilingual communication for regional and international
+                    product teams.
+                  </p>
                   <DottedSeparator />
                   <div className="mt-2 grid flex-1 grid-cols-1 gap-6 px-2 min-[420px]:grid-cols-3 min-[420px]:gap-2 md:px-0">
                     {languages.map((language) => (
@@ -670,9 +686,10 @@ export default function App() {
                   </h2>
                   <p
                     data-animate
-                    className="skills-subtitle text-[11px] leading-[1.5] text-[hsl(var(--cv-light-text))]"
+                    className="skills-subtitle cv-section-subtitle"
                   >
-                    AI-native product work, design collaboration, and technical fluency.
+                    AI-native product work, design collaboration, analytics,
+                    delivery, and technical fluency.
                   </p>
                   <DottedSeparator />
 
@@ -706,6 +723,10 @@ export default function App() {
                   <h2 data-animate className="education-title cv-section-title mb-2">
                     EDUCATION &amp; CERTIFICATIONS
                   </h2>
+                  <p className="cv-section-subtitle">
+                    Formal training across product, agile delivery, frontend
+                    development, design, and growth.
+                  </p>
                   <DottedSeparator />
                   <ul className="education-list mt-3 list-none">
                     {education.map((item, index) => (

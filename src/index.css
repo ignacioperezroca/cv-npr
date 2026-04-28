@@ -198,6 +198,7 @@ a {
 .skills-list > li:nth-child(8) { transition-delay: 385ms; }
 .skills-list > li:nth-child(9) { transition-delay: 440ms; }
 .skills-list > li:nth-child(10) { transition-delay: 495ms; }
+.skills-list > li:nth-child(11) { transition-delay: 550ms; }
 
 .skills-bar {
   width: var(--bar-width);

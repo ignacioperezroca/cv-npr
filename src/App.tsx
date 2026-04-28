@@ -1,4 +1,4 @@
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import profileImage from "./assets/profile.png";
@@ -75,7 +75,7 @@ const tools: ToolItem[] = [
   {
     name: "ChatGPT",
     category: "AI Copilot & Product Strategy",
-    logo: "https://cdn.simpleicons.org/openai",
+    logo: "https://cdn.simpleicons.org/openai/ffffff",
   },
   {
     name: "Claude",
@@ -110,7 +110,7 @@ const tools: ToolItem[] = [
   {
     name: "Amplitude",
     category: "Product Analytics",
-    logo: "https://cdn.simpleicons.org/amplitude",
+    logo: "https://cdn.simpleicons.org/amplitude/ffffff",
   },
   {
     name: "Looker",
@@ -120,7 +120,7 @@ const tools: ToolItem[] = [
   {
     name: "CleverTap",
     category: "Lifecycle & Engagement",
-    logo: "https://cdn.simpleicons.org/clevertap",
+    logo: "https://logo.clearbit.com/clevertap.com",
   },
   {
     name: "Keycloak",
@@ -288,6 +288,25 @@ function TagPill({ children }: { children: string }) {
     <span className="rounded-full border border-[rgba(17,24,39,0.08)] bg-white px-3 py-1 text-[9px] font-medium tracking-[0.01em] text-[hsl(var(--cv-light-text))] shadow-[0_0_0_1px_rgba(255,255,255,0.4)]">
       {children}
     </span>
+  );
+}
+
+function ToolLogo({ name, logo }: ToolItem) {
+  const [hasError, setHasError] = useState(false);
+
+  return (
+    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[12px] border border-[rgba(17,24,39,0.08)] bg-white shadow-[0_1px_1px_rgba(17,24,39,0.03)] transition duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:brightness-105">
+      {!hasError ? (
+        <img
+          src={logo}
+          alt={`${name} logo`}
+          loading="lazy"
+          decoding="async"
+          className="h-7 w-7 flex-shrink-0 object-contain opacity-90 transition duration-200 group-hover:scale-[1.06] group-hover:opacity-100 motion-reduce:transform-none motion-reduce:transition-none"
+          onError={() => setHasError(true)}
+        />
+      ) : null}
+    </div>
   );
 }
 
@@ -665,15 +684,7 @@ export default function App() {
                         className="group flex h-full items-start gap-3 rounded-[16px] border border-[rgba(17,24,39,0.08)] bg-white px-3 py-3 shadow-[0_1px_2px_rgba(17,24,39,0.04)] transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(29,164,237,0.18)] hover:bg-white hover:shadow-[0_8px_24px_rgba(17,24,39,0.06)] motion-reduce:transform-none motion-reduce:transition-none"
                         style={{ animationDelay: `${index * 55}ms` }}
                       >
-                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[12px] border border-[rgba(17,24,39,0.08)] bg-white shadow-[0_1px_1px_rgba(17,24,39,0.03)] transition duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:brightness-105">
-                          <img
-                            src={tool.logo}
-                            alt={`${tool.name} logo`}
-                            loading="lazy"
-                            decoding="async"
-                            className="h-7 w-7 flex-shrink-0 object-contain opacity-90 transition duration-200 group-hover:scale-[1.06] group-hover:opacity-100 motion-reduce:transform-none motion-reduce:transition-none"
-                          />
-                        </div>
+                        <ToolLogo {...tool} />
 
                         <div className="min-w-0 flex-1">
                           <span className="block text-[13px] font-medium leading-[1.2] tracking-[0.01em] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))]">

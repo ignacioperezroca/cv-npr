@@ -52,6 +52,7 @@ type Language = {
   level: string;
   value: number;
   accent: "blue" | "green";
+  highlighted?: boolean;
 };
 
 type KnowledgeItem = {
@@ -264,7 +265,7 @@ const experience: ExperienceItem[] = [
 
 const languages: Language[] = [
   { code: "ES", name: "Español", level: "Native", value: 100, accent: "blue" },
-  { code: "EN", name: "English", level: "Advanced", value: 95, accent: "blue" },
+  { code: "EN", name: "English", level: "Advanced", value: 95, accent: "blue", highlighted: true },
   { code: "PT", name: "Portuguese", level: "Basic", value: 45, accent: "green" },
 ];
 
@@ -421,73 +422,75 @@ function LanguageCard({
   const accent =
     language.accent === "blue"
       ? {
-          bg: "rgba(29,164,237,0.10)",
-          text: "text-[hsl(201_85%_52%)]",
-          border: "rgba(29,164,237,0.18)",
-          fill: "bg-[hsl(201_85%_52%)]",
+          ring: "hsl(201 85% 52%)",
+          pillBg: "rgba(29,164,237,0.10)",
+          pillText: "text-[hsl(201_85%_52%)]",
+          pillBorder: "rgba(29,164,237,0.16)",
         }
       : {
-          bg: "rgba(23,166,95,0.10)",
-          text: "text-[hsl(140_71%_29%)]",
-          border: "rgba(23,166,95,0.18)",
-          fill: "bg-[hsl(140_71%_29%)]",
+          ring: "hsl(140 71% 29%)",
+          pillBg: "rgba(23,166,95,0.10)",
+          pillText: "text-[hsl(140_71%_29%)]",
+          pillBorder: "rgba(23,166,95,0.16)",
         };
+  const radius = 46;
+  const circumference = 2 * Math.PI * radius;
+  const dashOffset = circumference - (language.value / 100) * circumference;
 
   return (
     <article
       data-animate
-      className="cv-load-in cv-load-in--stagger group flex h-full flex-col rounded-[18px] border border-[rgba(15,23,42,0.08)] bg-white px-4 py-4 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(15,23,42,0.14)] hover:shadow-[0_10px_28px_rgba(15,23,42,0.08)] motion-reduce:transform-none motion-reduce:transition-none"
+      className={`cv-load-in cv-load-in--stagger group flex h-full flex-col rounded-[24px] border bg-white px-4 py-4 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(15,23,42,0.08)] motion-reduce:transform-none motion-reduce:transition-none ${
+        language.highlighted
+          ? "border-[rgba(29,164,237,0.30)] shadow-[0_18px_40px_rgba(29,164,237,0.10)]"
+          : "border-[rgba(15,23,42,0.08)] hover:border-[rgba(15,23,42,0.14)]"
+      }`}
       style={{ animationDelay: `${index * 60}ms` }}
     >
-      <div className="flex items-start justify-between gap-3">
-        <div
-          className="inline-flex h-8 w-8 items-center justify-center rounded-[10px] border"
-          style={{
-            backgroundColor: accent.bg,
-            borderColor: accent.border,
-          }}
-        >
-          <span className={`text-[11px] font-semibold tracking-[0.08em] ${accent.text}`}>
-            {language.code}
+      <div className="flex flex-1 flex-col items-center justify-between gap-4 py-2">
+        <div className="relative flex h-[186px] w-[186px] items-center justify-center sm:h-[194px] sm:w-[194px]">
+          <svg width="100%" height="100%" viewBox="0 0 108 108" aria-hidden="true">
+            <circle
+              cx="54"
+              cy="54"
+              r={radius}
+              fill="none"
+              stroke="rgba(15,23,42,0.10)"
+              strokeWidth="7"
+            />
+            <circle
+              cx="54"
+              cy="54"
+              r={radius}
+              fill="none"
+              stroke={accent.ring}
+              strokeWidth="7"
+              strokeDasharray={circumference}
+              strokeDashoffset={dashOffset}
+              strokeLinecap="round"
+              transform="rotate(-90 54 54)"
+              className="transition-[stroke-dashoffset,stroke] duration-300"
+            />
+          </svg>
+          <span className="absolute text-[34px] font-semibold tracking-[-0.04em] text-[hsl(var(--cv-section-title))]">
+            {language.value}%
           </span>
         </div>
-        <span className={`text-[12px] font-semibold ${accent.text}`}>
-          {language.value}%
-        </span>
-      </div>
 
-      <div className="mt-3">
-        <h3 className="text-[18px] font-semibold tracking-[0.01em] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))]">
-          {language.name}
-        </h3>
-        <p className={`mt-1 text-[11px] italic ${accent.text} opacity-85`}>
-          {language.level}
-        </p>
-      </div>
-
-      <div className="mt-4 border-t border-[rgba(15,23,42,0.08)] pt-4">
-        <div className="flex items-center justify-between text-[10px] font-medium text-[hsl(var(--cv-light-text))]">
-          <span>Proficiency</span>
-          <span className={accent.text}>{language.value}%</span>
-        </div>
-
-        <div
-          aria-label={`${language.name} proficiency ${language.value}%`}
-          className="mt-3 flex gap-1.5"
-        >
-          {Array.from({ length: 5 }, (_, segment) => {
-            const filledSegments = Math.max(1, Math.round(language.value / 20));
-            return (
-              <span
-                key={segment}
-                className={`h-[7px] flex-1 rounded-full transition-all duration-300 ${
-                  segment < filledSegments
-                    ? accent.fill
-                    : "bg-[rgba(15,23,42,0.10)]"
-                }`}
-              />
-            );
-          })}
+        <div className="flex flex-col items-center gap-2 pb-1">
+          <h3 className="text-[25px] font-semibold tracking-[-0.02em] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))]">
+            {language.name}
+          </h3>
+          <span
+            className="rounded-full border px-4 py-2 text-[12px] font-medium"
+            style={{
+              backgroundColor: accent.pillBg,
+              borderColor: accent.pillBorder,
+              color: language.accent === "blue" ? "hsl(201 85% 52%)" : "hsl(140 71% 29%)",
+            }}
+          >
+            {language.level}
+          </span>
         </div>
       </div>
     </article>

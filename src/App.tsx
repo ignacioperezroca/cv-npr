@@ -120,7 +120,16 @@ const skillsGroups: ToolGroup[] = [
         name: "Amplitude",
         logo: (
           <div className="flex h-7 w-7 items-center justify-center rounded bg-[#f0ecff] text-[#6b52ff]">
-            <BarChart3 className="h-4 w-4" />
+            <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+              <path
+                d="M4 15c1.8 0 2.8-8 4.7-8s2.1 10 4.2 10 2.5-6 4.6-6 2.4 4 3.8 4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.9"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </div>
         ),
       },
@@ -128,7 +137,12 @@ const skillsGroups: ToolGroup[] = [
         name: "Looker",
         logo: (
           <div className="flex h-7 w-7 items-center justify-center rounded bg-[#eaf6ff] text-[#1da4ed]">
-            <LayoutGrid className="h-4 w-4" />
+            <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+              <circle cx="12" cy="12" r="3" fill="currentColor" />
+              <circle cx="17" cy="7" r="1.6" fill="currentColor" />
+              <circle cx="7" cy="17" r="1.6" fill="currentColor" />
+              <circle cx="17" cy="17" r="1.4" fill="currentColor" />
+            </svg>
           </div>
         ),
       },
@@ -136,7 +150,14 @@ const skillsGroups: ToolGroup[] = [
         name: "Mixpanel",
         logo: (
           <div className="flex h-7 w-7 items-center justify-center rounded bg-[#f2ecff] text-[#7c3aed]">
-            <Sparkles className="h-4 w-4" />
+            <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+              <circle cx="5.5" cy="6" r="1.9" fill="currentColor" />
+              <circle cx="12" cy="12" r="1.9" fill="currentColor" />
+              <circle cx="18.5" cy="6" r="1.9" fill="currentColor" />
+              <circle cx="5.5" cy="18" r="1.9" fill="currentColor" />
+              <circle cx="12" cy="18" r="1.9" fill="currentColor" />
+              <circle cx="18.5" cy="18" r="1.9" fill="currentColor" />
+            </svg>
           </div>
         ),
       },
@@ -144,7 +165,11 @@ const skillsGroups: ToolGroup[] = [
         name: "SQL basics",
         logo: (
           <div className="flex h-7 w-7 items-center justify-center rounded bg-[#f2f2f2] text-[#444]">
-            <Database className="h-4 w-4" />
+            <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+              <ellipse cx="12" cy="6" rx="6.2" ry="2.8" fill="none" stroke="currentColor" strokeWidth="1.8" />
+              <path d="M5.8 6v11c0 1.5 2.8 2.7 6.2 2.7s6.2-1.2 6.2-2.7V6" fill="none" stroke="currentColor" strokeWidth="1.8" />
+              <ellipse cx="12" cy="17" rx="6.2" ry="2.8" fill="none" stroke="currentColor" strokeWidth="1.8" />
+            </svg>
           </div>
         ),
       },
@@ -152,7 +177,10 @@ const skillsGroups: ToolGroup[] = [
         name: "A/B Testing",
         logo: (
           <div className="flex h-7 w-7 items-center justify-center rounded bg-[#fff1f2] text-[#e11d48]">
-            <Asterisk className="h-4 w-4" />
+            <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+              <path d="M6 18l4-12 4 12" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M14 6h4a2 2 0 0 1 0 4h-4V6Zm0 6h4a2 2 0 0 1 0 4h-4v-4Z" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinejoin="round" />
+            </svg>
           </div>
         ),
       },
@@ -160,7 +188,10 @@ const skillsGroups: ToolGroup[] = [
         name: "Clevertap",
         logo: (
           <div className="flex h-7 w-7 items-center justify-center rounded bg-[#fff4ec] text-[#ff6b2d]">
-            <Triangle className="h-4 w-4 rotate-180" />
+            <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+              <path d="M14 5.5a6 6 0 1 0 4.8 9.6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              <path d="M16.5 8.5h3.2l-1.1 3.1" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </div>
         ),
       },
@@ -168,7 +199,10 @@ const skillsGroups: ToolGroup[] = [
         name: "Keycloak",
         logo: (
           <div className="flex h-7 w-7 items-center justify-center rounded bg-[#eef2ff] text-[#2563eb]">
-            <GitBranch className="h-4 w-4" />
+            <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+              <path d="M12 3.5l5.7 3.3v6.6L12 16.7 6.3 13.4V6.8L12 3.5Z" fill="none" stroke="currentColor" strokeWidth="1.9" />
+              <path d="M12 7.2v9.6" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" />
+            </svg>
           </div>
         ),
       },
@@ -180,11 +214,22 @@ const skillsGroups: ToolGroup[] = [
     tools: [
       {
         name: "Jira",
-        logo: <span className="text-[11px] font-semibold text-[#d3452f]">J</span>,
+        logo: (
+          <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
+            <path d="M13.6 4L4.8 12l8.8 8 2.6-2.6-6.2-5.4 6.2-5.4L13.6 4Z" fill="#2684ff" />
+            <path d="M20.2 4l-8.8 8 8.8 8 2.6-2.6-6.2-5.4 6.2-5.4L20.2 4Z" fill="#1d66d1" />
+          </svg>
+        ),
       },
       {
         name: "Confluence",
-        logo: <span className="text-[11px] font-semibold text-[#185bcd]">C</span>,
+        logo: (
+          <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
+            <path d="M4.4 8.1L12 4.1l4 7-7.4 3.9-4.2-6.9Z" fill="#1d4ed8" />
+            <path d="M12 4.1l7.6 4-4.2 6.9L8 11.1l4-7Z" fill="#60a5fa" />
+            <path d="M8.6 11.3l7.4-3.9 3.6 6.1-7.4 3.9-3.6-6.1Z" fill="#2563eb" />
+          </svg>
+        ),
       },
     ],
   },
@@ -454,7 +499,7 @@ function LanguageCircle({ label, sublabel, percentage }: Language) {
       ? "hsl(201 85% 52%)"
       : label === "ENGLISH"
         ? "hsl(211 73% 45%)"
-        : "hsl(128 52% 34%)";
+        : "hsl(140 71% 29%)";
 
   return (
     <div className="cv-language-ring-wrap flex flex-col items-center">
@@ -496,11 +541,11 @@ function EducationTimelineItem({ item, index }: { item: EducationItem; index: nu
   return (
     <li
       data-animate
-      className="group grid grid-cols-[18px_54px_minmax(0,1fr)] gap-x-4 border-t border-[rgba(17,24,39,0.06)] py-5 first:border-t-0 first:pt-0 transition-colors duration-200 hover:bg-[rgba(29,164,237,0.025)] motion-reduce:transition-none"
+      className="group grid grid-cols-[18px_54px_minmax(0,1fr)] gap-x-4 border-t border-[rgba(17,24,39,0.06)] py-5 first:border-t-0 first:pt-0"
       style={{ animationDelay: `${index * 80}ms` }}
     >
       <div className="relative flex justify-center pt-1">
-        <span className="h-2 w-2 rounded-full bg-[hsl(var(--cv-contact-bar))] transition duration-300 group-hover:scale-110 group-hover:brightness-110 motion-reduce:transition-none" />
+        <span className="h-2 w-2 rounded-full bg-[hsl(var(--cv-contact-bar))]" />
         <span className="absolute top-4 h-full w-px bg-[rgba(17,24,39,0.08)]" />
       </div>
 
@@ -509,7 +554,7 @@ function EducationTimelineItem({ item, index }: { item: EducationItem; index: nu
       </div>
 
       <div className="rounded-[12px] px-0 py-0">
-        <p className="text-[13px] font-semibold leading-[1.3] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))] motion-reduce:transition-none">
+        <p className="text-[13px] font-semibold leading-[1.3] text-[hsl(var(--cv-section-title))]">
           {item.title}
         </p>
         <p className="mt-0.5 text-[12px] leading-[1.4] text-[hsl(var(--cv-light-text))]">
@@ -575,7 +620,7 @@ export default function App() {
           style={{ fontFamily: "'Open Sans', sans-serif" }}
         >
           <header className="flex flex-col items-center gap-5 px-6 pb-6 pt-8 text-center sm:px-8 md:flex-row md:items-start md:gap-8 md:px-10 md:pb-6 md:pt-10 md:text-left">
-            <div className="h-[150px] w-[150px] shrink-0 overflow-hidden rounded-full bg-white sm:h-[168px] sm:w-[168px] md:h-[180px] md:w-[180px]">
+            <div className="h-[180px] w-[180px] shrink-0 overflow-hidden rounded-full bg-white sm:h-[202px] sm:w-[202px] md:h-[216px] md:w-[216px]">
               <img
                 src={profileImage}
                 alt="Ignacio Perez Roca"
@@ -810,7 +855,7 @@ export default function App() {
                   <p className="mb-4 text-[11px] italic text-[hsl(var(--cv-light-text))]">
                     Tools
                   </p>
-                  <div className="space-y-2">
+                  <div className="grid grid-cols-2 gap-2">
                     {skills.map((skill) => (
                       <div
                         key={skill.name}
@@ -870,13 +915,7 @@ export default function App() {
                   />
                 ))}
               </ul>
-            </section>
-
-            <section className="mt-6" data-section="Experience">
-              <h2 className="cv-section-title mb-2">EXPERIENCE</h2>
-              <DottedSeparator />
-
-              <div className="mt-3 space-y-4">
+              <div className="mt-6 space-y-4">
                 {experience.map((item) => (
                   <div
                     key={`${item.company}-${item.role}`}

@@ -6,14 +6,14 @@
   --background: 0 0% 100%;
   --foreground: 0 0% 20%;
   --border: 0 0% 85%;
-  --cv-timeline-dot: 190 15% 50%;
+  --cv-timeline-dot: 201 85% 52%;
   --cv-section-title: 0 0% 25%;
   --cv-body: 0 0% 30%;
   --cv-light-text: 0 0% 55%;
   --cv-dotted-line: 0 0% 75%;
-  --cv-skill-dot-filled: 190 15% 50%;
+  --cv-skill-dot-filled: 201 85% 52%;
   --cv-skill-dot-empty: 0 0% 85%;
-  --cv-contact-bar: 190 15% 50%;
+  --cv-contact-bar: 201 85% 52%;
   --cv-lang-circle: 190 30% 55%;
   font-family: "Open Sans", ui-sans-serif, system-ui, sans-serif;
   color: hsl(var(--foreground));

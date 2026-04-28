@@ -825,6 +825,78 @@ export default function App() {
               </div>
             </section>
 
+            
+          </div>
+
+          <div className="flex w-full flex-col md:w-[45%]">
+            <section data-section="Experience">
+              <h2 className="cv-section-title mb-2">EXPERIENCE</h2>
+              <DottedSeparator />
+
+              <div className="mt-3 space-y-4">
+                {experience.map((item) => (
+                  <div
+                    key={`${item.company}-${item.role}`}
+                    className="flex items-start gap-3 rounded-[12px] px-2 py-1"
+                  >
+                    <div className="flex flex-col items-center">
+                      <span className="text-[8px] text-[hsl(var(--cv-timeline-dot))]">
+                        ▲
+                      </span>
+                      <img
+                        src={item.logo}
+                        alt={item.company}
+                        className="mt-0.5 h-8 w-8 rounded object-contain"
+                      />
+                    </div>
+
+                    <div>
+                      <p className="text-[11px] font-bold text-[hsl(var(--cv-section-title))]">
+                        {item.role}
+                      </p>
+                      <p className="text-[10px] text-[hsl(var(--cv-body))]">
+                        {item.company}
+                      </p>
+                      <p className="text-[9px] text-[hsl(var(--cv-light-text))]">
+                        {item.period}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section className="mt-6" data-section="Education">
+              <h2
+                data-animate
+                className="cv-section-title mb-2 education-title"
+              >
+                EDUCATION &amp; CERTIFICATIONS
+              </h2>
+              <DottedSeparator />
+
+              <ul className="education-list mt-3 list-none">
+                {education.map((item, index) => (
+                  <EducationTimelineItem
+                    key={`${item.year}-${item.title}`}
+                    item={item}
+                    index={index}
+                  />
+                ))}
+              </ul>
+            </section>
+
+            <section className="mt-6" data-section="Languages">
+              <h2 className="cv-section-title mb-2">LANGUAGES</h2>
+              <DottedSeparator />
+
+              <div className="mt-4 grid grid-cols-1 gap-6 px-2 min-[420px]:grid-cols-3 min-[420px]:gap-2">
+                {languages.map((language) => (
+                  <LanguageCircle key={language.label} {...language} />
+                ))}
+              </div>
+            </section>
+
             <section className="mt-6" data-section="Skills">
               <h2 className="cv-section-title mb-2">SKILLS</h2>
               <DottedSeparator />
@@ -892,70 +964,6 @@ export default function App() {
                       ) : null}
                     </div>
                   ))}
-              </div>
-            </section>
-          </div>
-
-          <div className="flex w-full flex-col md:w-[45%]">
-            <section data-section="Education">
-              <h2
-                data-animate
-                className="cv-section-title mb-2 education-title"
-              >
-                EDUCATION &amp; CERTIFICATIONS
-              </h2>
-              <DottedSeparator />
-
-              <ul className="education-list mt-3 list-none">
-                {education.map((item, index) => (
-                  <EducationTimelineItem
-                    key={`${item.year}-${item.title}`}
-                    item={item}
-                    index={index}
-                  />
-                ))}
-              </ul>
-              <div className="mt-6 space-y-4">
-                {experience.map((item) => (
-                  <div
-                    key={`${item.company}-${item.role}`}
-                    className="flex items-start gap-3 rounded-[12px] px-2 py-1"
-                  >
-                    <div className="flex flex-col items-center">
-                      <span className="text-[8px] text-[hsl(var(--cv-timeline-dot))]">
-                        ▲
-                      </span>
-                      <img
-                        src={item.logo}
-                        alt={item.company}
-                        className="mt-0.5 h-8 w-8 rounded object-contain"
-                      />
-                    </div>
-
-                    <div>
-                      <p className="text-[11px] font-bold text-[hsl(var(--cv-section-title))]">
-                        {item.role}
-                      </p>
-                      <p className="text-[10px] text-[hsl(var(--cv-body))]">
-                        {item.company}
-                      </p>
-                      <p className="text-[9px] text-[hsl(var(--cv-light-text))]">
-                        {item.period}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section className="mt-6" data-section="Languages">
-              <h2 className="cv-section-title mb-2">LANGUAGES</h2>
-              <DottedSeparator />
-
-              <div className="mt-4 grid grid-cols-1 gap-6 px-2 min-[420px]:grid-cols-3 min-[420px]:gap-2">
-                {languages.map((language) => (
-                  <LanguageCircle key={language.label} {...language} />
-                ))}
               </div>
             </section>
           </div>

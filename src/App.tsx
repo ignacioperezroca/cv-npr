@@ -47,9 +47,11 @@ type ExperienceItem = {
 };
 
 type Language = {
-  label: string;
-  sublabel: string;
-  percentage: number;
+  code: string;
+  name: string;
+  level: string;
+  value: number;
+  accent: "blue" | "green";
 };
 
 type KnowledgeItem = {
@@ -261,9 +263,9 @@ const experience: ExperienceItem[] = [
 ];
 
 const languages: Language[] = [
-  { label: "ESPAÑOL", sublabel: "Native", percentage: 100 },
-  { label: "ENGLISH", sublabel: "Advanced", percentage: 80 },
-  { label: "PORTUGUESE", sublabel: "Basic", percentage: 30 },
+  { code: "ES", name: "Español", level: "Native", value: 100, accent: "blue" },
+  { code: "EN", name: "English", level: "Advanced", value: 85, accent: "blue" },
+  { code: "PT", name: "Portuguese", level: "Basic", value: 35, accent: "green" },
 ];
 
 function SkillDots({ filled }: { filled: number }) {
@@ -409,50 +411,86 @@ function SpecialtyNode({
   );
 }
 
-function LanguageCircle({ label, sublabel, percentage }: Language) {
-  const radius = 46;
-  const circumference = 2 * Math.PI * radius;
-  const dashOffset = circumference - (percentage / 100) * circumference;
-  const ringColor =
-    label === "ESPAÑOL"
-      ? "hsl(201 85% 52%)"
-      : label === "ENGLISH"
-        ? "hsl(211 73% 45%)"
-        : "hsl(140 71% 29%)";
+function LanguageCard({
+  language,
+  index,
+}: {
+  language: Language;
+  index: number;
+}) {
+  const accent =
+    language.accent === "blue"
+      ? {
+          bg: "rgba(29,164,237,0.10)",
+          text: "text-[hsl(201_85%_52%)]",
+          border: "rgba(29,164,237,0.18)",
+          fill: "bg-[hsl(201_85%_52%)]",
+        }
+      : {
+          bg: "rgba(23,166,95,0.10)",
+          text: "text-[hsl(140_71%_29%)]",
+          border: "rgba(23,166,95,0.18)",
+          fill: "bg-[hsl(140_71%_29%)]",
+        };
 
   return (
-    <div className="cv-load-in cv-load-in--stagger cv-language-ring-wrap flex flex-col items-center">
-      <svg width="108" height="108" viewBox="0 0 108 108" aria-hidden="true">
-        <circle
-          cx="54"
-          cy="54"
-          r={radius}
-          fill="none"
-          stroke="hsl(var(--cv-skill-dot-empty))"
-          strokeWidth="7"
-          className="cv-language-ring"
-        />
-        <circle
-          cx="54"
-          cy="54"
-          r={radius}
-          fill="none"
-          stroke={ringColor}
-          strokeWidth="7"
-          strokeDasharray={circumference}
-          strokeDashoffset={dashOffset}
-          strokeLinecap="round"
-          transform="rotate(-90 54 54)"
-          className="cv-language-ring"
-        />
-      </svg>
-      <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-[hsl(var(--cv-section-title))]">
-        {label}
-      </span>
-      <span className="text-[9px] italic text-[hsl(var(--cv-light-text))]">
-        {sublabel}
-      </span>
-    </div>
+    <article
+      data-animate
+      className="cv-load-in cv-load-in--stagger group flex h-full flex-col rounded-[18px] border border-[rgba(15,23,42,0.08)] bg-white px-4 py-4 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(15,23,42,0.14)] hover:shadow-[0_10px_28px_rgba(15,23,42,0.08)] motion-reduce:transform-none motion-reduce:transition-none"
+      style={{ animationDelay: `${index * 60}ms` }}
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div
+          className="inline-flex h-8 w-8 items-center justify-center rounded-[10px] border"
+          style={{
+            backgroundColor: accent.bg,
+            borderColor: accent.border,
+          }}
+        >
+          <span className={`text-[11px] font-semibold tracking-[0.08em] ${accent.text}`}>
+            {language.code}
+          </span>
+        </div>
+        <span className={`text-[12px] font-semibold ${accent.text}`}>
+          {language.value}%
+        </span>
+      </div>
+
+      <div className="mt-3">
+        <h3 className="text-[18px] font-semibold tracking-[0.01em] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))]">
+          {language.name}
+        </h3>
+        <p className={`mt-1 text-[11px] italic ${accent.text} opacity-85`}>
+          {language.level}
+        </p>
+      </div>
+
+      <div className="mt-4 border-t border-[rgba(15,23,42,0.08)] pt-4">
+        <div className="flex items-center justify-between text-[10px] font-medium text-[hsl(var(--cv-light-text))]">
+          <span>Proficiency</span>
+          <span className={accent.text}>{language.value}%</span>
+        </div>
+
+        <div
+          aria-label={`${language.name} proficiency ${language.value}%`}
+          className="mt-3 flex gap-1.5"
+        >
+          {Array.from({ length: 5 }, (_, segment) => {
+            const filledSegments = Math.max(1, Math.round(language.value / 20));
+            return (
+              <span
+                key={segment}
+                className={`h-[7px] flex-1 rounded-full transition-all duration-300 ${
+                  segment < filledSegments
+                    ? accent.fill
+                    : "bg-[rgba(15,23,42,0.10)]"
+                }`}
+              />
+            );
+          })}
+        </div>
+      </div>
+    </article>
   );
 }
 
@@ -790,18 +828,13 @@ export default function App() {
                     Multilingual communication for international teams.
                   </p>
                   <DottedSeparator />
-                  <div className="cv-load-in cv-load-in--row mt-2 grid flex-1 grid-cols-1 gap-6 px-2 min-[420px]:grid-cols-3 min-[420px]:gap-2 md:px-0">
+                  <div className="cv-load-in cv-load-in--row mt-3 grid flex-1 grid-cols-1 gap-4 px-2 md:px-0 xl:grid-cols-3">
                     {languages.map((language, index) => (
-                      <div
-                        key={language.label}
-                        transition={
-                          prefersReducedMotion
-                            ? { duration: 0 }
-                            : { duration: 0.45, ease: MOTION_EASE, delay: index * 0.06 }
-                        }
-                      >
-                        <LanguageCircle {...language} />
-                      </div>
+                      <LanguageCard
+                        key={language.code}
+                        language={language}
+                        index={index}
+                      />
                     ))}
                   </div>
                 </section>

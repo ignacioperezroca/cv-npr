@@ -29,20 +29,6 @@ import {
   Database,
   Triangle,
 } from "lucide-react";
-import {
-  siBootstrap,
-  siClaude,
-  siGooglegemini,
-  siJavascript,
-  siAngular,
-  siSolidity,
-  siTypescript,
-} from "simple-icons";
-
-type Skill = {
-  name: string;
-  level: number;
-};
 
 type EducationItem = {
   year: string;
@@ -64,40 +50,103 @@ type Language = {
   percentage: number;
 };
 
-type ToolCard = {
-  name: string;
-  logo: ReactNode;
-};
-
-type ToolItem = {
-  name: string;
-  level: number;
-  icon: ReactNode;
-};
-
-type ToolGroup = {
-  title: string;
-  concepts?: string[];
-  tools?: ToolCard[];
-};
-
 type KnowledgeItem = {
   name: string;
   icon: ReactNode;
 };
 
+type ToolItem = {
+  name: string;
+  category: string;
+  logo: string;
+};
+
 const tools: ToolItem[] = [
-  { name: "ChatGPT", level: 10, icon: <ChatGPTMark /> },
-  { name: "Gemini", level: 10, icon: <SimpleIconMark icon={siGooglegemini} /> },
-  { name: "Claude", level: 10, icon: <SimpleIconMark icon={siClaude} /> },
-  { name: "Figma", level: 10, icon: <FigmaMark /> },
-  { name: "Miro", level: 10, icon: <MiroMark /> },
-  { name: "AI", level: 10, icon: <IllustratorMark /> },
-  { name: "JavaScript", level: 9, icon: <SimpleIconMark icon={siJavascript} /> },
-  { name: "Bootstrap", level: 9, icon: <SimpleIconMark icon={siBootstrap} /> },
-  { name: "TypeScript", level: 8, icon: <SimpleIconMark icon={siTypescript} /> },
-  { name: "Angular", level: 7, icon: <SimpleIconMark icon={siAngular} /> },
-  { name: "Solidity", level: 6, icon: <SimpleIconMark icon={siSolidity} /> },
+  {
+    name: "Figma",
+    category: "Design & Prototyping",
+    logo: "https://cdn.simpleicons.org/figma",
+  },
+  {
+    name: "Miro",
+    category: "Product Discovery & Workshops",
+    logo: "https://cdn.simpleicons.org/miro",
+  },
+  {
+    name: "ChatGPT",
+    category: "AI Copilot & Product Strategy",
+    logo: "https://cdn.simpleicons.org/openai",
+  },
+  {
+    name: "Claude",
+    category: "AI Writing & Analysis",
+    logo: "https://cdn.simpleicons.org/anthropic",
+  },
+  {
+    name: "Gemini",
+    category: "AI Research & Productivity",
+    logo: "https://cdn.simpleicons.org/googlegemini",
+  },
+  {
+    name: "Jira",
+    category: "Delivery & Roadmapping",
+    logo: "https://cdn.simpleicons.org/jira",
+  },
+  {
+    name: "Confluence",
+    category: "Documentation",
+    logo: "https://cdn.simpleicons.org/confluence",
+  },
+  {
+    name: "Notion",
+    category: "Product Docs & Knowledge Base",
+    logo: "https://cdn.simpleicons.org/notion",
+  },
+  {
+    name: "Slack",
+    category: "Team Communication",
+    logo: "https://cdn.simpleicons.org/slack",
+  },
+  {
+    name: "Amplitude",
+    category: "Product Analytics",
+    logo: "https://cdn.simpleicons.org/amplitude",
+  },
+  {
+    name: "Looker",
+    category: "BI & Data Visualization",
+    logo: "https://cdn.simpleicons.org/looker",
+  },
+  {
+    name: "CleverTap",
+    category: "Lifecycle & Engagement",
+    logo: "https://cdn.simpleicons.org/clevertap",
+  },
+  {
+    name: "Keycloak",
+    category: "Identity & Authentication",
+    logo: "https://cdn.simpleicons.org/keycloak",
+  },
+  {
+    name: "Firebase",
+    category: "App Infrastructure",
+    logo: "https://cdn.simpleicons.org/firebase",
+  },
+  {
+    name: "Postman",
+    category: "API Testing",
+    logo: "https://cdn.simpleicons.org/postman",
+  },
+  {
+    name: "GitHub",
+    category: "Code Collaboration",
+    logo: "https://cdn.simpleicons.org/github",
+  },
+  {
+    name: "Vercel",
+    category: "Frontend Deployment",
+    logo: "https://cdn.simpleicons.org/vercel",
+  },
 ];
 
 const knowledge: KnowledgeItem[] = [
@@ -112,92 +161,6 @@ const knowledge: KnowledgeItem[] = [
   { name: "Product Management", icon: <BriefcaseBusiness className="h-4 w-4" /> },
   { name: "Blockchain | DEFI", icon: <BarChart3 className="h-4 w-4" /> },
 ];
-
-function SimpleIconMark({ icon }: { icon: { path: string; hex: string } }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="h-[24px] w-[24px]"
-      aria-hidden="true"
-      style={{ color: `#${icon.hex}` }}
-    >
-      <path d={icon.path} fill="currentColor" />
-    </svg>
-  );
-}
-
-function ChatGPTMark() {
-  return (
-    <svg viewBox="0 0 320 320" className="h-[24px] w-[24px] text-[#10a37f]" aria-hidden="true">
-      <path
-        d="m297.06 130.97c7.26-21.79 4.76-45.66-6.85-65.48-17.46-30.4-52.56-46.04-86.84-38.68-15.25-17.18-37.16-26.95-60.13-26.81-35.04-.08-66.13 22.48-76.91 55.82-22.51 4.61-41.94 18.7-53.31 38.67-17.59 30.32-13.58 68.54 9.92 94.54-7.26 21.79-4.76 45.66 6.85 65.48 17.46 30.4 52.56 46.04 86.84 38.68 15.24 17.18 37.16 26.95 60.13 26.8 35.06.09 66.16-22.49 76.94-55.86 22.51-4.61 41.94-18.7 53.31-38.67 17.57-30.32 13.55-68.51-9.94-94.51zm-120.28 168.11c-14.03.02-27.62-4.89-38.39-13.88.49-.26 1.34-.73 1.89-1.07l63.72-36.8c3.26-1.85 5.26-5.32 5.24-9.07v-89.83l26.93 15.55c.29.14.48.42.52.74v74.39c-.04 33.08-26.83 59.9-59.91 59.97zm-128.84-55.03c-7.03-12.14-9.56-26.37-7.15-40.18.47.28 1.3.79 1.89 1.13l63.72 36.8c3.23 1.89 7.23 1.89 10.47 0l77.79-44.92v31.1c.02.32-.13.63-.38.83l-64.41 37.19c-28.69 16.52-65.33 6.7-81.92-21.95zm-16.77-139.09c7-12.16 18.05-21.46 31.21-26.29 0 .55-.03 1.52-.03 2.2v73.61c-.02 3.74 1.98 7.21 5.23 9.06l77.79 44.91-26.93 15.55c-.27.18-.61.21-.91.08l-64.42-37.22c-28.63-16.58-38.45-53.21-21.95-81.89zm221.26 51.49-77.79-44.92 26.93-15.54c.27-.18.61-.21.91-.08l64.42 37.19c28.68 16.57 38.51 53.26 21.94 81.94-7.01 12.14-18.05 21.44-31.2 26.28v-75.81c.03-3.74-1.96-7.2-5.2-9.06zm26.8-40.34c-.47-.29-1.3-.79-1.89-1.13l-63.72-36.8c-3.23-1.89-7.23-1.89-10.47 0l-77.79 44.92v-31.1c-.02-.32.13-.63.38-.83l64.41-37.16c28.69-16.55 65.37-6.7 81.91 22 6.99 12.12 9.52 26.31 7.15 40.1zm-168.51 55.43-26.94-15.55c-.29-.14-.48-.42-.52-.74v-74.39c.02-33.12 26.89-59.96 60.01-59.94 14.01 0 27.57 4.92 38.34 13.88-.49.26-1.33.73-1.89 1.07l-63.72 36.8c-3.26 1.85-5.26 5.31-5.24 9.06l-.04 89.79zm14.63-31.54 34.65-20.01 34.65 20v40.01l-34.65 20-34.65-20z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
-function IllustratorMark() {
-  return (
-    <svg
-      version="1.1"
-      viewBox="0 0 480 470"
-      className="h-[24px] w-[24px]"
-      aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <defs>
-        <linearGradient id="ai-bg" gradientUnits="userSpaceOnUse" x1="511.5128" y1="-33.5667" x2="41.1909" y2="435.1163" gradientTransform="matrix(1 0 0 -1 0 472)">
-          <stop offset="0" stopColor="#FF9F14" />
-          <stop offset="0.9984" stopColor="#FFBB4D" />
-        </linearGradient>
-        <radialGradient id="ai-panel" cx="154.889" cy="341.2509" r="386.4145" gradientTransform="matrix(1 0 0 -1 0 472)" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#4C2B08" />
-          <stop offset="1" stopColor="#191208" />
-        </radialGradient>
-        <linearGradient id="ai-mark" gradientUnits="userSpaceOnUse" x1="346.3047" y1="340.6669" x2="181.3709" y2="176.3078">
-          <stop offset="0" stopColor="#FF9F14" />
-          <stop offset="0.9984" stopColor="#FFBB4D" />
-        </linearGradient>
-      </defs>
-      <rect width="480" height="470" fill="url(#ai-bg)" />
-      <path d="M36.7 37v396H444V37H36.7z" fill="url(#ai-panel)" />
-      <path
-        d="M175.2 239.2h42.5l-21.2-82.4L175.2 239.2z M241 329.5l-15.5-53.5H168l-15.5 53.5h-39.4l55.4-189.3v-20.7h52.8l63.2 210H241z M345.7 329.5h-42.5V169.7h42.5V329.5z M324.7 150.6c-12.2 0-22-9.7-22-21.8 0-12 9.9-21.8 22-21.8s22 9.8 22 21.8S336.8 150.6 324.7 150.6z"
-        fill="url(#ai-mark)"
-      />
-    </svg>
-  );
-}
-
-function FigmaMark() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-[24px] w-[24px]" aria-hidden="true">
-      <path d="M8.2 3.2h4.4a3.1 3.1 0 0 1 0 6.2H8.2a3.1 3.1 0 0 1 0-6.2Z" fill="#f24e1e" />
-      <path d="M8.2 9.4h4.4a3.1 3.1 0 0 1 0 6.2H8.2a3.1 3.1 0 0 1 0-6.2Z" fill="#ff7262" />
-      <path d="M8.2 15.6h4.4a3.1 3.1 0 0 1 0 6.2H8.2a3.1 3.1 0 0 1 0-6.2Z" fill="#1abcfe" />
-      <path d="M12.6 9.4a3.1 3.1 0 1 0 0-6.2" fill="none" stroke="#a259ff" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function MiroMark() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-[24px] w-[24px]" aria-hidden="true">
-      <rect x="3" y="3" width="18" height="18" rx="4" fill="#ffd84d" />
-      <path d="M7 6l2.3 12L15 6" fill="none" stroke="#0f172a" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M12.1 6l2.3 12" fill="none" stroke="#0f172a" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function ToolIcon({ icon }: ToolItem) {
-  return (
-    <div className="skills-icon flex h-12 w-12 shrink-0 items-center justify-center rounded-[12px] border border-[rgba(17,24,39,0.08)] bg-white text-[hsl(var(--cv-contact-bar))] transition-colors duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:bg-[rgba(29,164,237,0.04)]">
-      {icon}
-    </div>
-  );
-}
 
 const education: EducationItem[] = [
   {
@@ -325,17 +288,6 @@ function TagPill({ children }: { children: string }) {
     <span className="rounded-full border border-[rgba(17,24,39,0.08)] bg-white px-3 py-1 text-[9px] font-medium tracking-[0.01em] text-[hsl(var(--cv-light-text))] shadow-[0_0_0_1px_rgba(255,255,255,0.4)]">
       {children}
     </span>
-  );
-}
-
-function ToolCard({ name, logo }: ToolCard) {
-  return (
-    <div className="flex h-[78px] flex-col items-center justify-center rounded-[14px] bg-white px-3 py-2 text-center shadow-[0_0_0_1px_rgba(17,24,39,0.06)] transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_rgba(29,164,237,0.25)] motion-reduce:transition-none">
-      <div className="flex h-8 items-center justify-center">{logo}</div>
-      <span className="mt-2 text-[10px] font-medium leading-tight text-[hsl(var(--cv-body))]">
-        {name}
-      </span>
-    </div>
   );
 }
 
@@ -699,39 +651,34 @@ export default function App() {
               </p>
               <DottedSeparator />
 
-              <ul className="skills-list mt-4 list-none">
-                {tools.map((tool, index) => {
-                  const fillWidth = `${(tool.level / 10) * 100}%`;
-                  return (
-                    <li
-                      key={tool.name}
-                      data-animate
-                      className="group grid grid-cols-1 gap-3 border-t border-[rgba(17,24,39,0.06)] py-4 first:border-t-0 first:pt-0 md:grid-cols-[174px_minmax(0,1fr)_56px] md:items-center md:gap-4 md:py-[18px]"
-                      style={{ animationDelay: `${index * 60}ms` }}
-                    >
-                      <div className="flex items-center gap-3">
-                        <ToolIcon {...tool} />
-                        <span className="text-[13px] font-medium tracking-[0.01em] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))]">
-                          {tool.name}
-                        </span>
-                      </div>
+              <ul className="skills-list mt-4 grid list-none grid-cols-1 gap-3 min-[420px]:grid-cols-2">
+                {tools.map((tool, index) => (
+                  <li
+                    key={tool.name}
+                    data-animate
+                    className="group flex h-full items-start gap-3 rounded-[16px] border border-[rgba(17,24,39,0.08)] bg-white px-3 py-3 shadow-[0_1px_2px_rgba(17,24,39,0.04)] transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(29,164,237,0.18)] hover:bg-white hover:shadow-[0_8px_24px_rgba(17,24,39,0.06)] motion-reduce:transform-none motion-reduce:transition-none"
+                    style={{ animationDelay: `${index * 55}ms` }}
+                  >
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[12px] border border-[rgba(17,24,39,0.08)] bg-white shadow-[0_1px_1px_rgba(17,24,39,0.03)] transition duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:brightness-105">
+                      <img
+                        src={tool.logo}
+                        alt={`${tool.name} logo`}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-6 w-6 object-contain"
+                      />
+                    </div>
 
-                      <div
-                        className="flex h-[4px] items-center overflow-hidden rounded-full bg-[rgba(17,24,39,0.08)]"
-                        aria-hidden="true"
-                      >
-                        <span
-                          className="skills-bar h-full rounded-full bg-[hsl(var(--cv-contact-bar))]"
-                          style={{ ["--bar-width" as string]: fillWidth }}
-                        />
-                      </div>
-
-                      <div className="text-right text-[12px] font-medium text-[hsl(var(--cv-light-text))]">
-                        {tool.level}/10
-                      </div>
-                    </li>
-                  );
-                })}
+                    <div className="min-w-0 flex-1">
+                      <span className="block text-[13px] font-medium leading-[1.2] tracking-[0.01em] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))]">
+                        {tool.name}
+                      </span>
+                      <span className="mt-1 block text-[10px] leading-[1.4] text-[hsl(var(--cv-light-text))]">
+                        {tool.category}
+                      </span>
+                    </div>
+                  </li>
+                ))}
               </ul>
             </section>
 

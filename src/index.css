@@ -199,6 +199,12 @@ a {
 .skills-list > li:nth-child(9) { transition-delay: 440ms; }
 .skills-list > li:nth-child(10) { transition-delay: 495ms; }
 .skills-list > li:nth-child(11) { transition-delay: 550ms; }
+.skills-list > li:nth-child(12) { transition-delay: 605ms; }
+.skills-list > li:nth-child(13) { transition-delay: 660ms; }
+.skills-list > li:nth-child(14) { transition-delay: 715ms; }
+.skills-list > li:nth-child(15) { transition-delay: 770ms; }
+.skills-list > li:nth-child(16) { transition-delay: 825ms; }
+.skills-list > li:nth-child(17) { transition-delay: 880ms; }
 
 .skills-bar {
   width: var(--bar-width);

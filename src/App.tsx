@@ -433,7 +433,7 @@ function LanguageCard({
           pillText: "text-[hsl(140_71%_29%)]",
           pillBorder: "rgba(23,166,95,0.16)",
         };
-  const radius = 40;
+  const radius = 34;
   const circumference = 2 * Math.PI * radius;
   const dashOffset = circumference - (language.value / 100) * circumference;
 
@@ -447,8 +447,8 @@ function LanguageCard({
       }`}
       style={{ animationDelay: `${index * 60}ms` }}
     >
-      <div className="flex flex-1 flex-col items-center justify-between gap-4 py-2">
-        <div className="relative flex h-[138px] w-[138px] items-center justify-center sm:h-[150px] sm:w-[150px] md:h-[162px] md:w-[162px]">
+      <div className="flex flex-1 flex-col items-center justify-between gap-3 py-1.5">
+        <div className="relative flex h-[118px] w-[118px] items-center justify-center sm:h-[126px] sm:w-[126px] md:h-[136px] md:w-[136px]">
           <svg width="100%" height="100%" viewBox="0 0 108 108" aria-hidden="true">
             <circle
               cx="54"
@@ -472,17 +472,17 @@ function LanguageCard({
               className="transition-[stroke-dashoffset,stroke] duration-300"
             />
           </svg>
-          <span className="absolute text-[28px] font-semibold tracking-[-0.04em] text-[hsl(var(--cv-section-title))] sm:text-[30px] md:text-[32px]">
+          <span className="absolute text-[24px] font-semibold tracking-[-0.04em] text-[hsl(var(--cv-section-title))] sm:text-[26px] md:text-[28px]">
             {language.value}%
           </span>
         </div>
 
         <div className="flex flex-col items-center gap-2 pb-1">
-          <h3 className="text-[21px] font-semibold tracking-[-0.02em] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))] sm:text-[22px] md:text-[23px]">
+          <h3 className="text-[19px] font-semibold tracking-[-0.02em] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))] sm:text-[20px] md:text-[21px]">
             {language.name}
           </h3>
           <span
-            className="rounded-full border px-4 py-2 text-[11px] font-medium"
+            className="rounded-full border px-4 py-1.5 text-[10px] font-medium"
             style={{
               backgroundColor: accent.pillBg,
               borderColor: accent.pillBorder,

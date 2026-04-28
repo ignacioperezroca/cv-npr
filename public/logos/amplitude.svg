@@ -1,9 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Amplitude logo">
   <rect width="128" height="128" rx="28" fill="#ffffff"/>
-  <g transform="translate(18 22)">
-    <path d="M48 10c-15.5 0-28 12.5-28 28s12.5 28 28 28 28-12.5 28-28S63.5 10 48 10Z" fill="none" stroke="#4C6FFF" stroke-width="10"/>
-    <path d="M48 20v36" stroke="#4C6FFF" stroke-width="10" stroke-linecap="round"/>
-    <path d="M30 38h36" stroke="#4C6FFF" stroke-width="10" stroke-linecap="round"/>
-    <text x="98" y="58" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" fill="#2E3A59" text-anchor="start">Amplitude</text>
+  <g transform="translate(20 20)" fill="none" stroke="#4C6FFF" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M46 14c-14.36 0-26 11.64-26 26s11.64 26 26 26 26-11.64 26-26S60.36 14 46 14Z" stroke-width="9"/>
+    <path d="M46 24v32" stroke-width="9"/>
+    <path d="M30 40h32" stroke-width="9"/>
+    <path d="M78 28l10 0" stroke-width="9"/>
+    <path d="M78 42l10 0" stroke-width="9"/>
+    <path d="M78 56l10 0" stroke-width="9"/>
   </g>
 </svg>

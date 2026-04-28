@@ -1,10 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="CleverTap logo">
   <rect width="128" height="128" rx="28" fill="#ffffff"/>
   <g transform="translate(18 18)" fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M70 18c-18.2 0-34 14.8-34 33s15.8 33 34 33" stroke="#FF5A1F" stroke-width="10"/>
+    <path d="M68 18c-18.5 0-34 15-34 33.5S49.5 85 68 85" stroke="#FF5A1F" stroke-width="10"/>
     <circle cx="40" cy="66" r="6.5" fill="#FF5A1F" stroke="none"/>
     <path d="M72 30h20" stroke="#FF5A1F" stroke-width="10"/>
     <path d="M76 18v24" stroke="#FF5A1F" stroke-width="10"/>
-    <text x="22" y="104" fill="#222222" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700">CleverTap</text>
   </g>
 </svg>

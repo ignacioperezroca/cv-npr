@@ -24,6 +24,17 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
   margin: 0;
   min-width: 320px;
@@ -112,10 +123,36 @@ a {
   transition: transform 300ms ease, opacity 300ms ease;
 }
 
+.cv-logo-skeleton {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(17, 24, 39, 0.04) 25%,
+      rgba(17, 24, 39, 0.08) 37%,
+      rgba(17, 24, 39, 0.04) 63%
+    );
+  background-size: 400% 100%;
+  animation: cv-logo-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes cv-logo-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cv-language-ring,
   .cv-language-ring-wrap {
     transition: none;
+  }
+
+  .cv-logo-skeleton {
+    animation: none;
   }
 }
 

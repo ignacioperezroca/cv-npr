@@ -337,7 +337,7 @@ function LanguageCircle({ label, sublabel, percentage }: Language) {
   const dashOffset = circumference - (percentage / 100) * circumference;
   const ringColor =
     label === "ESPAÑOL"
-      ? "hsl(43 100% 51%)"
+      ? "hsl(201 85% 52%)"
       : label === "ENGLISH"
         ? "hsl(211 73% 45%)"
         : "hsl(126 47% 38%)";

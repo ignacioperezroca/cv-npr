@@ -502,7 +502,6 @@ function EducationTimelineItem({ item, index }: { item: EducationItem; index: nu
 
 export default function App() {
   const prefersReducedMotion = useReducedMotion();
-  const [profileLoaded, setProfileLoaded] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -572,7 +571,7 @@ export default function App() {
         transition: { duration: 0 },
       }
     : {
-        initial: { opacity: 0, y: 8 },
+        initial: false,
         animate: { opacity: 1, y: 0 },
         transition: { duration: 0.62, ease: MOTION_EASE },
       };
@@ -585,7 +584,7 @@ export default function App() {
         transition: { duration: 0 },
       }
     : {
-        initial: { opacity: 0, y: 16 },
+        initial: false,
         whileInView: { opacity: 1, y: 0 },
         viewport: { once: true, amount: 0.15 },
         transition: { duration: 0.55, ease: MOTION_EASE },
@@ -603,7 +602,7 @@ export default function App() {
         >
           <motion.header
             className="flex flex-col items-center gap-5 px-6 pb-6 pt-8 text-center sm:px-8 md:flex-row md:items-start md:gap-8 md:px-10 md:pb-6 md:pt-10 md:text-left"
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={
               prefersReducedMotion
@@ -613,7 +612,7 @@ export default function App() {
           >
             <motion.div
               className="h-[180px] w-[180px] shrink-0 overflow-hidden rounded-full bg-white sm:h-[202px] sm:w-[202px] md:h-[216px] md:w-[216px]"
-              initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.98 }}
+              initial={false}
               animate={{ opacity: 1, scale: 1 }}
               transition={
                 prefersReducedMotion
@@ -627,13 +626,12 @@ export default function App() {
                 className="h-full w-full scale-[1.06] object-cover"
                 style={{ objectPosition: "46% 16%" }}
                 initial={false}
-                animate={profileLoaded ? { opacity: 1 } : { opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={
                   prefersReducedMotion
                     ? { duration: 0 }
                     : { duration: 0.35, ease: MOTION_EASE, delay: 0.08 }
                 }
-                onLoad={() => setProfileLoaded(true)}
               />
             </motion.div>
 

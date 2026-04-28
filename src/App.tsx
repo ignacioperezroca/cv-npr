@@ -68,16 +68,6 @@ const tools: ToolItem[] = [
     logo: "https://cdn.simpleicons.org/figma",
   },
   {
-    name: "JavaScript",
-    category: "Frontend & Prototyping",
-    logo: "https://cdn.simpleicons.org/javascript",
-  },
-  {
-    name: "Solidity",
-    category: "Blockchain & Smart Contracts",
-    logo: "https://cdn.simpleicons.org/solidity",
-  },
-  {
     name: "Miro",
     category: "Product Discovery & Workshops",
     logo: "https://cdn.simpleicons.org/miro",
@@ -681,7 +671,7 @@ export default function App() {
                             alt={`${tool.name} logo`}
                             loading="lazy"
                             decoding="async"
-                            className="h-6 w-6 object-contain"
+                            className="h-7 w-7 flex-shrink-0 object-contain opacity-90 transition duration-200 group-hover:scale-[1.06] group-hover:opacity-100 motion-reduce:transform-none motion-reduce:transition-none"
                           />
                         </div>
 

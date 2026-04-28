@@ -625,7 +625,7 @@ export default function App() {
                   data-section="Personal Statement"
                   
                 >
-                  <h2 className="cv-section-title mb-2">PERSONAL STATEMENT</h2>
+                  <h2 className="cv-section-title">PERSONAL STATEMENT</h2>
                   <p className="cv-section-subtitle">
                     Human-first product leadership for scalable onboarding,
                     identity, and growth systems.
@@ -686,7 +686,7 @@ export default function App() {
                   data-section="Experience"
                   
                 >
-                  <h2 className="cv-section-title mb-2">EXPERIENCE</h2>
+                  <h2 className="cv-section-title">EXPERIENCE</h2>
                   <p className="cv-section-subtitle">
                     A career focused on fintech, crypto, onboarding, growth,
                     and digital identity across LatAm.
@@ -730,7 +730,7 @@ export default function App() {
                   data-section="Specialty"
                   
                 >
-                  <h2 className="cv-section-title mb-2">SPECIALTY</h2>
+                  <h2 className="cv-section-title">SPECIALTY</h2>
                   <p className="cv-section-subtitle">
                     Core domains where I create the most impact as a Product
                     Manager.
@@ -785,7 +785,7 @@ export default function App() {
                   data-section="Languages"
                   
                 >
-                  <h2 className="cv-section-title mb-2">LANGUAGES</h2>
+                  <h2 className="cv-section-title">LANGUAGES</h2>
                   <p className="cv-section-subtitle">
                     Multilingual communication for international teams.
                   </p>
@@ -860,7 +860,7 @@ export default function App() {
                   data-section="Education"
                   
                 >
-                  <h2 data-animate className="education-title cv-section-title mb-2">
+                  <h2 data-animate className="education-title cv-section-title">
                     EDUCATION &amp; CERTIFICATIONS
                   </h2>
                   <p className="cv-section-subtitle">

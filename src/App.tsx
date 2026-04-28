@@ -349,7 +349,8 @@ function SpecialtyNode({
 }
 
 function LanguageCircle({ label, sublabel, percentage }: Language) {
-  const circumference = 2 * Math.PI * 38;
+  const radius = 46;
+  const circumference = 2 * Math.PI * radius;
   const dashOffset = circumference - (percentage / 100) * circumference;
   const ringColor =
     label === "ESPAÑOL"
@@ -360,27 +361,27 @@ function LanguageCircle({ label, sublabel, percentage }: Language) {
 
   return (
     <div className="cv-language-ring-wrap flex flex-col items-center">
-      <svg width="90" height="90" viewBox="0 0 90 90" aria-hidden="true">
+      <svg width="108" height="108" viewBox="0 0 108 108" aria-hidden="true">
         <circle
-          cx="45"
-          cy="45"
-          r="38"
+          cx="54"
+          cy="54"
+          r={radius}
           fill="none"
           stroke="hsl(var(--cv-skill-dot-empty))"
-          strokeWidth="6"
+          strokeWidth="7"
           className="cv-language-ring"
         />
         <circle
-          cx="45"
-          cy="45"
-          r="38"
+          cx="54"
+          cy="54"
+          r={radius}
           fill="none"
           stroke={ringColor}
-          strokeWidth="6"
+          strokeWidth="7"
           strokeDasharray={circumference}
           strokeDashoffset={dashOffset}
           strokeLinecap="round"
-          transform="rotate(-90 45 45)"
+          transform="rotate(-90 54 54)"
           className="cv-language-ring"
         />
       </svg>
@@ -527,7 +528,7 @@ export default function App() {
           </header>
 
           <div className="flex flex-col gap-5 px-6 pb-8 sm:px-8 md:px-10">
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-5 md:gap-4">
               <div className="flex flex-col gap-6 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
                 <section
                   className="order-1 h-full md:order-none md:flex md:flex-col"
@@ -604,22 +605,22 @@ export default function App() {
                     {experience.map((item) => (
                       <div
                         key={`${item.company}-${item.role}`}
-                        className="flex items-start gap-3 rounded-[12px] px-2 py-1"
+                        className="flex items-start gap-3.5 rounded-[12px] px-2.5 py-1.5"
                       >
                         <div className="flex flex-col items-center">
-                          <span className="text-[8px] text-[hsl(var(--cv-timeline-dot))]">▲</span>
+                          <span className="text-[9px] text-[hsl(var(--cv-timeline-dot))]">▲</span>
                           <img
                             src={item.logo}
                             alt={item.company}
-                            className="mt-0.5 h-8 w-8 rounded object-contain"
+                            className="mt-0.5 h-9 w-9 rounded object-contain"
                           />
                         </div>
                         <div>
-                          <p className="text-[11px] font-bold text-[hsl(var(--cv-section-title))]">
+                          <p className="text-[12px] font-bold text-[hsl(var(--cv-section-title))]">
                             {item.role}
                           </p>
-                          <p className="text-[10px] text-[hsl(var(--cv-body))]">{item.company}</p>
-                          <p className="text-[9px] text-[hsl(var(--cv-light-text))]">{item.period}</p>
+                          <p className="text-[11px] text-[hsl(var(--cv-body))]">{item.company}</p>
+                          <p className="text-[10px] text-[hsl(var(--cv-light-text))]">{item.period}</p>
                         </div>
                       </div>
                     ))}
@@ -629,7 +630,7 @@ export default function App() {
 
               <div className="flex flex-col gap-6 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
                 <section
-                  className="order-2 h-full md:order-none md:flex md:min-h-[360px] md:flex-col"
+                  className="order-2 h-full md:order-none md:flex md:min-h-[300px] md:flex-col"
                   data-section="Specialty"
                 >
                   <h2 className="cv-section-title mb-2">SPECIALTY</h2>
@@ -659,7 +660,7 @@ export default function App() {
                 </section>
 
                 <section
-                  className="order-4 h-full md:order-none md:flex md:min-h-[360px] md:flex-col"
+                  className="order-4 h-full md:order-none md:flex md:min-h-[300px] md:flex-col"
                   data-section="Languages"
                 >
                   <h2 className="cv-section-title mb-2">LANGUAGES</h2>

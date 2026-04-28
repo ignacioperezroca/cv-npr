@@ -264,8 +264,8 @@ const experience: ExperienceItem[] = [
 
 const languages: Language[] = [
   { code: "ES", name: "Español", level: "Native", value: 100, accent: "blue" },
-  { code: "EN", name: "English", level: "Advanced", value: 85, accent: "blue" },
-  { code: "PT", name: "Portuguese", level: "Basic", value: 35, accent: "green" },
+  { code: "EN", name: "English", level: "Advanced", value: 95, accent: "blue" },
+  { code: "PT", name: "Portuguese", level: "Basic", value: 45, accent: "green" },
 ];
 
 function SkillDots({ filled }: { filled: number }) {

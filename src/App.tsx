@@ -567,7 +567,7 @@ export default function App() {
           style={{ fontFamily: "'Open Sans', sans-serif" }}
         >
           <header
-            className="cv-load-in cv-load-in--hero flex flex-col items-center gap-5 px-6 pb-6 pt-8 text-center sm:px-8 md:flex-row md:items-start md:gap-8 md:px-10 md:pb-6 md:pt-10 md:text-left"
+            className="cv-load-in cv-load-in--hero flex flex-col items-center gap-5 px-6 pb-8 pt-8 text-center sm:px-8 md:flex-row md:items-start md:gap-8 md:px-10 md:pb-8 md:pt-10 md:text-left"
             transition={
               prefersReducedMotion
                 ? { duration: 0 }
@@ -614,7 +614,7 @@ export default function App() {
             </div>
           </header>
 
-          <div className="cv-load-in cv-load-in--row flex flex-col gap-5 px-6 pb-8 sm:px-8 md:px-10">
+          <div className="cv-load-in cv-load-in--row flex flex-col gap-5 px-6 pb-12 sm:px-8 md:px-10">
             <div className="cv-load-in cv-load-in--row flex flex-col gap-5 md:gap-4">
               <div className="cv-load-in cv-load-in--row flex flex-col gap-6 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
                 <section
@@ -784,8 +784,7 @@ export default function App() {
                 >
                   <h2 className="cv-section-title mb-2">LANGUAGES</h2>
                   <p className="cv-section-subtitle">
-                    Multilingual communication for regional and international
-                    product teams.
+                    Multilingual communication for international teams.
                   </p>
                   <DottedSeparator />
                   <div className="cv-load-in cv-load-in--row mt-2 grid flex-1 grid-cols-1 gap-6 px-2 min-[420px]:grid-cols-3 min-[420px]:gap-2 md:px-0">

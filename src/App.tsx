@@ -555,7 +555,7 @@ export default function App() {
             </div>
           </header>
 
-          <div className="flex flex-col gap-10 px-6 pb-8 sm:px-8 md:grid md:grid-cols-[minmax(0,1.06fr)_minmax(0,0.94fr)] md:grid-rows-3 md:gap-x-[34px] md:gap-y-[22px] md:px-10 lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] lg:gap-x-[36px] lg:gap-y-[24px]">
+          <div className="flex flex-col gap-10 px-6 pb-8 sm:px-8 md:grid md:grid-cols-[minmax(0,1.06fr)_minmax(0,0.94fr)] md:grid-rows-3 md:gap-x-[32px] md:gap-y-[18px] md:px-10 lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] lg:gap-x-[34px] lg:gap-y-[20px]">
             <section
               className="order-1 md:col-start-1 md:row-start-1"
               data-section="Personal Statement"
@@ -563,7 +563,7 @@ export default function App() {
               <h2 className="cv-section-title mb-2">PERSONAL STATEMENT</h2>
               <DottedSeparator />
 
-              <div className="mt-3 space-y-3">
+              <div className="mt-2 space-y-2">
                 <p className="cv-body-text">
                   I&apos;m a Senior Product Manager with 16+ years of experience
                   building human-first, scalable onboarding journeys.
@@ -598,7 +598,7 @@ export default function App() {
                 </p>
               </div>
 
-              <section className="mt-5" data-section="Key Achievements">
+              <section className="mt-3" data-section="Key Achievements">
                 <p className="cv-body-text mb-1 font-bold">Key achievements</p>
                 <ul className="cv-body-text list-none space-y-0.5">
                   <li>• Boosted Bitso&apos;s onboarding conversion by +262% for over 8M users.</li>
@@ -619,7 +619,7 @@ export default function App() {
               <h2 className="cv-section-title mb-2">SPECIALTY</h2>
               <DottedSeparator />
 
-              <div className="mt-4 flex flex-col items-center gap-8 px-3 sm:gap-10 md:flex-1 md:flex-row md:items-start md:justify-between md:gap-0 lg:px-4">
+              <div className="mt-3 flex flex-1 flex-col items-center gap-8 px-3 sm:gap-10 md:flex-row md:items-start md:justify-between md:gap-0 lg:px-4">
                 <SpecialtyNode
                   label="Product"
                   iconClassName="text-[hsl(201_85%_52%)]"
@@ -677,7 +677,7 @@ export default function App() {
             >
               <h2 className="cv-section-title mb-2">LANGUAGES</h2>
               <DottedSeparator />
-              <div className="mt-2 grid grid-cols-1 gap-6 px-2 min-[420px]:grid-cols-3 min-[420px]:gap-2 md:flex-1 md:px-0">
+              <div className="mt-2 grid flex-1 grid-cols-1 gap-6 px-2 min-[420px]:grid-cols-3 min-[420px]:gap-2 md:px-0">
                 {languages.map((language) => (
                   <LanguageCircle key={language.label} {...language} />
                 ))}

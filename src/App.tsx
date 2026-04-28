@@ -418,7 +418,7 @@ function LanguageCircle({ label, sublabel, percentage }: Language) {
         : "hsl(140 71% 29%)";
 
   return (
-    <div className="cv-language-ring-wrap flex flex-col items-center">
+    <div className="cv-load-in cv-load-in--stagger cv-language-ring-wrap flex flex-col items-center">
       <svg width="108" height="108" viewBox="0 0 108 108" aria-hidden="true">
         <circle
           cx="54"
@@ -559,15 +559,15 @@ export default function App() {
   return (
     <>
       <main
-        className="min-h-screen bg-background px-0 py-0 md:flex md:justify-center md:px-4"
+        className="cv-load-in min-h-screen bg-background px-0 py-0 md:flex md:justify-center md:px-4"
         
       >
         <article
-          className="w-full bg-background md:my-0 md:w-[850px]"
+          className="cv-load-in cv-load-in--hero w-full bg-background md:my-0 md:w-[850px]"
           style={{ fontFamily: "'Open Sans', sans-serif" }}
         >
           <header
-            className="flex flex-col items-center gap-5 px-6 pb-6 pt-8 text-center sm:px-8 md:flex-row md:items-start md:gap-8 md:px-10 md:pb-6 md:pt-10 md:text-left"
+            className="cv-load-in cv-load-in--hero flex flex-col items-center gap-5 px-6 pb-6 pt-8 text-center sm:px-8 md:flex-row md:items-start md:gap-8 md:px-10 md:pb-6 md:pt-10 md:text-left"
             transition={
               prefersReducedMotion
                 ? { duration: 0 }
@@ -614,11 +614,11 @@ export default function App() {
             </div>
           </header>
 
-          <div className="flex flex-col gap-5 px-6 pb-8 sm:px-8 md:px-10">
-            <div className="flex flex-col gap-5 md:gap-4">
-              <div className="flex flex-col gap-6 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
+          <div className="cv-load-in cv-load-in--row flex flex-col gap-5 px-6 pb-8 sm:px-8 md:px-10">
+            <div className="cv-load-in cv-load-in--row flex flex-col gap-5 md:gap-4">
+              <div className="cv-load-in cv-load-in--row flex flex-col gap-6 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
                 <section
-                  className="order-1 h-full md:order-none md:flex md:flex-col"
+                  className="cv-load-in cv-load-in--section order-1 h-full md:order-none md:flex md:flex-col"
                   data-section="Personal Statement"
                   
                 >
@@ -679,7 +679,7 @@ export default function App() {
                 </section>
 
                 <section
-                  className="order-3 h-full md:order-none md:flex md:flex-col"
+                  className="cv-load-in cv-load-in--section order-3 h-full md:order-none md:flex md:flex-col"
                   data-section="Experience"
                   
                 >
@@ -694,7 +694,7 @@ export default function App() {
                     {experience.map((item) => (
                       <div
                         key={`${item.company}-${item.role}`}
-                        className="flex items-start gap-3.5 rounded-[12px] px-2.5 py-1.5"
+                        className="cv-load-in cv-load-in--stagger flex items-start gap-3.5 rounded-[12px] px-2.5 py-1.5"
                         transition={
                           prefersReducedMotion
                             ? { duration: 0 }
@@ -723,7 +723,7 @@ export default function App() {
 
               <div className="flex flex-col gap-6 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
                 <section
-                  className="order-2 h-full md:order-none md:flex md:min-h-[300px] md:flex-col"
+                  className="cv-load-in cv-load-in--section order-2 h-full md:order-none md:flex md:min-h-[300px] md:flex-col"
                   data-section="Specialty"
                   
                 >
@@ -734,7 +734,7 @@ export default function App() {
                   </p>
                   <DottedSeparator />
 
-                  <div className="mt-3 flex flex-1 flex-col items-center gap-8 px-3 sm:gap-10 md:flex-row md:items-start md:justify-between md:gap-0 lg:px-4">
+                  <div className="cv-load-in cv-load-in--row mt-3 flex flex-1 flex-col items-center gap-8 px-3 sm:gap-10 md:flex-row md:items-start md:justify-between md:gap-0 lg:px-4">
                     <div
                       transition={
                         prefersReducedMotion
@@ -778,7 +778,7 @@ export default function App() {
                 </section>
 
                 <section
-                  className="order-4 h-full md:order-none md:flex md:min-h-[300px] md:flex-col"
+                  className="cv-load-in cv-load-in--section order-4 h-full md:order-none md:flex md:min-h-[300px] md:flex-col"
                   data-section="Languages"
                   
                 >
@@ -788,7 +788,7 @@ export default function App() {
                     product teams.
                   </p>
                   <DottedSeparator />
-                  <div className="mt-2 grid flex-1 grid-cols-1 gap-6 px-2 min-[420px]:grid-cols-3 min-[420px]:gap-2 md:px-0">
+                  <div className="cv-load-in cv-load-in--row mt-2 grid flex-1 grid-cols-1 gap-6 px-2 min-[420px]:grid-cols-3 min-[420px]:gap-2 md:px-0">
                     {languages.map((language, index) => (
                       <div
                         key={language.label}
@@ -807,7 +807,7 @@ export default function App() {
 
               <div className="flex flex-col gap-6 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
                 <section
-                  className="order-5 h-full md:order-none md:flex md:flex-col"
+                  className="cv-load-in cv-load-in--section order-5 h-full md:order-none md:flex md:flex-col"
                   data-section="Skills"
                   
                 >
@@ -824,13 +824,13 @@ export default function App() {
                   <DottedSeparator />
 
                   <ul
-                    className="skills-list mt-4 grid list-none grid-cols-1 gap-3 min-[420px]:grid-cols-2"
+                    className="skills-list cv-load-in cv-load-in--row mt-4 grid list-none grid-cols-1 gap-3 min-[420px]:grid-cols-2"
                   >
                     {tools.map((tool, index) => (
                       <li
                         key={tool.name}
                         data-animate
-                        className="group flex h-full items-start gap-3 rounded-[16px] border border-[rgba(17,24,39,0.08)] bg-white px-3 py-3 shadow-[0_1px_2px_rgba(17,24,39,0.04)] transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(29,164,237,0.18)] hover:bg-white hover:shadow-[0_8px_24px_rgba(17,24,39,0.06)] motion-reduce:transform-none motion-reduce:transition-none"
+                        className="cv-load-in cv-load-in--stagger group flex h-full items-start gap-3 rounded-[16px] border border-[rgba(17,24,39,0.08)] bg-white px-3 py-3 shadow-[0_1px_2px_rgba(17,24,39,0.04)] transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(29,164,237,0.18)] hover:bg-white hover:shadow-[0_8px_24px_rgba(17,24,39,0.06)] motion-reduce:transform-none motion-reduce:transition-none"
                         style={{ animationDelay: `${index * 55}ms` }}
                         transition={
                           prefersReducedMotion
@@ -854,7 +854,7 @@ export default function App() {
                 </section>
 
                 <section
-                  className="order-6 h-full md:order-none md:flex md:flex-col"
+                  className="cv-load-in cv-load-in--section order-6 h-full md:order-none md:flex md:flex-col"
                   data-section="Education"
                   
                 >
@@ -866,7 +866,7 @@ export default function App() {
                     development, design, and growth.
                   </p>
                   <DottedSeparator />
-                  <ul className="education-list mt-3 list-none">
+                  <ul className="education-list cv-load-in cv-load-in--row mt-3 list-none">
                     {education.map((item, index) => (
                       <EducationTimelineItem key={`${item.year}-${item.title}`} item={item} index={index} />
                     ))}

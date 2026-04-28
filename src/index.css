@@ -24,6 +24,42 @@ html {
   scroll-behavior: smooth;
 }
 
+@keyframes cv-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cv-load-in {
+  animation: cv-rise-in 640ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.cv-load-in--hero {
+  animation-delay: 40ms;
+}
+
+.cv-load-in--row {
+  animation-duration: 560ms;
+}
+
+.cv-load-in--section {
+  animation-delay: 100ms;
+}
+
+.cv-load-in--card {
+  animation-duration: 480ms;
+}
+
+.cv-load-in--stagger {
+  animation-duration: 420ms;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -32,6 +68,15 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .cv-load-in,
+  .cv-load-in--hero,
+  .cv-load-in--row,
+  .cv-load-in--section,
+  .cv-load-in--card,
+  .cv-load-in--stagger {
+    animation: none !important;
   }
 }
 

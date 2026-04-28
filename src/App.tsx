@@ -526,9 +526,9 @@ export default function App() {
             </div>
           </header>
 
-          <div className="flex flex-col gap-7 px-6 pb-8 sm:px-8 md:px-10">
-            <div className="flex flex-col gap-7">
-              <div className="flex flex-col gap-10 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
+          <div className="flex flex-col gap-5 px-6 pb-8 sm:px-8 md:px-10">
+            <div className="flex flex-col gap-5">
+              <div className="flex flex-col gap-6 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
                 <section
                   className="order-1 h-full md:order-none md:flex md:flex-col"
                   data-section="Personal Statement"
@@ -627,9 +627,9 @@ export default function App() {
                 </section>
               </div>
 
-              <div className="flex flex-col gap-10 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
+              <div className="flex flex-col gap-6 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
                 <section
-                  className="order-2 h-full md:order-none md:flex md:min-h-[420px] md:flex-col"
+                  className="order-2 h-full md:order-none md:flex md:min-h-[360px] md:flex-col"
                   data-section="Specialty"
                 >
                   <h2 className="cv-section-title mb-2">SPECIALTY</h2>
@@ -659,7 +659,7 @@ export default function App() {
                 </section>
 
                 <section
-                  className="order-4 h-full md:order-none md:flex md:min-h-[420px] md:flex-col"
+                  className="order-4 h-full md:order-none md:flex md:min-h-[360px] md:flex-col"
                   data-section="Languages"
                 >
                   <h2 className="cv-section-title mb-2">LANGUAGES</h2>
@@ -676,7 +676,7 @@ export default function App() {
                 </section>
               </div>
 
-              <div className="flex flex-col gap-10 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
+              <div className="flex flex-col gap-6 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
                 <section
                   className="order-5 h-full md:order-none md:flex md:flex-col"
                   data-section="Skills"

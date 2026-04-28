@@ -68,6 +68,16 @@ const tools: ToolItem[] = [
     logo: "https://cdn.simpleicons.org/figma",
   },
   {
+    name: "JavaScript",
+    category: "Frontend & Prototyping",
+    logo: "https://cdn.simpleicons.org/javascript",
+  },
+  {
+    name: "Solidity",
+    category: "Blockchain & Smart Contracts",
+    logo: "https://cdn.simpleicons.org/solidity",
+  },
+  {
     name: "Miro",
     category: "Product Discovery & Workshops",
     logo: "https://cdn.simpleicons.org/miro",
@@ -507,195 +517,203 @@ export default function App() {
             </div>
           </header>
 
-          <div className="flex flex-col gap-10 px-6 pb-8 sm:px-8 md:grid md:grid-cols-[minmax(0,1.06fr)_minmax(0,0.94fr)] md:grid-rows-3 md:gap-x-[32px] md:gap-y-[18px] md:px-10 lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] lg:gap-x-[34px] lg:gap-y-[20px]">
-            <section
-              className="order-1 md:col-start-1 md:row-start-1"
-              data-section="Personal Statement"
-            >
-              <h2 className="cv-section-title mb-2">PERSONAL STATEMENT</h2>
-              <DottedSeparator />
+          <div className="flex flex-col gap-7 px-6 pb-8 sm:px-8 md:px-10">
+            <div className="flex flex-col gap-7">
+              <div className="flex flex-col gap-10 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
+                <section
+                  className="order-1 h-full md:order-none md:flex md:flex-col"
+                  data-section="Personal Statement"
+                >
+                  <h2 className="cv-section-title mb-2">PERSONAL STATEMENT</h2>
+                  <DottedSeparator />
 
-              <div className="mt-2 space-y-2">
-                <p className="cv-body-text">
-                  I&apos;m a Senior Product Manager with 16+ years of experience
-                  building human-first, scalable onboarding journeys.
-                </p>
-                <p className="cv-body-text">
-                  Over the years, I&apos;ve acquired a wide range of tools,
-                  tactics, and experience across various roles and industries. I
-                  specialize in digital identity, KYC, authentication, and
-                  product-led growth. I&apos;ve led international teams from 0
-                  to 18+ across Argentina, Brazil, Mexico, Paraguay, and
-                  Colombia, successfully onboarding over 8 million users in
-                  fintech, crypto, and Web3.
-                </p>
-                <p className="cv-body-text">
-                  Having built products from scratch in various roles, my
-                  strength lies in combining empathy and visual thinking (User
-                  Experience Design) with technical experience (8 years as a
-                  developer). This holistic perspective allows me to translate
-                  metrics into meaningful product experiences that drive
-                  acquisition, retention, and long-term impact.
-                </p>
-                <p className="cv-body-text">
-                  When it comes to building, I rely on data to surface real
-                  problems and opportunities, and I craft products that
-                  simplify people&apos;s lives. I hold a Certified Scrum Product
-                  Owner (CSPO®), Certified Scrum Trainer (CST®), and several
-                  other certifications from world-class universities.
-                </p>
-                <p className="cv-body-text">
-                  My mission is to build trust, empower teams, and deliver
-                  products that people love.
-                </p>
-              </div>
-
-              <section className="mt-3" data-section="Key Achievements">
-                <p className="cv-body-text mb-1 font-bold">Key achievements</p>
-                <ul className="cv-body-text list-none space-y-0.5">
-                  <li>• Boosted Bitso&apos;s onboarding conversion by +262% for over 8M users.</li>
-                  <li>• Scaled Lemon from 60k to 2M users in 6 months (+3200% growth).</li>
-                  <li>• Built and scaled UNID (Unified Identity), unifying ~3M users across 30 companies within the Grupo Vázquez ecosystem.</li>
-                  <li>• Led multi-country onboarding launches across LatAm, acquiring over 1M users in the first year.</li>
-                  <li>• Led Bitso&apos;s product expansion, scaling from 4 million to nearly 7 million users (+75% annual growth).</li>
-                  <li>• Developed a new home screen for an exchange with over 8M users, driving a 35% increase in product activation.</li>
-                  <li>• Led cross-functional teams from 0 to 18+ across Argentina, Brazil, Mexico, Paraguay, Colombia and United States.</li>
-                </ul>
-              </section>
-            </section>
-
-            <section
-              className="order-2 md:col-start-1 md:row-start-2 md:h-full md:flex md:flex-col"
-              data-section="Specialty"
-            >
-              <h2 className="cv-section-title mb-2">SPECIALTY</h2>
-              <DottedSeparator />
-
-              <div className="mt-3 flex flex-1 flex-col items-center gap-8 px-3 sm:gap-10 md:flex-row md:items-start md:justify-between md:gap-0 lg:px-4">
-                <SpecialtyNode
-                  label="Product"
-                  iconClassName="text-[hsl(201_85%_52%)]"
-                  icon={<Route className="h-10 w-10" strokeWidth={1.8} />}
-                />
-                <SpecialtyNode
-                  label="Development"
-                  iconClassName="text-[hsl(201_85%_52%)]"
-                  icon={<Code2 className="h-10 w-10" strokeWidth={1.8} />}
-                />
-                <SpecialtyNode
-                  label="Product Design"
-                  iconClassName="text-[hsl(201_85%_52%)]"
-                  icon={<LayoutGrid className="h-10 w-10" strokeWidth={1.8} />}
-                />
-              </div>
-            </section>
-
-            <section
-              className="order-3 md:col-start-2 md:row-start-1"
-              data-section="Experience"
-            >
-              <h2 className="cv-section-title mb-2">EXPERIENCE</h2>
-              <DottedSeparator />
-
-              <div className="mt-3 space-y-4">
-                {experience.map((item) => (
-                  <div
-                    key={`${item.company}-${item.role}`}
-                    className="flex items-start gap-3 rounded-[12px] px-2 py-1"
-                  >
-                    <div className="flex flex-col items-center">
-                      <span className="text-[8px] text-[hsl(var(--cv-timeline-dot))]">▲</span>
-                      <img
-                        src={item.logo}
-                        alt={item.company}
-                        className="mt-0.5 h-8 w-8 rounded object-contain"
-                      />
-                    </div>
-                    <div>
-                      <p className="text-[11px] font-bold text-[hsl(var(--cv-section-title))]">
-                        {item.role}
-                      </p>
-                      <p className="text-[10px] text-[hsl(var(--cv-body))]">{item.company}</p>
-                      <p className="text-[9px] text-[hsl(var(--cv-light-text))]">{item.period}</p>
-                    </div>
+                  <div className="mt-2 space-y-2">
+                    <p className="cv-body-text">
+                      I&apos;m a Senior Product Manager with 16+ years of experience
+                      building human-first, scalable onboarding journeys.
+                    </p>
+                    <p className="cv-body-text">
+                      Over the years, I&apos;ve acquired a wide range of tools,
+                      tactics, and experience across various roles and industries. I
+                      specialize in digital identity, KYC, authentication, and
+                      product-led growth. I&apos;ve led international teams from 0
+                      to 18+ across Argentina, Brazil, Mexico, Paraguay, and
+                      Colombia, successfully onboarding over 8 million users in
+                      fintech, crypto, and Web3.
+                    </p>
+                    <p className="cv-body-text">
+                      Having built products from scratch in various roles, my
+                      strength lies in combining empathy and visual thinking (User
+                      Experience Design) with technical experience (8 years as a
+                      developer). This holistic perspective allows me to translate
+                      metrics into meaningful product experiences that drive
+                      acquisition, retention, and long-term impact.
+                    </p>
+                    <p className="cv-body-text">
+                      When it comes to building, I rely on data to surface real
+                      problems and opportunities, and I craft products that
+                      simplify people&apos;s lives. I hold a Certified Scrum Product
+                      Owner (CSPO®), Certified Scrum Trainer (CST®), and several
+                      other certifications from world-class universities.
+                    </p>
+                    <p className="cv-body-text">
+                      My mission is to build trust, empower teams, and deliver
+                      products that people love.
+                    </p>
                   </div>
-                ))}
+
+                  <section className="mt-3" data-section="Key Achievements">
+                    <p className="cv-body-text mb-1 font-bold">Key achievements</p>
+                    <ul className="cv-body-text list-none space-y-0.5">
+                      <li>• Boosted Bitso&apos;s onboarding conversion by +262% for over 8M users.</li>
+                      <li>• Scaled Lemon from 60k to 2M users in 6 months (+3200% growth).</li>
+                      <li>• Built and scaled UNID (Unified Identity), unifying ~3M users across 30 companies within the Grupo Vázquez ecosystem.</li>
+                      <li>• Led multi-country onboarding launches across LatAm, acquiring over 1M users in the first year.</li>
+                      <li>• Led Bitso&apos;s product expansion, scaling from 4 million to nearly 7 million users (+75% annual growth).</li>
+                      <li>• Developed a new home screen for an exchange with over 8M users, driving a 35% increase in product activation.</li>
+                      <li>• Led cross-functional teams from 0 to 18+ across Argentina, Brazil, Mexico, Paraguay, Colombia and United States.</li>
+                    </ul>
+                  </section>
+                </section>
+
+                <section
+                  className="order-3 h-full md:order-none md:flex md:flex-col"
+                  data-section="Experience"
+                >
+                  <h2 className="cv-section-title mb-2">EXPERIENCE</h2>
+                  <DottedSeparator />
+
+                  <div className="mt-3 space-y-4">
+                    {experience.map((item) => (
+                      <div
+                        key={`${item.company}-${item.role}`}
+                        className="flex items-start gap-3 rounded-[12px] px-2 py-1"
+                      >
+                        <div className="flex flex-col items-center">
+                          <span className="text-[8px] text-[hsl(var(--cv-timeline-dot))]">▲</span>
+                          <img
+                            src={item.logo}
+                            alt={item.company}
+                            className="mt-0.5 h-8 w-8 rounded object-contain"
+                          />
+                        </div>
+                        <div>
+                          <p className="text-[11px] font-bold text-[hsl(var(--cv-section-title))]">
+                            {item.role}
+                          </p>
+                          <p className="text-[10px] text-[hsl(var(--cv-body))]">{item.company}</p>
+                          <p className="text-[9px] text-[hsl(var(--cv-light-text))]">{item.period}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
               </div>
-            </section>
 
-            <section
-              className="order-4 md:col-start-2 md:row-start-2 md:h-full md:flex md:flex-col"
-              data-section="Languages"
-            >
-              <h2 className="cv-section-title mb-2">LANGUAGES</h2>
-              <DottedSeparator />
-              <div className="mt-2 grid flex-1 grid-cols-1 gap-6 px-2 min-[420px]:grid-cols-3 min-[420px]:gap-2 md:px-0">
-                {languages.map((language) => (
-                  <LanguageCircle key={language.label} {...language} />
-                ))}
+              <div className="flex flex-col gap-10 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
+                <section
+                  className="order-2 h-full md:order-none md:flex md:flex-col"
+                  data-section="Specialty"
+                >
+                  <h2 className="cv-section-title mb-2">SPECIALTY</h2>
+                  <DottedSeparator />
+
+                  <div className="mt-3 flex flex-1 flex-col items-center gap-8 px-3 sm:gap-10 md:flex-row md:items-start md:justify-between md:gap-0 lg:px-4">
+                    <SpecialtyNode
+                      label="Product"
+                      iconClassName="text-[hsl(201_85%_52%)]"
+                      icon={<Route className="h-10 w-10" strokeWidth={1.8} />}
+                    />
+                    <SpecialtyNode
+                      label="Development"
+                      iconClassName="text-[hsl(201_85%_52%)]"
+                      icon={<Code2 className="h-10 w-10" strokeWidth={1.8} />}
+                    />
+                    <SpecialtyNode
+                      label="Product Design"
+                      iconClassName="text-[hsl(201_85%_52%)]"
+                      icon={<LayoutGrid className="h-10 w-10" strokeWidth={1.8} />}
+                    />
+                  </div>
+                </section>
+
+                <section
+                  className="order-4 h-full md:order-none md:flex md:flex-col"
+                  data-section="Languages"
+                >
+                  <h2 className="cv-section-title mb-2">LANGUAGES</h2>
+                  <DottedSeparator />
+                  <div className="mt-2 grid flex-1 grid-cols-1 gap-6 px-2 min-[420px]:grid-cols-3 min-[420px]:gap-2 md:px-0">
+                    {languages.map((language) => (
+                      <LanguageCircle key={language.label} {...language} />
+                    ))}
+                  </div>
+                </section>
               </div>
-            </section>
 
-            <section
-              className="order-5 md:col-start-1 md:row-start-3"
-              data-section="Skills"
-            >
-              <h2 data-animate className="cv-section-title skills-title mb-2">
-                TOOLS &amp; SKILLS
-              </h2>
-              <p
-                data-animate
-                className="skills-subtitle text-[11px] leading-[1.5] text-[hsl(var(--cv-light-text))]"
-              >
-                AI-native product work, design collaboration, and technical fluency.
-              </p>
-              <DottedSeparator />
-
-              <ul className="skills-list mt-4 grid list-none grid-cols-1 gap-3 min-[420px]:grid-cols-2">
-                {tools.map((tool, index) => (
-                  <li
-                    key={tool.name}
+              <div className="flex flex-col gap-10 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
+                <section
+                  className="order-5 h-full md:order-none md:flex md:flex-col"
+                  data-section="Skills"
+                >
+                  <h2 data-animate className="cv-section-title skills-title mb-2">
+                    TOOLS &amp; SKILLS
+                  </h2>
+                  <p
                     data-animate
-                    className="group flex h-full items-start gap-3 rounded-[16px] border border-[rgba(17,24,39,0.08)] bg-white px-3 py-3 shadow-[0_1px_2px_rgba(17,24,39,0.04)] transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(29,164,237,0.18)] hover:bg-white hover:shadow-[0_8px_24px_rgba(17,24,39,0.06)] motion-reduce:transform-none motion-reduce:transition-none"
-                    style={{ animationDelay: `${index * 55}ms` }}
+                    className="skills-subtitle text-[11px] leading-[1.5] text-[hsl(var(--cv-light-text))]"
                   >
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[12px] border border-[rgba(17,24,39,0.08)] bg-white shadow-[0_1px_1px_rgba(17,24,39,0.03)] transition duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:brightness-105">
-                      <img
-                        src={tool.logo}
-                        alt={`${tool.name} logo`}
-                        loading="lazy"
-                        decoding="async"
-                        className="h-6 w-6 object-contain"
-                      />
-                    </div>
+                    AI-native product work, design collaboration, and technical fluency.
+                  </p>
+                  <DottedSeparator />
 
-                    <div className="min-w-0 flex-1">
-                      <span className="block text-[13px] font-medium leading-[1.2] tracking-[0.01em] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))]">
-                        {tool.name}
-                      </span>
-                      <span className="mt-1 block text-[10px] leading-[1.4] text-[hsl(var(--cv-light-text))]">
-                        {tool.category}
-                      </span>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </section>
+                  <ul className="skills-list mt-4 grid list-none grid-cols-1 gap-3 min-[420px]:grid-cols-2">
+                    {tools.map((tool, index) => (
+                      <li
+                        key={tool.name}
+                        data-animate
+                        className="group flex h-full items-start gap-3 rounded-[16px] border border-[rgba(17,24,39,0.08)] bg-white px-3 py-3 shadow-[0_1px_2px_rgba(17,24,39,0.04)] transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(29,164,237,0.18)] hover:bg-white hover:shadow-[0_8px_24px_rgba(17,24,39,0.06)] motion-reduce:transform-none motion-reduce:transition-none"
+                        style={{ animationDelay: `${index * 55}ms` }}
+                      >
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[12px] border border-[rgba(17,24,39,0.08)] bg-white shadow-[0_1px_1px_rgba(17,24,39,0.03)] transition duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:brightness-105">
+                          <img
+                            src={tool.logo}
+                            alt={`${tool.name} logo`}
+                            loading="lazy"
+                            decoding="async"
+                            className="h-6 w-6 object-contain"
+                          />
+                        </div>
 
-            <section
-              className="order-6 md:col-start-2 md:row-start-3"
-              data-section="Education"
-            >
-              <h2 data-animate className="education-title cv-section-title mb-2">
-                EDUCATION &amp; CERTIFICATIONS
-              </h2>
-              <DottedSeparator />
-              <ul className="education-list mt-3 list-none">
-                {education.map((item, index) => (
-                  <EducationTimelineItem key={`${item.year}-${item.title}`} item={item} index={index} />
-                ))}
-              </ul>
-            </section>
+                        <div className="min-w-0 flex-1">
+                          <span className="block text-[13px] font-medium leading-[1.2] tracking-[0.01em] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))]">
+                            {tool.name}
+                          </span>
+                          <span className="mt-1 block text-[10px] leading-[1.4] text-[hsl(var(--cv-light-text))]">
+                            {tool.category}
+                          </span>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+
+                <section
+                  className="order-6 h-full md:order-none md:flex md:flex-col"
+                  data-section="Education"
+                >
+                  <h2 data-animate className="education-title cv-section-title mb-2">
+                    EDUCATION &amp; CERTIFICATIONS
+                  </h2>
+                  <DottedSeparator />
+                  <ul className="education-list mt-3 list-none">
+                    {education.map((item, index) => (
+                      <EducationTimelineItem key={`${item.year}-${item.title}`} item={item} index={index} />
+                    ))}
+                  </ul>
+                </section>
+              </div>
+            </div>
           </div>
 
           <div className="h-10" />

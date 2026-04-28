@@ -297,6 +297,7 @@ function ToolLogo({ name, logo }: ToolItem) {
   const prefersReducedMotion = false;
   const [status, setStatus] = useState<"loading" | "loaded" | "error">("loading");
   const fallbackLabel = name.slice(0, 1).toUpperCase();
+  const isWideBrandLogo = name === "Amplitude" || name === "CleverTap";
 
   return (
     <div className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[12px] border border-[rgba(17,24,39,0.08)] bg-white shadow-[0_1px_1px_rgba(17,24,39,0.03)] transition duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:brightness-105">
@@ -320,7 +321,9 @@ function ToolLogo({ name, logo }: ToolItem) {
           alt={`${name} logo`}
           loading="lazy"
           decoding="async"
-          className="relative z-10 h-7 w-7 flex-shrink-0 object-contain"
+          className={`relative z-10 flex-shrink-0 object-contain ${
+            isWideBrandLogo ? "h-8 w-8" : "h-7 w-7"
+          }`}
           animate={
             status === "loaded"
               ? { opacity: 1, scale: 1 }

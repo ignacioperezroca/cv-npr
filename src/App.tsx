@@ -668,8 +668,8 @@ export default function App() {
                 >
                   <h2 className="cv-section-title">PERSONAL STATEMENT</h2>
                   <p className="cv-section-subtitle">
-                    Human-first product leadership for scalable onboarding,
-                    identity, and growth systems.
+                    Human-first product leadership for onboarding, identity,
+                    and growth.
                   </p>
                   <DottedSeparator />
 
@@ -729,8 +729,8 @@ export default function App() {
                 >
                   <h2 className="cv-section-title">EXPERIENCE</h2>
                   <p className="cv-section-subtitle">
-                    A career focused on fintech, crypto, onboarding, growth,
-                    and digital identity across LatAm.
+                    A career focused on fintech, crypto, onboarding, and
+                    identity.
                   </p>
                   <DottedSeparator />
 

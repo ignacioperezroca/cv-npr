@@ -448,7 +448,7 @@ function LanguageCard({
       style={{ animationDelay: `${index * 60}ms` }}
     >
       <div className="flex flex-1 flex-col items-center justify-between gap-4 py-2">
-        <div className="relative flex h-[186px] w-[186px] items-center justify-center sm:h-[194px] sm:w-[194px]">
+        <div className="relative flex h-[168px] w-[168px] items-center justify-center sm:h-[180px] sm:w-[180px] md:h-[186px] md:w-[186px]">
           <svg width="100%" height="100%" viewBox="0 0 108 108" aria-hidden="true">
             <circle
               cx="54"
@@ -472,13 +472,13 @@ function LanguageCard({
               className="transition-[stroke-dashoffset,stroke] duration-300"
             />
           </svg>
-          <span className="absolute text-[34px] font-semibold tracking-[-0.04em] text-[hsl(var(--cv-section-title))]">
+          <span className="absolute text-[30px] font-semibold tracking-[-0.04em] text-[hsl(var(--cv-section-title))] sm:text-[32px] md:text-[34px]">
             {language.value}%
           </span>
         </div>
 
         <div className="flex flex-col items-center gap-2 pb-1">
-          <h3 className="text-[25px] font-semibold tracking-[-0.02em] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))]">
+          <h3 className="text-[22px] font-semibold tracking-[-0.02em] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))] sm:text-[24px] md:text-[25px]">
             {language.name}
           </h3>
           <span

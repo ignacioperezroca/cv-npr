@@ -433,7 +433,7 @@ function LanguageCard({
           pillText: "text-[hsl(140_71%_29%)]",
           pillBorder: "rgba(23,166,95,0.16)",
         };
-  const radius = 34;
+  const radius = 28;
   const circumference = 2 * Math.PI * radius;
   const dashOffset = circumference - (language.value / 100) * circumference;
 
@@ -448,7 +448,7 @@ function LanguageCard({
       style={{ animationDelay: `${index * 60}ms` }}
     >
       <div className="flex flex-1 flex-col items-center justify-between gap-3 py-1.5">
-        <div className="relative flex h-[118px] w-[118px] items-center justify-center sm:h-[126px] sm:w-[126px] md:h-[136px] md:w-[136px]">
+        <div className="relative flex h-[94px] w-[94px] items-center justify-center sm:h-[100px] sm:w-[100px] md:h-[108px] md:w-[108px]">
           <svg width="100%" height="100%" viewBox="0 0 108 108" aria-hidden="true">
             <circle
               cx="54"
@@ -472,7 +472,7 @@ function LanguageCard({
               className="transition-[stroke-dashoffset,stroke] duration-300"
             />
           </svg>
-          <span className="absolute text-[24px] font-semibold tracking-[-0.04em] text-[hsl(var(--cv-section-title))] sm:text-[26px] md:text-[28px]">
+          <span className="absolute text-[20px] font-light tracking-[-0.04em] text-[hsl(var(--cv-section-title))] sm:text-[21px] md:text-[22px]">
             {language.value}%
           </span>
         </div>

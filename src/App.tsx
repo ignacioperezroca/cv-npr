@@ -817,8 +817,8 @@ export default function App() {
                     data-animate
                     className="skills-subtitle cv-section-subtitle"
                   >
-                    AI-native product work, design collaboration, analytics,
-                    delivery, and technical fluency.
+                    AI-native product work, design, delivery, and analytics
+                    fluency.
                   </p>
                   <DottedSeparator />
 
@@ -861,8 +861,8 @@ export default function App() {
                     EDUCATION &amp; CERTIFICATIONS
                   </h2>
                   <p className="cv-section-subtitle">
-                    Formal training across product, agile delivery, frontend
-                    development, design, and growth.
+                    Formal training across product, development, design,
+                    agile and growth.
                   </p>
                   <DottedSeparator />
                   <ul className="education-list cv-load-in cv-load-in--row mt-3 list-none">

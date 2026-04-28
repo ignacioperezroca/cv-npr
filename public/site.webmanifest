@@ -1,0 +1,15 @@
+{
+  "name": "Ignacio Pérez Roca | Senior Product Manager",
+  "short_name": "Ignacio CV",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1da4ed",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

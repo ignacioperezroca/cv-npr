@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f7f7f5"/>
+      <stop offset="1" stop-color="#ffffff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1010" cy="140" r="120" fill="#1da4ed" opacity="0.1"/>
+  <circle cx="1085" cy="475" r="170" fill="#1da4ed" opacity="0.08"/>
+  <text x="86" y="160" font-family="Open Sans, Arial, sans-serif" font-size="36" letter-spacing="6" fill="#444">IGNACIO PEREZ ROCA</text>
+  <text x="86" y="250" font-family="Open Sans, Arial, sans-serif" font-size="58" font-weight="700" fill="#222">Senior Product Manager</text>
+  <text x="86" y="318" font-family="Open Sans, Arial, sans-serif" font-size="28" fill="#5a5a5a">Identity, KYC, Authentication &amp; Growth</text>
+  <text x="86" y="430" font-family="Open Sans, Arial, sans-serif" font-size="24" fill="#5a5a5a">Fintech • Crypto • Onboarding • Product-led growth</text>
+  <circle cx="930" cy="312" r="115" fill="#1da4ed" opacity="0.92"/>
+  <circle cx="930" cy="312" r="82" fill="#ffffff"/>
+  <circle cx="978" cy="270" r="22" fill="#1da4ed"/>
+  <path d="M882 370c0-50 26-96 61-96 33 0 55 33 55 76 0 18-7 35-20 50-12 13-19 27-24 58-7-20-13-34-25-46-16-16-47-24-47-42Z" fill="#1da4ed"/>
+</svg>

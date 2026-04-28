@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import profileImage from "./assets/profile.png";
@@ -35,6 +36,17 @@ type Language = {
   percentage: number;
 };
 
+type ToolCard = {
+  name: string;
+  logo: ReactNode;
+};
+
+type ToolGroup = {
+  title: string;
+  concepts?: string[];
+  tools?: ToolCard[];
+};
+
 const skills: Skill[] = [
   { name: "HTML5", level: 10 },
   { name: "CSS3", level: 10 },
@@ -58,6 +70,111 @@ const knowledge = [
   "Product Development",
   "Product Management",
   "Blockchain | DEFI",
+];
+
+const skillsGroups: ToolGroup[] = [
+  {
+    title: "Frameworks",
+    concepts: ["Material Design", "Angular", "React"],
+  },
+  {
+    title: "Product Strategy",
+    concepts: ["Roadmap", "Prioritization + Slicing"],
+    tools: [
+      {
+        name: "Jira / Trello / Notion",
+        logo: (
+          <span className="text-[11px] font-semibold tracking-tight text-[hsl(var(--cv-body))]">
+            Jira
+          </span>
+        ),
+      },
+    ],
+  },
+  {
+    title: "Business Analytics",
+    tools: [
+      {
+        name: "Google Analytics",
+        logo: (
+          <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
+            <path d="M14 4.5A2.5 2.5 0 0 1 16.5 2h1A2.5 2.5 0 0 1 20 4.5v15A2.5 2.5 0 0 1 17.5 22h-1A2.5 2.5 0 0 1 14 19.5v-15Z" fill="#fbbc04" />
+            <path d="M4 13.5A2.5 2.5 0 0 1 6.5 11h1A2.5 2.5 0 0 1 10 13.5v6A2.5 2.5 0 0 1 7.5 22h-1A2.5 2.5 0 0 1 4 19.5v-6Z" fill="#f29900" />
+            <circle cx="7" cy="5" r="2.2" fill="#1da4ed" />
+          </svg>
+        ),
+      },
+      {
+        name: "Amplitude",
+        logo: (
+          <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" fill="#6c3fd4" />
+            <path d="M6 14c1.5 0 2.1-6 4-6s2 8 4 8 2.4-4 4-4" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        ),
+      },
+      {
+        name: "Looker",
+        logo: (
+          <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" fill="none" stroke="#1da4ed" strokeWidth="2.5" />
+            <circle cx="12" cy="12" r="3.2" fill="#1da4ed" />
+            <circle cx="17" cy="7" r="1.6" fill="#1da4ed" />
+          </svg>
+        ),
+      },
+      {
+        name: "Mixpanel",
+        logo: (
+          <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
+            <circle cx="5.5" cy="6" r="2" fill="#6b52ff" />
+            <circle cx="12" cy="12" r="2" fill="#6b52ff" />
+            <circle cx="18.5" cy="6" r="2" fill="#6b52ff" />
+            <circle cx="5.5" cy="18" r="2" fill="#6b52ff" />
+            <circle cx="12" cy="18" r="2" fill="#6b52ff" />
+            <circle cx="18.5" cy="18" r="2" fill="#6b52ff" />
+          </svg>
+        ),
+      },
+      {
+        name: "SQL basics",
+        logo: (
+          <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
+            <ellipse cx="12" cy="5.5" rx="6.5" ry="2.8" fill="none" stroke="#d34d2a" strokeWidth="2" />
+            <path d="M5.5 5.5v11c0 1.6 2.9 2.8 6.5 2.8s6.5-1.2 6.5-2.8v-11" fill="none" stroke="#d34d2a" strokeWidth="2" />
+            <ellipse cx="12" cy="16.5" rx="6.5" ry="2.8" fill="none" stroke="#d34d2a" strokeWidth="2" />
+          </svg>
+        ),
+      },
+      {
+        name: "A/B Testing",
+        logo: (
+          <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
+            <path d="M6 18l4-12 4 12" fill="none" stroke="#e11d48" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M14 6h4a2 2 0 0 1 0 4h-4V6Zm0 6h4a2 2 0 0 1 0 4h-4v-4Z" fill="none" stroke="#e11d48" strokeWidth="2" strokeLinejoin="round" />
+          </svg>
+        ),
+      },
+      {
+        name: "Clevertap",
+        logo: (
+          <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
+            <path d="M14 5.5a6 6 0 1 0 4.8 9.6" fill="none" stroke="#f43f5e" strokeWidth="2.2" strokeLinecap="round" />
+            <path d="M16.5 8.5h3.2l-1.1 3.1" fill="none" stroke="#f43f5e" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        ),
+      },
+      {
+        name: "Keycloak",
+        logo: (
+          <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
+            <path d="M12 3.5l5.7 3.3v6.6L12 16.7 6.3 13.4V6.8L12 3.5Z" fill="none" stroke="#2563eb" strokeWidth="2.1" />
+            <path d="M12 7.2v9.6" stroke="#2563eb" strokeWidth="2.1" strokeLinecap="round" />
+          </svg>
+        ),
+      },
+    ],
+  },
 ];
 
 const education: EducationItem[] = [
@@ -164,6 +281,32 @@ function SkillDots({ filled }: { filled: number }) {
 
 function DottedSeparator() {
   return <hr className="cv-dotted-separator" />;
+}
+
+function ToolCard({ name, logo }: ToolCard) {
+  return (
+    <div className="flex h-[84px] flex-col items-center justify-center rounded-[8px] border border-[hsl(var(--cv-dotted-line))] bg-white px-3 py-2 text-center transition-colors duration-200 hover:border-[hsl(var(--cv-contact-bar))]">
+      <div className="flex h-8 items-center justify-center">{logo}</div>
+      <span className="mt-2 text-[10px] font-medium leading-tight text-[hsl(var(--cv-body))]">
+        {name}
+      </span>
+    </div>
+  );
+}
+
+function ConceptList({ items }: { items: string[] }) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {items.map((item) => (
+        <span
+          key={item}
+          className="rounded-full border border-[hsl(var(--cv-dotted-line))] bg-white px-3 py-1 text-[10px] text-[hsl(var(--cv-body))]"
+        >
+          {item}
+        </span>
+      ))}
+    </div>
+  );
 }
 
 function SpecialtyNode({
@@ -485,39 +628,24 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-6">
-                <div>
-                  <p className="mb-1.5 text-[10px] italic text-[hsl(var(--cv-light-text))]">
-                    Frameworks
-                  </p>
-                  <div className="space-y-1 text-[10px] text-[hsl(var(--cv-body))]">
-                    <p>Material Design</p>
-                    <p>Angular</p>
-                    <p>React</p>
-                  </div>
-                </div>
+              <div className="mt-5 space-y-5">
+                {skillsGroups
+                  .filter((group) => group.title === "Business Analytics")
+                  .map((group) => (
+                    <div key={group.title} className="space-y-3">
+                      <p className="text-[11px] italic text-[hsl(var(--cv-light-text))]">
+                        {group.title}
+                      </p>
 
-                <div>
-                  <p className="mb-1.5 text-[10px] italic text-[hsl(var(--cv-light-text))]">
-                    Product Strategy
-                  </p>
-                  <div className="space-y-1 text-[10px] text-[hsl(var(--cv-body))]">
-                    <p>Roadmap</p>
-                    <p>Prioritization + Slicing</p>
-                    <p>Jira / Trello / Notion</p>
-                  </div>
-                </div>
-
-                <div>
-                  <p className="mb-1.5 text-[10px] italic text-[hsl(var(--cv-light-text))]">
-                    Business Analytics
-                  </p>
-                  <div className="space-y-1 text-[10px] text-[hsl(var(--cv-body))]">
-                    <p>Google Analytics</p>
-                    <p>Amplitude</p>
-                    <p>Looker</p>
-                  </div>
-                </div>
+                      {group.tools?.length ? (
+                        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
+                          {group.tools.map((tool) => (
+                            <ToolCard key={tool.name} {...tool} />
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
+                  ))}
               </div>
             </section>
           </div>

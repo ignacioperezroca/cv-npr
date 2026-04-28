@@ -1,7 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import { motion, useReducedMotion } from "framer-motion";
 import profileImage from "./assets/profile.png";
 import bitsoLogo from "./assets/bitso-logo.png";
 import ittiLogo from "./assets/itti-logo.png";
@@ -30,6 +29,8 @@ import {
   Database,
   Triangle,
 } from "lucide-react";
+
+const MOTION_EASE = [0.22, 1, 0.36, 1] as const;
 
 type EducationItem = {
   year: string;
@@ -61,8 +62,6 @@ type ToolItem = {
   category: string;
   logo: string;
 };
-
-const MOTION_EASE = [0.22, 1, 0.36, 1] as const;
 
 const tools: ToolItem[] = [
   {
@@ -295,7 +294,6 @@ function TagPill({ children }: { children: string }) {
 }
 
 function ToolLogo({ name, logo }: ToolItem) {
-  const prefersReducedMotion = useReducedMotion();
   const [status, setStatus] = useState<"loading" | "loaded" | "error">("loading");
   const fallbackLabel = name.slice(0, 1).toUpperCase();
 
@@ -316,13 +314,12 @@ function ToolLogo({ name, logo }: ToolItem) {
           {fallbackLabel}
         </span>
       ) : (
-        <motion.img
+        <img
           src={logo}
           alt={`${name} logo`}
           loading="lazy"
           decoding="async"
           className="relative z-10 h-7 w-7 flex-shrink-0 object-contain"
-          initial={false}
           animate={
             status === "loaded"
               ? { opacity: 1, scale: 1 }
@@ -350,18 +347,15 @@ function ExperienceLogo({
   alt: string;
   delay?: number;
 }) {
-  const prefersReducedMotion = useReducedMotion();
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <motion.img
+    <img
       src={src}
       alt={alt}
       loading="lazy"
       decoding="async"
       className="mt-0.5 h-9 w-9 rounded object-contain"
-      initial={false}
-      animate={loaded ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.96 }}
       transition={
         prefersReducedMotion
           ? { duration: 0 }
@@ -458,15 +452,11 @@ function LanguageCircle({ label, sublabel, percentage }: Language) {
 }
 
 function EducationTimelineItem({ item, index }: { item: EducationItem; index: number }) {
-  const prefersReducedMotion = useReducedMotion();
 
   return (
-    <motion.li
+    <li
       data-animate
       className="group grid grid-cols-[18px_54px_minmax(0,1fr)] gap-x-4 border-t border-[rgba(17,24,39,0.06)] py-5 first:border-t-0 first:pt-0"
-      initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.35 }}
       transition={
         prefersReducedMotion
           ? { duration: 0 }
@@ -496,12 +486,12 @@ function EducationTimelineItem({ item, index }: { item: EducationItem; index: nu
           ))}
         </div>
       </div>
-    </motion.li>
+    </li>
   );
 }
 
 export default function App() {
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = false;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -563,77 +553,44 @@ export default function App() {
     nodes.forEach((node) => observer.observe(node));
     return () => observer.disconnect();
   }, []);
-
-  const pageMotion = prefersReducedMotion
-    ? {
-        initial: false,
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0 },
-      }
-    : {
-        initial: false,
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.62, ease: MOTION_EASE },
-      };
-
-  const sectionMotion = prefersReducedMotion
-    ? {
-        initial: false,
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true, amount: 0.15 },
-        transition: { duration: 0 },
-      }
-    : {
-        initial: false,
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true, amount: 0.15 },
-        transition: { duration: 0.55, ease: MOTION_EASE },
-      };
-
   return (
     <>
-      <motion.main
+      <main
         className="min-h-screen bg-background px-0 py-0 md:flex md:justify-center md:px-4"
-        {...pageMotion}
+        
       >
-        <motion.article
+        <article
           className="w-full bg-background md:my-0 md:w-[850px]"
           style={{ fontFamily: "'Open Sans', sans-serif" }}
         >
-          <motion.header
+          <header
             className="flex flex-col items-center gap-5 px-6 pb-6 pt-8 text-center sm:px-8 md:flex-row md:items-start md:gap-8 md:px-10 md:pb-6 md:pt-10 md:text-left"
-            initial={false}
-            animate={{ opacity: 1, y: 0 }}
             transition={
               prefersReducedMotion
                 ? { duration: 0 }
                 : { duration: 0.58, ease: MOTION_EASE, delay: 0.05 }
             }
           >
-            <motion.div
+            <div
               className="h-[180px] w-[180px] shrink-0 overflow-hidden rounded-full bg-white sm:h-[202px] sm:w-[202px] md:h-[216px] md:w-[216px]"
-              initial={false}
-              animate={{ opacity: 1, scale: 1 }}
               transition={
                 prefersReducedMotion
                   ? { duration: 0 }
                   : { duration: 0.45, ease: MOTION_EASE, delay: 0.08 }
               }
               >
-              <motion.img
+              <img
                 src={profileImage}
                 alt="Ignacio Perez Roca"
                 className="h-full w-full scale-[1.06] object-cover"
                 style={{ objectPosition: "46% 16%" }}
-                initial={false}
-                animate={{ opacity: 1 }}
                 transition={
                   prefersReducedMotion
                     ? { duration: 0 }
                     : { duration: 0.35, ease: MOTION_EASE, delay: 0.08 }
                 }
               />
-            </motion.div>
+            </div>
 
             <div className="pt-0 md:pt-2">
               <h1 className="text-[28px] font-light tracking-wide text-[hsl(var(--cv-section-title))] sm:text-[30px] md:text-[32px]">
@@ -652,15 +609,15 @@ export default function App() {
                 </div>
               </div>
             </div>
-          </motion.header>
+          </header>
 
           <div className="flex flex-col gap-5 px-6 pb-8 sm:px-8 md:px-10">
             <div className="flex flex-col gap-5 md:gap-4">
               <div className="flex flex-col gap-6 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
-                <motion.section
+                <section
                   className="order-1 h-full md:order-none md:flex md:flex-col"
                   data-section="Personal Statement"
-                  {...sectionMotion}
+                  
                 >
                   <h2 className="cv-section-title mb-2">PERSONAL STATEMENT</h2>
                   <p className="cv-section-subtitle">
@@ -716,12 +673,12 @@ export default function App() {
                       <li>• Led cross-functional teams from 0 to 18+ across Argentina, Brazil, Mexico, Paraguay, Colombia and United States.</li>
                     </ul>
                   </section>
-                </motion.section>
+                </section>
 
-                <motion.section
+                <section
                   className="order-3 h-full md:order-none md:flex md:flex-col"
                   data-section="Experience"
-                  {...sectionMotion}
+                  
                 >
                   <h2 className="cv-section-title mb-2">EXPERIENCE</h2>
                   <p className="cv-section-subtitle">
@@ -732,12 +689,9 @@ export default function App() {
 
                   <div className="mt-3 space-y-4">
                     {experience.map((item) => (
-                      <motion.div
+                      <div
                         key={`${item.company}-${item.role}`}
                         className="flex items-start gap-3.5 rounded-[12px] px-2.5 py-1.5"
-                        initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.35 }}
                         transition={
                           prefersReducedMotion
                             ? { duration: 0 }
@@ -749,7 +703,6 @@ export default function App() {
                           <ExperienceLogo
                             src={item.logo}
                             alt={item.company}
-                            delay={index * 0.03}
                           />
                         </div>
                         <div>
@@ -759,17 +712,17 @@ export default function App() {
                           <p className="text-[11px] text-[hsl(var(--cv-body))]">{item.company}</p>
                           <p className="text-[10px] text-[hsl(var(--cv-light-text))]">{item.period}</p>
                         </div>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
-                </motion.section>
+                </section>
               </div>
 
               <div className="flex flex-col gap-6 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
-                <motion.section
+                <section
                   className="order-2 h-full md:order-none md:flex md:min-h-[300px] md:flex-col"
                   data-section="Specialty"
-                  {...sectionMotion}
+                  
                 >
                   <h2 className="cv-section-title mb-2">SPECIALTY</h2>
                   <p className="cv-section-subtitle">
@@ -779,10 +732,7 @@ export default function App() {
                   <DottedSeparator />
 
                   <div className="mt-3 flex flex-1 flex-col items-center gap-8 px-3 sm:gap-10 md:flex-row md:items-start md:justify-between md:gap-0 lg:px-4">
-                    <motion.div
-                      initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.35 }}
+                    <div
                       transition={
                         prefersReducedMotion
                           ? { duration: 0 }
@@ -794,11 +744,8 @@ export default function App() {
                         iconClassName="text-[hsl(201_85%_52%)]"
                         icon={<Route className="h-10 w-10" strokeWidth={1.8} />}
                       />
-                    </motion.div>
-                    <motion.div
-                      initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.35 }}
+                    </div>
+                    <div
                       transition={
                         prefersReducedMotion
                           ? { duration: 0 }
@@ -810,11 +757,8 @@ export default function App() {
                         iconClassName="text-[hsl(201_85%_52%)]"
                         icon={<Code2 className="h-10 w-10" strokeWidth={1.8} />}
                       />
-                    </motion.div>
-                    <motion.div
-                      initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.35 }}
+                    </div>
+                    <div
                       transition={
                         prefersReducedMotion
                           ? { duration: 0 }
@@ -826,14 +770,14 @@ export default function App() {
                         iconClassName="text-[hsl(201_85%_52%)]"
                         icon={<LayoutGrid className="h-10 w-10" strokeWidth={1.8} />}
                       />
-                    </motion.div>
+                    </div>
                   </div>
-                </motion.section>
+                </section>
 
-                <motion.section
+                <section
                   className="order-4 h-full md:order-none md:flex md:min-h-[300px] md:flex-col"
                   data-section="Languages"
-                  {...sectionMotion}
+                  
                 >
                   <h2 className="cv-section-title mb-2">LANGUAGES</h2>
                   <p className="cv-section-subtitle">
@@ -843,11 +787,8 @@ export default function App() {
                   <DottedSeparator />
                   <div className="mt-2 grid flex-1 grid-cols-1 gap-6 px-2 min-[420px]:grid-cols-3 min-[420px]:gap-2 md:px-0">
                     {languages.map((language, index) => (
-                      <motion.div
+                      <div
                         key={language.label}
-                        initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.35 }}
                         transition={
                           prefersReducedMotion
                             ? { duration: 0 }
@@ -855,17 +796,17 @@ export default function App() {
                         }
                       >
                         <LanguageCircle {...language} />
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
-                </motion.section>
+                </section>
               </div>
 
               <div className="flex flex-col gap-6 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
-                <motion.section
+                <section
                   className="order-5 h-full md:order-none md:flex md:flex-col"
                   data-section="Skills"
-                  {...sectionMotion}
+                  
                 >
                   <h2 data-animate className="cv-section-title skills-title mb-2">
                     TOOLS &amp; SKILLS
@@ -879,19 +820,15 @@ export default function App() {
                   </p>
                   <DottedSeparator />
 
-                  <motion.ul
+                  <ul
                     className="skills-list mt-4 grid list-none grid-cols-1 gap-3 min-[420px]:grid-cols-2"
-                    initial={false}
                   >
                     {tools.map((tool, index) => (
-                      <motion.li
+                      <li
                         key={tool.name}
                         data-animate
                         className="group flex h-full items-start gap-3 rounded-[16px] border border-[rgba(17,24,39,0.08)] bg-white px-3 py-3 shadow-[0_1px_2px_rgba(17,24,39,0.04)] transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(29,164,237,0.18)] hover:bg-white hover:shadow-[0_8px_24px_rgba(17,24,39,0.06)] motion-reduce:transform-none motion-reduce:transition-none"
                         style={{ animationDelay: `${index * 55}ms` }}
-                        initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.35 }}
                         transition={
                           prefersReducedMotion
                             ? { duration: 0 }
@@ -908,15 +845,15 @@ export default function App() {
                             {tool.category}
                           </span>
                         </div>
-                      </motion.li>
+                      </li>
                     ))}
-                  </motion.ul>
-                </motion.section>
+                  </ul>
+                </section>
 
-                <motion.section
+                <section
                   className="order-6 h-full md:order-none md:flex md:flex-col"
                   data-section="Education"
-                  {...sectionMotion}
+                  
                 >
                   <h2 data-animate className="education-title cv-section-title mb-2">
                     EDUCATION &amp; CERTIFICATIONS
@@ -931,14 +868,14 @@ export default function App() {
                       <EducationTimelineItem key={`${item.year}-${item.title}`} item={item} index={index} />
                     ))}
                   </ul>
-                </motion.section>
+                </section>
               </div>
             </div>
           </div>
 
           <div className="h-10" />
-        </motion.article>
-      </motion.main>
+        </article>
+      </main>
       <Analytics />
       <SpeedInsights />
     </>

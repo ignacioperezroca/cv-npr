@@ -900,9 +900,9 @@ export default function App() {
                 </section>
               </div>
 
-              <div className="flex flex-col gap-6 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
+              <div className="mt-12 flex flex-col gap-6 md:mt-14 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:mt-16 lg:gap-x-[34px]">
                 <section
-                  className="cv-load-in cv-load-in--section order-5 h-full md:order-none md:flex md:flex-col"
+                  className="cv-load-in cv-load-in--section order-5 h-full md:order-none md:flex md:self-start md:flex-col"
                   data-section="Skills"
                   
                 >
@@ -957,7 +957,7 @@ export default function App() {
                 </section>
 
                 <section
-                  className="cv-load-in cv-load-in--section order-6 h-full md:order-none md:flex md:flex-col"
+                  className="cv-load-in cv-load-in--section order-6 h-full md:order-none md:flex md:self-start md:flex-col"
                   data-section="Education"
                   
                 >

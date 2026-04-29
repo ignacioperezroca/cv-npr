@@ -603,7 +603,7 @@ export default function App() {
             <div className="grid items-center gap-6 md:grid-cols-[240px_minmax(0,1fr)] md:gap-8 lg:grid-cols-[270px_minmax(0,1fr)] lg:gap-10">
               <div className="flex justify-center md:justify-start">
                 <div
-                  className="cv-load-in cv-load-in--hero relative h-[210px] w-[210px] overflow-hidden rounded-full border-[6px] border-white bg-white shadow-[0_22px_50px_rgba(15,23,42,0.10)] transition duration-300 hover:shadow-[0_28px_60px_rgba(15,23,42,0.14)] sm:h-[230px] sm:w-[230px] lg:h-[252px] lg:w-[252px]"
+                  className="cv-load-in cv-load-in--hero relative h-[252px] w-[252px] overflow-hidden rounded-full border-[6px] border-white bg-white shadow-[0_22px_50px_rgba(15,23,42,0.10)] transition duration-300 hover:shadow-[0_28px_60px_rgba(15,23,42,0.14)] sm:h-[276px] sm:w-[276px] lg:h-[302px] lg:w-[302px]"
                   transition={
                     prefersReducedMotion
                       ? { duration: 0 }

@@ -291,7 +291,7 @@ const experience: ExperienceItem[] = [
 
 const languages: Language[] = [
   { code: "ES", name: "Español", level: "Native", value: 100, accent: "blue" },
-  { code: "EN", name: "English", level: "Advanced", value: 90, accent: "blue", highlighted: true },
+  { code: "EN", name: "English", level: "Advanced", value: 90, accent: "blue" },
   { code: "PT", name: "Portuguese", level: "Developing", value: 45, accent: "green" },
 ];
 
@@ -503,11 +503,7 @@ function LanguageCard({
   return (
     <article
       data-animate
-      className={`cv-load-in cv-load-in--stagger group flex h-full flex-col rounded-[24px] border bg-white px-4 py-4 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(15,23,42,0.08)] motion-reduce:transform-none motion-reduce:transition-none ${
-        language.highlighted
-          ? "border-[rgba(29,164,237,0.30)] shadow-[0_18px_40px_rgba(29,164,237,0.10)]"
-          : "border-[rgba(15,23,42,0.08)] hover:border-[rgba(15,23,42,0.14)]"
-      }`}
+      className="cv-load-in cv-load-in--stagger group flex h-full flex-col rounded-[24px] border border-[rgba(15,23,42,0.08)] bg-white px-4 py-4 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(15,23,42,0.14)] hover:shadow-[0_12px_32px_rgba(15,23,42,0.08)] motion-reduce:transform-none motion-reduce:transition-none"
       style={{ animationDelay: `${index * 60}ms` }}
     >
       <div className="flex flex-1 flex-col items-center justify-between gap-3 py-1.5">

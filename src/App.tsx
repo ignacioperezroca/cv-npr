@@ -338,6 +338,18 @@ function MediumIcon() {
   );
 }
 
+function LinkedInIcon() {
+  return (
+    <img
+      src="/logos/linkedin.svg"
+      alt="LinkedIn logo"
+      loading="lazy"
+      decoding="async"
+      className="h-4 w-4 object-contain"
+    />
+  );
+}
+
 function TagPill({ children }: { children: string }) {
   return (
     <span className="rounded-full border border-[rgba(17,24,39,0.08)] bg-white px-3 py-1 text-[9px] font-medium tracking-[0.01em] text-[hsl(var(--cv-light-text))] shadow-[0_0_0_1px_rgba(255,255,255,0.4)]">
@@ -719,9 +731,22 @@ export default function App() {
                       </a>
 
                       <a
+                        href="https://www.linkedin.com/in/ignacio-perez-roca-10101010/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex items-center gap-3 text-[13px] text-[hsl(var(--cv-body))] transition-colors duration-200 hover:text-[hsl(var(--cv-section-title))]"
+                        aria-label="Open Ignacio Perez Roca LinkedIn profile"
+                      >
+                        <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(15,23,42,0.08)] bg-white/80 text-[hsl(var(--cv-contact-bar))] transition duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:bg-[rgba(29,164,237,0.06)]">
+                          <LinkedInIcon />
+                        </span>
+                        <span>LinkedIn</span>
+                      </a>
+
+                      <a
                         href="https://medium.com/@ignacio-perezroca"
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                         className="group flex items-center gap-3 text-[13px] text-[hsl(var(--cv-body))] transition-colors duration-200 hover:text-[hsl(var(--cv-section-title))]"
                         aria-label="Open medium.com/@ignacio-perezroca"
                       >

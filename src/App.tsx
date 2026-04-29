@@ -37,6 +37,7 @@ type EducationItem = {
   title: string;
   org: string;
   tags: string[];
+  url?: string;
 };
 
 type ExperienceItem = {
@@ -168,6 +169,13 @@ const knowledge: KnowledgeItem[] = [
 ];
 
 const education: EducationItem[] = [
+  {
+    year: "2025",
+    title: "Anthropic Academy",
+    org: "Anthropic",
+    tags: ["AI Fluency", "Claude", "Claude Code", "MCP"],
+    url: "https://www.anthropic.com/learn",
+  },
   {
     year: "2023",
     title: "Growth Product Management",

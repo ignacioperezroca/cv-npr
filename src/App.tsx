@@ -628,10 +628,10 @@ export default function App() {
                 : { duration: 0.58, ease: MOTION_EASE, delay: 0.05 }
             }
           >
-            <div className="grid items-start gap-6 md:grid-cols-[260px_minmax(0,1fr)] md:items-stretch md:gap-8 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-10">
-              <div className="flex justify-center md:h-full md:items-center md:justify-start">
+            <div className="grid items-center gap-6 md:grid-cols-[240px_minmax(0,1fr)] md:gap-8 lg:grid-cols-[270px_minmax(0,1fr)] lg:gap-10">
+              <div className="flex justify-center md:justify-start">
                 <div
-                  className="cv-load-in cv-load-in--hero relative h-[210px] w-[210px] overflow-hidden rounded-full border-[6px] border-white bg-white shadow-[0_22px_50px_rgba(15,23,42,0.10)] transition duration-300 hover:shadow-[0_28px_60px_rgba(15,23,42,0.14)] sm:h-[230px] sm:w-[230px] md:h-[260px] md:w-[260px] lg:h-[280px] lg:w-[280px]"
+                  className="cv-load-in cv-load-in--hero relative h-[210px] w-[210px] overflow-hidden rounded-full border-[6px] border-white bg-white shadow-[0_22px_50px_rgba(15,23,42,0.10)] transition duration-300 hover:shadow-[0_28px_60px_rgba(15,23,42,0.14)] sm:h-[230px] sm:w-[230px] lg:h-[252px] lg:w-[252px]"
                   transition={
                     prefersReducedMotion
                       ? { duration: 0 }
@@ -652,8 +652,8 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="flex h-full min-h-[260px] items-center rounded-[30px] border border-[rgba(15,23,42,0.08)] bg-[rgba(255,255,255,0.92)] px-6 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] backdrop-blur-[2px] sm:min-h-[230px] sm:px-7 sm:py-7 md:min-h-[260px] md:px-8 md:py-8 lg:min-h-[280px]">
-                <div className="w-full text-center md:text-left">
+              <div className="rounded-[30px] border border-[rgba(15,23,42,0.08)] bg-[rgba(255,255,255,0.92)] px-6 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] backdrop-blur-[2px] sm:px-7 sm:py-7 md:px-8 md:py-8">
+                <div className="text-center md:text-left">
                   <h1 className="text-[34px] font-semibold tracking-[-0.03em] text-[hsl(var(--cv-section-title))] sm:text-[40px] lg:text-[46px]">
                     Ignacio Perez Roca
                   </h1>

@@ -946,7 +946,7 @@ export default function App() {
                   data-section="Skills"
                   
                 >
-                  <h2 data-animate className="cv-section-title skills-title mb-2">
+                  <h2 data-animate className="cv-section-title skills-title">
                     TOOLS &amp; SKILLS
                   </h2>
                   <p
@@ -1001,7 +1001,7 @@ export default function App() {
                   data-section="Education"
                   
                 >
-                  <h2 data-animate className="education-title cv-section-title mb-2">
+                  <h2 data-animate className="education-title cv-section-title">
                     EDUCATION &amp; CERTIFICATIONS
                   </h2>
                   <p className="cv-section-subtitle">

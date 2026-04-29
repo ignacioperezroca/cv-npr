@@ -442,7 +442,7 @@ function LanguageCard({
       data-animate
       className={`cv-load-in cv-load-in--stagger group flex h-full flex-col rounded-[24px] border bg-white px-4 py-4 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(15,23,42,0.08)] motion-reduce:transform-none motion-reduce:transition-none ${
         language.highlighted
-          ? "border-[rgba(29,164,237,0.22)] shadow-[0_16px_34px_rgba(15,23,42,0.06)]"
+          ? "border-[rgba(29,164,237,0.30)] shadow-[0_18px_40px_rgba(29,164,237,0.10)]"
           : "border-[rgba(15,23,42,0.08)] hover:border-[rgba(15,23,42,0.14)]"
       }`}
       style={{ animationDelay: `${index * 60}ms` }}

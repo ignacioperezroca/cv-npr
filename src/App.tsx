@@ -635,7 +635,7 @@ export default function App() {
         
       >
         <article
-          className="cv-load-in cv-load-in--hero w-full bg-background md:my-0 md:w-[940px] lg:w-[1080px]"
+          className="cv-load-in cv-load-in--hero w-full bg-background md:my-0 md:w-[850px] lg:w-[972px]"
           style={{ fontFamily: "'Open Sans', sans-serif" }}
         >
           <header

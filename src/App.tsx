@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { Fragment, useEffect, useState, type ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import profileImage from "./assets/profile.png";
@@ -29,16 +29,14 @@ import {
   Database,
   Triangle,
 } from "lucide-react";
+import {
+  getLocaleFromPathname,
+  getPathForLocale,
+  translations,
+  type Locale,
+} from "./i18n";
 
 const MOTION_EASE = [0.22, 1, 0.36, 1] as const;
-
-type EducationItem = {
-  year: string;
-  title: string;
-  org: string;
-  tags: string[];
-  url?: string;
-};
 
 type ExperienceItem = {
   logo: string;
@@ -53,7 +51,14 @@ type Language = {
   level: string;
   value: number;
   accent: "blue" | "green";
-  highlighted?: boolean;
+};
+
+type EducationItem = {
+  year: string;
+  title: string;
+  org: string;
+  tags: string[];
+  url?: string;
 };
 
 type KnowledgeItem = {
@@ -68,233 +73,6 @@ type ToolItem = {
   url: string;
 };
 
-const tools: ToolItem[] = [
-  {
-    name: "Figma",
-    category: "Design & Prototyping",
-    logo: "https://cdn.simpleicons.org/figma",
-    url: "https://www.figma.com/",
-  },
-  {
-    name: "Miro",
-    category: "Product Discovery & Workshops",
-    logo: "https://cdn.simpleicons.org/miro",
-    url: "https://miro.com/",
-  },
-  {
-    name: "ChatGPT",
-    category: "AI Copilot & Product Strategy",
-    logo: "/logos/openai.svg",
-    url: "https://chatgpt.com/",
-  },
-  {
-    name: "Claude",
-    category: "AI Writing & Analysis",
-    logo: "https://cdn.simpleicons.org/anthropic",
-    url: "https://claude.com/",
-  },
-  {
-    name: "Gemini",
-    category: "AI Research & Productivity",
-    logo: "https://cdn.simpleicons.org/googlegemini",
-    url: "https://gemini.google.com/",
-  },
-  {
-    name: "Jira",
-    category: "Delivery & Roadmapping",
-    logo: "https://cdn.simpleicons.org/jira",
-    url: "https://www.atlassian.com/software/jira",
-  },
-  {
-    name: "Confluence",
-    category: "Documentation",
-    logo: "https://cdn.simpleicons.org/confluence",
-    url: "https://www.atlassian.com/software/confluence",
-  },
-  {
-    name: "Notion",
-    category: "Product Docs & Knowledge Base",
-    logo: "https://cdn.simpleicons.org/notion",
-    url: "https://www.notion.so/",
-  },
-  {
-    name: "Slack",
-    category: "Team Communication",
-    logo: "/logos/slack.svg",
-    url: "https://slack.com/",
-  },
-  {
-    name: "Amplitude",
-    category: "Product Analytics",
-    logo: "/logos/amplitude.svg",
-    url: "https://amplitude.com/",
-  },
-  {
-    name: "Looker",
-    category: "BI & Data Visualization",
-    logo: "https://cdn.simpleicons.org/looker",
-    url: "https://cloud.google.com/looker",
-  },
-  {
-    name: "CleverTap",
-    category: "Lifecycle & Engagement",
-    logo: "/logos/clevertap.svg",
-    url: "https://clevertap.com/",
-  },
-  {
-    name: "Keycloak",
-    category: "Identity & Authentication",
-    logo: "https://cdn.simpleicons.org/keycloak",
-    url: "https://www.keycloak.org/",
-  },
-  {
-    name: "Firebase",
-    category: "App Infrastructure",
-    logo: "/logos/firebase.svg",
-    url: "https://firebase.google.com/",
-  },
-  {
-    name: "Postman",
-    category: "API Testing",
-    logo: "https://cdn.simpleicons.org/postman",
-    url: "https://www.postman.com/",
-  },
-  {
-    name: "GitHub",
-    category: "Code Collaboration",
-    logo: "https://cdn.simpleicons.org/github",
-    url: "https://github.com/",
-  },
-  {
-    name: "Vercel",
-    category: "Frontend Deployment",
-    logo: "https://cdn.simpleicons.org/vercel",
-    url: "https://vercel.com/",
-  },
-];
-
-const knowledge: KnowledgeItem[] = [
-  { name: "Product Strategy", icon: <Target className="h-4 w-4" /> },
-  { name: "Product Vision", icon: <Eye className="h-4 w-4" /> },
-  { name: "Roadmap", icon: <Route className="h-4 w-4" /> },
-  { name: "Team Leadership", icon: <Users className="h-4 w-4" /> },
-  { name: "Scrum Master", icon: <Workflow className="h-4 w-4" /> },
-  { name: "User Experience", icon: <Brain className="h-4 w-4" /> },
-  { name: "Web Development", icon: <Code2 className="h-4 w-4" /> },
-  { name: "Product Development", icon: <Boxes className="h-4 w-4" /> },
-  { name: "Product Management", icon: <BriefcaseBusiness className="h-4 w-4" /> },
-  { name: "Blockchain | DEFI", icon: <BarChart3 className="h-4 w-4" /> },
-];
-
-const education: EducationItem[] = [
-  {
-    year: "2025",
-    title: "Anthropic Academy",
-    org: "Anthropic",
-    tags: ["AI Fluency", "Claude", "Claude Code", "MCP"],
-    url: "https://www.anthropic.com/learn",
-  },
-  {
-    year: "2023",
-    title: "Growth Product Management",
-    org: "Reforge®",
-    tags: ["Product", "Growth", "Strategy"],
-  },
-  {
-    year: "2019",
-    title: "Certified Scrum Product Owner (CSPO®)",
-    org: "Scrum Alliance. International Certified",
-    tags: ["Agile", "Product Ownership"],
-  },
-  {
-    year: "2016",
-    title: "Scrum Master Certified (SMC ®)",
-    org: "Scrum Alliance. International Certified",
-    tags: ["Agile", "Delivery"],
-  },
-  {
-    year: "2015",
-    title: "Angular",
-    org: "Udemy. International Certified",
-    tags: ["Frontend", "Frameworks"],
-  },
-  {
-    year: "2012",
-    title: "Frontend Developer",
-    org: "Coderhouse, Buenos Aires. Argentina",
-    tags: ["Frontend", "Web"],
-  },
-  {
-    year: "2012",
-    title: "Web development",
-    org: "Code Academy. International Certified",
-    tags: ["HTML", "CSS", "JavaScript"],
-  },
-  {
-    year: "2009",
-    title: "Bachelor in Graphic Design",
-    org: "Universidad de Buenos Aires. Argentina",
-    tags: ["Design", "UX", "Visual Systems"],
-  },
-];
-
-const experience: ExperienceItem[] = [
-  {
-    logo: ittiLogo,
-    role: "Senior Product Manager - Onboarding",
-    company: "itti",
-    period: "Sep 2024 – Present · 1 yr 7 mos",
-  },
-  {
-    logo: bitsoLogo,
-    role: "Senior Product Manager - Onboarding",
-    company: "@Bitso",
-    period: "Oct 2022 – Sep 2024 · 2 yrs",
-  },
-  {
-    logo: lemonLogo,
-    role: "Senior Product Manager - Growth",
-    company: "@Lemoncash",
-    period: "October 2021 - October 2022",
-  },
-  {
-    logo: personalPayLogo,
-    role: "Product Manager - Onboarding",
-    company: "Personal Pay",
-    period: "July 2020 - October 2021",
-  },
-  {
-    logo: iunigoLogo,
-    role: "Product Manager - Onboarding",
-    company: "IUNIGO",
-    period: "July 2019 - July 2020",
-  },
-  {
-    logo: ripioLogo,
-    role: "Product Manager - Onboarding",
-    company: "Ripio",
-    period: "September 2017 - July 2019",
-  },
-  {
-    logo: telecomLogo,
-    role: "Designer & Frontend Developer",
-    company: "Personal - Telecom",
-    period: "March 2015 - September 2017",
-  },
-  {
-    logo: thetLogo,
-    role: "Designer & Frontend Developer",
-    company: "Thet Studio",
-    period: "February 2011 - March 2015",
-  },
-];
-
-const languages: Language[] = [
-  { code: "ES", name: "Español", level: "Native", value: 100, accent: "blue" },
-  { code: "EN", name: "English", level: "Advanced", value: 90, accent: "blue" },
-  { code: "PT", name: "Portuguese", level: "Developing", value: 45, accent: "green" },
-];
-
 function SkillDots({ filled }: { filled: number }) {
   return (
     <div className="flex gap-[4px]">
@@ -308,6 +86,22 @@ function SkillDots({ filled }: { filled: number }) {
       ))}
     </div>
   );
+}
+
+function renderRichText(text: string) {
+  const parts = text.split(/(\*\*.+?\*\*)/g);
+
+  return parts.map((part, index) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong key={`${part}-${index}`} className="font-semibold text-[hsl(var(--cv-section-title))]">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+
+    return <Fragment key={`${part}-${index}`}>{part}</Fragment>;
+  });
 }
 
 function DottedSeparator() {
@@ -347,6 +141,42 @@ function LinkedInIcon() {
       decoding="async"
       className="h-4 w-4 object-contain"
     />
+  );
+}
+
+function LocaleSwitch({
+  locale,
+  onChange,
+}: {
+  locale: Locale;
+  onChange: (next: Locale) => void;
+}) {
+  return (
+    <div
+      className="inline-flex rounded-full border border-[rgba(15,23,42,0.08)] bg-white/85 p-1 shadow-[0_10px_30px_rgba(15,23,42,0.06)] backdrop-blur-[2px]"
+      role="group"
+      aria-label="Language switcher"
+    >
+      {(["en", "es"] as Locale[]).map((item) => {
+        const active = item === locale;
+        return (
+          <button
+            key={item}
+            type="button"
+            onClick={() => onChange(item)}
+            aria-pressed={active}
+            aria-label={item === "en" ? "Switch to English" : "Cambiar a español"}
+            className={`rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(29,164,237,0.35)] ${
+              active
+                ? "bg-[hsl(var(--cv-contact-bar))] text-white shadow-[0_8px_18px_rgba(29,164,237,0.22)]"
+                : "text-[hsl(var(--cv-light-text))] hover:bg-[rgba(29,164,237,0.08)] hover:text-[hsl(var(--cv-section-title))]"
+            }`}
+          >
+            {item.toUpperCase()}
+          </button>
+        );
+      })}
+    </div>
   );
 }
 
@@ -595,6 +425,19 @@ function EducationTimelineItem({ item, index }: { item: EducationItem; index: nu
 
 export default function App() {
   const prefersReducedMotion = false;
+  const [locale, setLocale] = useState<Locale>(() => {
+    if (typeof window === "undefined") return "en";
+    return getLocaleFromPathname(window.location.pathname);
+  });
+  const content = translations[locale];
+  const sections = content.sections;
+  const tools = content.sections.tools.items;
+  const education = content.sections.education.items;
+  const experience = content.sections.experience.items.map((item, index) => ({
+    ...item,
+    logo: [ittiLogo, bitsoLogo, lemonLogo, personalPayLogo, iunigoLogo, ripioLogo, telecomLogo, thetLogo][index],
+  }));
+  const languages = content.sections.languages.items;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -656,6 +499,89 @@ export default function App() {
     nodes.forEach((node) => observer.observe(node));
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    const applyLocale = () => {
+      const nextLocale = getLocaleFromPathname(window.location.pathname);
+      setLocale(nextLocale);
+      const canonicalPath = getPathForLocale(nextLocale);
+      if (window.location.pathname !== canonicalPath) {
+        window.history.replaceState({}, "", canonicalPath);
+      }
+    };
+
+    applyLocale();
+    window.document.documentElement.lang = locale;
+
+    const handlePopState = () => {
+      applyLocale();
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = locale;
+    document.title = content.meta.title;
+
+    const ensureMeta = (selector: string, attr: string, value: string) => {
+      let el = document.head.querySelector<HTMLMetaElement | HTMLLinkElement>(selector);
+      if (!el) {
+        el = selector.startsWith('link') ? document.createElement('link') : document.createElement('meta');
+        document.head.appendChild(el);
+      }
+      el.setAttribute(attr, value);
+    };
+
+    ensureMeta('meta[name="description"]', "content", content.meta.description);
+    ensureMeta('meta[property="og:title"]', "content", content.meta.ogTitle);
+    ensureMeta('meta[property="og:description"]', "content", content.meta.ogDescription);
+    ensureMeta('meta[property="og:url"]', "content", `${window.location.origin}${locale === "es" ? "/es" : "/"}`);
+    ensureMeta('meta[property="og:type"]', "content", "website");
+    ensureMeta('meta[property="og:image"]', "content", `${window.location.origin}/og-image.svg`);
+    ensureMeta('meta[name="twitter:card"]', "content", "summary_large_image");
+    ensureMeta('meta[name="twitter:title"]', "content", content.meta.ogTitle);
+    ensureMeta('meta[name="twitter:description"]', "content", content.meta.ogDescription);
+    ensureMeta('meta[name="twitter:image"]', "content", `${window.location.origin}/og-image.svg`);
+
+    const canonical = `${window.location.origin}${locale === "es" ? "/es" : "/"}`;
+    const alternates = [
+      { hreflang: "en", href: `${window.location.origin}/` },
+      { hreflang: "es", href: `${window.location.origin}/es` },
+      { hreflang: "x-default", href: `${window.location.origin}/` },
+    ];
+
+    let canonicalLink = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement("link");
+      canonicalLink.rel = "canonical";
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.href = canonical;
+
+    alternates.forEach(({ hreflang, href }) => {
+      const selector = `link[rel="alternate"][hreflang="${hreflang}"]`;
+      let link = document.head.querySelector<HTMLLinkElement>(selector);
+      if (!link) {
+        link = document.createElement("link");
+        link.rel = "alternate";
+        link.hreflang = hreflang;
+        document.head.appendChild(link);
+      }
+      link.href = href;
+    });
+  }, [content.meta.description, content.meta.ogDescription, content.meta.ogTitle, content.meta.title, locale]);
+
+  const navigateToLocale = (nextLocale: Locale) => {
+    if (nextLocale === locale) return;
+    const nextPath = getPathForLocale(nextLocale);
+    window.history.pushState({}, "", nextPath);
+    setLocale(nextLocale);
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
+  };
+
   return (
     <>
       <main
@@ -698,14 +624,16 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="rounded-[30px] border border-[rgba(15,23,42,0.08)] bg-[rgba(255,255,255,0.92)] px-6 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] backdrop-blur-[2px] sm:px-7 sm:py-7 md:px-8 md:py-8">
+              <div className="relative rounded-[30px] border border-[rgba(15,23,42,0.08)] bg-[rgba(255,255,255,0.92)] px-6 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] backdrop-blur-[2px] sm:px-7 sm:py-7 md:px-8 md:py-8">
+                <div className="absolute right-4 top-4 md:right-6 md:top-6">
+                  <LocaleSwitch locale={locale} onChange={navigateToLocale} />
+                </div>
                 <div className="text-center md:text-left">
                   <h1 className="text-[34px] font-semibold tracking-[-0.03em] text-[hsl(var(--cv-section-title))] sm:text-[40px] lg:text-[46px]">
                     Ignacio Perez Roca
                   </h1>
                   <p className="mt-2 max-w-[34rem] text-[15px] leading-[1.45] text-[hsl(var(--cv-light-text))] sm:text-[16px]">
-                    Senior Product Manager | Identity, KYC, Authentication &
-                    Growth
+                    {content.header.headline}
                   </p>
                 </div>
 
@@ -716,7 +644,7 @@ export default function App() {
                       <a
                         href="tel:+5491158077847"
                         className="group flex items-center gap-3 text-[13px] text-[hsl(var(--cv-body))] transition-colors duration-200 hover:text-[hsl(var(--cv-section-title))]"
-                        aria-label="Call +54 911 5807 7847"
+                        aria-label={content.header.phoneAria}
                       >
                         <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(15,23,42,0.08)] bg-white/80 text-[hsl(var(--cv-contact-bar))] transition duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:bg-[rgba(29,164,237,0.06)]">
                         <WhatsAppIcon />
@@ -729,12 +657,12 @@ export default function App() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group flex items-center gap-3 text-[13px] text-[hsl(var(--cv-body))] transition-colors duration-200 hover:text-[hsl(var(--cv-section-title))]"
-                        aria-label="Open Ignacio Perez Roca LinkedIn profile"
+                        aria-label={content.header.linkedinAria}
                       >
                         <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(15,23,42,0.08)] bg-white/80 text-[hsl(var(--cv-contact-bar))] transition duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:bg-[rgba(29,164,237,0.06)]">
                           <LinkedInIcon />
                         </span>
-                        <span>LinkedIn</span>
+                        <span>{content.header.linkedinLabel}</span>
                       </a>
 
                       <a
@@ -742,12 +670,12 @@ export default function App() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group flex items-center gap-3 text-[13px] text-[hsl(var(--cv-body))] transition-colors duration-200 hover:text-[hsl(var(--cv-section-title))]"
-                        aria-label="Open medium.com/@ignacio-perezroca"
+                        aria-label={content.header.mediumAria}
                       >
                         <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(15,23,42,0.08)] bg-white/80 text-[hsl(var(--cv-contact-bar))] transition duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:bg-[rgba(29,164,237,0.06)]">
                         <MediumIcon />
                         </span>
-                        <span>medium.com/@ignacio-perezroca</span>
+                        <span>{content.header.mediumLabel}</span>
                       </a>
                     </div>
                   </div>
@@ -764,60 +692,40 @@ export default function App() {
                   data-section="Personal Statement"
                   
                 >
-                  <h2 className="cv-section-title">PERSONAL STATEMENT</h2>
+                  <h2 className="cv-section-title">
+                    {sections.personalStatement.title}
+                  </h2>
                   <p className="cv-section-subtitle">
-                    Human-first product leadership for onboarding, identity,
-                    and growth.
+                    {sections.personalStatement.subtitle}
                   </p>
                   <DottedSeparator />
 
                   <div className="mt-2 space-y-2">
                     <p className="cv-body-text">
-                      I&apos;m a <strong>Senior Product Manager</strong> with{" "}
-                      <strong>16+ years of experience</strong> building
-                      human-first, scalable onboarding journeys.
+                      {renderRichText(sections.personalStatement.paragraphs[0])}
                     </p>
                     <p className="cv-body-text">
-                      Over the years, I&apos;ve acquired a wide range of tools,
-                      tactics, and experience across various roles and industries.
-                      I specialize in{" "}
-                      <strong>digital identity, KYC, authentication, and product-led growth</strong>.
-                      I&apos;ve led international teams from 0 to 18+ across
-                      Argentina, Brazil, Mexico, Paraguay, and Colombia,
-                      successfully onboarding <strong>over 8 million users</strong>{" "}
-                      in fintech, crypto, and Web3.
+                      {renderRichText(sections.personalStatement.paragraphs[1])}
                     </p>
                     <p className="cv-body-text">
-                      Having built products from scratch in various roles, my
-                      strength lies in combining empathy and visual thinking (User
-                      Experience Design) with technical experience (8 years as a
-                      developer). This holistic perspective allows me to translate
-                      metrics into meaningful product experiences that drive
-                      acquisition, retention, and long-term impact.
+                      {renderRichText(sections.personalStatement.paragraphs[2])}
                     </p>
                     <p className="cv-body-text">
-                      When it comes to building, I rely on data to surface real
-                      problems and opportunities, and I craft products that
-                      simplify people&apos;s lives. I hold a Certified Scrum Product
-                      Owner (CSPO®), Certified Scrum Trainer (CST®), and several
-                      other certifications from world-class universities.
+                      {renderRichText(sections.personalStatement.paragraphs[3])}
                     </p>
                     <p className="cv-body-text">
-                      My mission is to build trust, empower teams, and deliver
-                      products that people love.
+                      {renderRichText(sections.personalStatement.paragraphs[4])}
                     </p>
                   </div>
 
                   <section className="mt-3" data-section="Key Achievements">
-                    <p className="cv-body-text mb-1 font-bold">Key achievements</p>
+                    <p className="cv-body-text mb-1 font-bold">
+                      {sections.personalStatement.achievementsTitle}
+                    </p>
                     <ul className="cv-body-text list-none space-y-0.5">
-                      <li>• <strong>Boosted Bitso&apos;s onboarding conversion by +262%</strong> for over 8M users.</li>
-                      <li>• <strong>Scaled Lemon from 60k to 2M users in 6 months</strong> (+3200% growth).</li>
-                      <li>• <strong>Built and scaled UNID (Unified Identity)</strong>, unifying ~3M users across 30 companies within the Grupo Vázquez ecosystem.</li>
-                      <li>• Led multi-country onboarding launches across LatAm, acquiring over 1M users in the first year.</li>
-                      <li>• Led Bitso&apos;s product expansion, scaling from 4 million to nearly 7 million users (+75% annual growth).</li>
-                      <li>• Developed a new home screen for an exchange with over 8M users, driving a <strong>35% increase in product activation</strong>.</li>
-                      <li>• <strong>Led cross-functional teams from 0 to 18+</strong> across Argentina, Brazil, Mexico, Paraguay, Colombia and United States.</li>
+                      {sections.personalStatement.achievements.map((item) => (
+                        <li key={item}>• {renderRichText(item)}</li>
+                      ))}
                     </ul>
                   </section>
                 </section>
@@ -827,10 +735,9 @@ export default function App() {
                   data-section="Experience"
                   
                 >
-                  <h2 className="cv-section-title">EXPERIENCE</h2>
+                  <h2 className="cv-section-title">{sections.experience.title}</h2>
                   <p className="cv-section-subtitle">
-                    A career focused on fintech, crypto, onboarding, and
-                    identity.
+                    {sections.experience.subtitle}
                   </p>
                   <DottedSeparator />
 
@@ -871,10 +778,9 @@ export default function App() {
                   data-section="Specialty"
                   
                 >
-                  <h2 className="cv-section-title">SPECIALTY</h2>
+                  <h2 className="cv-section-title">{sections.specialty.title}</h2>
                   <p className="cv-section-subtitle">
-                    Core domains where I create the most impact as a Product
-                    Manager.
+                    {sections.specialty.subtitle}
                   </p>
                   <DottedSeparator />
 
@@ -887,7 +793,7 @@ export default function App() {
                       }
                     >
                       <SpecialtyNode
-                        label="Product"
+                        label={sections.specialty.items[0]}
                         iconClassName="text-[hsl(201_85%_52%)]"
                         icon={<Route className="h-10 w-10" strokeWidth={1.8} />}
                       />
@@ -900,7 +806,7 @@ export default function App() {
                       }
                     >
                       <SpecialtyNode
-                        label="Development"
+                        label={sections.specialty.items[1]}
                         iconClassName="text-[hsl(201_85%_52%)]"
                         icon={<Code2 className="h-10 w-10" strokeWidth={1.8} />}
                       />
@@ -913,7 +819,7 @@ export default function App() {
                       }
                     >
                       <SpecialtyNode
-                        label="Product Design"
+                        label={sections.specialty.items[2]}
                         iconClassName="text-[hsl(201_85%_52%)]"
                         icon={<LayoutGrid className="h-10 w-10" strokeWidth={1.8} />}
                       />
@@ -926,9 +832,9 @@ export default function App() {
                   data-section="Languages"
                   
                 >
-                  <h2 className="cv-section-title">LANGUAGES</h2>
+                  <h2 className="cv-section-title">{sections.languages.title}</h2>
                   <p className="cv-section-subtitle">
-                    Multilingual communication for international teams.
+                    {sections.languages.subtitle}
                   </p>
                   <DottedSeparator />
                   <div className="cv-load-in cv-load-in--row mt-3 grid flex-1 grid-cols-1 gap-4 px-2 md:px-0 xl:grid-cols-3">
@@ -950,14 +856,13 @@ export default function App() {
                   
                 >
                   <h2 data-animate className="cv-section-title skills-title">
-                    TOOLS &amp; SKILLS
+                    {sections.tools.title}
                   </h2>
                   <p
                     data-animate
                     className="skills-subtitle cv-section-subtitle"
                   >
-                    AI-native product work, design, delivery, and analytics
-                    fluency.
+                    {sections.tools.subtitle}
                   </p>
                   <DottedSeparator />
 
@@ -1005,11 +910,10 @@ export default function App() {
                   
                 >
                   <h2 data-animate className="education-title cv-section-title">
-                    EDUCATION &amp; CERTIFICATIONS
+                    {sections.education.title}
                   </h2>
                   <p className="cv-section-subtitle">
-                    Formal training across product, development, design,
-                    agile and growth.
+                    {sections.education.subtitle}
                   </p>
                   <DottedSeparator />
                   <ul className="education-list cv-load-in cv-load-in--row mt-3 list-none">

@@ -28,6 +28,8 @@ import {
   BarChart3,
   Database,
   Triangle,
+  Phone,
+  Link2,
 } from "lucide-react";
 
 const MOTION_EASE = [0.22, 1, 0.36, 1] as const;
@@ -619,49 +621,78 @@ export default function App() {
           style={{ fontFamily: "'Open Sans', sans-serif" }}
         >
           <header
-            className="cv-load-in cv-load-in--hero flex flex-col items-center gap-5 px-6 pb-8 pt-8 text-center sm:px-8 md:flex-row md:items-start md:gap-8 md:px-10 md:pb-8 md:pt-10 md:text-left"
+            className="cv-load-in cv-load-in--hero px-6 pb-8 pt-8 sm:px-8 md:px-10 md:pb-10 md:pt-10"
             transition={
               prefersReducedMotion
                 ? { duration: 0 }
                 : { duration: 0.58, ease: MOTION_EASE, delay: 0.05 }
             }
           >
-            <div
-              className="h-[180px] w-[180px] shrink-0 overflow-hidden rounded-full bg-white sm:h-[202px] sm:w-[202px] md:h-[216px] md:w-[216px]"
-              transition={
-                prefersReducedMotion
-                  ? { duration: 0 }
-                  : { duration: 0.45, ease: MOTION_EASE, delay: 0.08 }
-              }
-              >
-              <img
-                src={profileImage}
-                alt="Ignacio Perez Roca"
-                className="h-full w-full scale-[1.06] object-cover"
-                style={{ objectPosition: "46% 16%" }}
-                transition={
-                  prefersReducedMotion
-                    ? { duration: 0 }
-                    : { duration: 0.35, ease: MOTION_EASE, delay: 0.08 }
-                }
-              />
-            </div>
-
-            <div className="pt-0 md:pt-2">
-              <h1 className="text-[28px] font-light tracking-wide text-[hsl(var(--cv-section-title))] sm:text-[30px] md:text-[32px]">
-                Ignacio Perez Roca
-              </h1>
-              <p className="mt-0.5 text-[14px] text-[hsl(var(--cv-light-text))]">
-                Senior Product Manager | Identity, KYC, Authentication &
-                Growth
-              </p>
-
-              <div className="mt-4 flex items-start justify-center gap-3 md:mt-5 md:justify-start">
-                <div className="w-[3px] self-stretch rounded bg-[hsl(var(--cv-contact-bar))]" />
-                <div className="flex flex-col gap-1 text-left text-[12px] text-[hsl(var(--cv-body))]">
-                  <span>+54 911 5807 7847</span>
-                  <span>medium.com/@ignacio-perezroca</span>
+            <div className="grid items-center gap-6 md:grid-cols-[240px_minmax(0,1fr)] md:gap-8 lg:grid-cols-[270px_minmax(0,1fr)] lg:gap-10">
+              <div className="flex justify-center md:justify-start">
+                <div
+                  className="cv-load-in cv-load-in--hero relative h-[210px] w-[210px] overflow-hidden rounded-full border-[6px] border-white bg-white shadow-[0_22px_50px_rgba(15,23,42,0.10)] transition duration-300 hover:shadow-[0_28px_60px_rgba(15,23,42,0.14)] sm:h-[230px] sm:w-[230px] lg:h-[252px] lg:w-[252px]"
+                  transition={
+                    prefersReducedMotion
+                      ? { duration: 0 }
+                      : { duration: 0.45, ease: MOTION_EASE, delay: 0.08 }
+                  }
+                >
+                  <img
+                    src={profileImage}
+                    alt="Ignacio Perez Roca"
+                    className="h-full w-full scale-[1.04] object-cover"
+                    style={{ objectPosition: "46% 16%" }}
+                    transition={
+                      prefersReducedMotion
+                        ? { duration: 0 }
+                        : { duration: 0.35, ease: MOTION_EASE, delay: 0.08 }
+                    }
+                  />
                 </div>
+              </div>
+
+              <div className="rounded-[30px] border border-[rgba(15,23,42,0.08)] bg-[rgba(255,255,255,0.92)] px-6 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] backdrop-blur-[2px] sm:px-7 sm:py-7 md:px-8 md:py-8">
+                <div className="text-center md:text-left">
+                  <h1 className="text-[34px] font-semibold tracking-[-0.03em] text-[hsl(var(--cv-section-title))] sm:text-[40px] lg:text-[46px]">
+                    Ignacio Perez Roca
+                  </h1>
+                  <p className="mt-2 max-w-[34rem] text-[15px] leading-[1.45] text-[hsl(var(--cv-light-text))] sm:text-[16px]">
+                    Senior Product Manager | Identity, KYC, Authentication &
+                    Growth
+                  </p>
+                </div>
+
+                <address className="not-italic">
+                  <div className="mt-6 flex items-stretch gap-4">
+                    <div className="w-[3px] rounded bg-[hsl(var(--cv-contact-bar))]" />
+                    <div className="flex flex-col gap-3 text-left">
+                      <a
+                        href="tel:+5491158077847"
+                        className="group flex items-center gap-3 text-[13px] text-[hsl(var(--cv-body))] transition-colors duration-200 hover:text-[hsl(var(--cv-section-title))]"
+                        aria-label="Call +54 911 5807 7847"
+                      >
+                        <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(15,23,42,0.08)] bg-white/80 text-[hsl(var(--cv-contact-bar))] transition duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:bg-[rgba(29,164,237,0.06)]">
+                          <Phone className="h-4 w-4" aria-hidden="true" />
+                        </span>
+                        <span>+54 911 5807 7847</span>
+                      </a>
+
+                      <a
+                        href="https://medium.com/@ignacio-perezroca"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group flex items-center gap-3 text-[13px] text-[hsl(var(--cv-body))] transition-colors duration-200 hover:text-[hsl(var(--cv-section-title))]"
+                        aria-label="Open medium.com/@ignacio-perezroca"
+                      >
+                        <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(15,23,42,0.08)] bg-white/80 text-[hsl(var(--cv-contact-bar))] transition duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:bg-[rgba(29,164,237,0.06)]">
+                          <Link2 className="h-4 w-4" aria-hidden="true" />
+                        </span>
+                        <span>medium.com/@ignacio-perezroca</span>
+                      </a>
+                    </div>
+                  </div>
+                </address>
               </div>
             </div>
           </header>

@@ -765,7 +765,7 @@ export default function App() {
                 </section>
               </div>
 
-              <div className="mt-12 flex flex-col gap-6 md:mt-16 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:gap-x-[34px]">
+              <div className="mt-16 flex flex-col gap-6 md:mt-20 md:grid md:grid-cols-2 md:items-stretch md:gap-x-[32px] md:gap-y-0 lg:mt-24 lg:gap-x-[34px]">
                 <section
                   className="cv-load-in cv-load-in--section order-2 h-full md:order-none md:flex md:min-h-[300px] md:flex-col"
                   data-section="Specialty"

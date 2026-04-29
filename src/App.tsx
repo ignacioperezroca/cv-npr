@@ -767,10 +767,11 @@ export default function App() {
                       </strong>{" "}
                       I specialize in{" "}
                       <strong>digital identity, KYC, authentication, and product-led growth</strong>.
-                      I&apos;ve led international teams from <strong>0 to 18+</strong>{" "}
-                      across <strong>Argentina, Brazil, Mexico, Paraguay, and Colombia</strong>,
-                      successfully onboarding <strong>over 8 million users</strong> in{" "}
-                      <strong>fintech, crypto, and Web3</strong>.
+                      I&apos;ve led international teams from{" "}
+                      <strong>0 to 18+</strong> across{" "}
+                      <strong>Argentina, Brazil, Mexico, Paraguay, and Colombia</strong>,
+                      successfully onboarding <strong>over 8 million users</strong>{" "}
+                      in <strong>fintech, crypto, and Web3</strong>.
                     </p>
                     <p className="cv-body-text">
                       <strong className="font-semibold text-[hsl(var(--cv-section-title))]">
@@ -782,7 +783,8 @@ export default function App() {
                       </strong>{" "}
                       This holistic perspective allows me to translate{" "}
                       <strong>metrics into meaningful product experiences</strong>{" "}
-                      that drive <strong>acquisition, retention, and long-term impact</strong>.
+                      that drive{" "}
+                      <strong>acquisition, retention, and long-term impact</strong>.
                     </p>
                     <p className="cv-body-text">
                       <strong className="font-semibold text-[hsl(var(--cv-section-title))]">
@@ -796,7 +798,12 @@ export default function App() {
                     </p>
                     <p className="cv-body-text">
                       <strong className="font-semibold text-[hsl(var(--cv-section-title))]">
-                        My mission is to <strong>build trust, empower teams, and deliver products that people love</strong>.
+                        My mission is to{" "}
+                        <strong>
+                          build trust, empower teams, and deliver products that people
+                          love
+                        </strong>
+                        .
                       </strong>
                     </p>
                   </div>

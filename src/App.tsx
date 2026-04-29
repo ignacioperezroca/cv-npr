@@ -759,8 +759,9 @@ export default function App() {
                   <div className="mt-2 space-y-2">
                     <p className="cv-body-text">
                       <strong className="font-semibold text-[hsl(var(--cv-section-title))]">
-                        I&apos;m a Senior Product Manager with 16+ years of experience
-                        building human-first, scalable onboarding journeys.
+                        I&apos;m a <strong>Senior Product Manager</strong> with{" "}
+                        <strong>16+ years of experience</strong> building{" "}
+                        <strong>human-first, scalable onboarding journeys</strong>.
                       </strong>
                     </p>
                     <p className="cv-body-text">
@@ -768,37 +769,38 @@ export default function App() {
                         Over the years, I&apos;ve acquired a wide range of tools,
                         tactics, and experience across various roles and industries.
                       </strong>{" "}
-                      I specialize in digital identity, KYC, authentication, and
-                      product-led growth. I&apos;ve led international teams from 0
-                      to 18+ across Argentina, Brazil, Mexico, Paraguay, and
-                      Colombia, successfully onboarding over 8 million users in
-                      fintech, crypto, and Web3.
+                      I specialize in{" "}
+                      <strong>digital identity, KYC, authentication, and product-led growth</strong>.
+                      I&apos;ve led international teams from <strong>0 to 18+</strong>{" "}
+                      across <strong>Argentina, Brazil, Mexico, Paraguay, and Colombia</strong>,
+                      successfully onboarding <strong>over 8 million users</strong> in{" "}
+                      <strong>fintech, crypto, and Web3</strong>.
                     </p>
                     <p className="cv-body-text">
                       <strong className="font-semibold text-[hsl(var(--cv-section-title))]">
                         Having built products from scratch in various roles, my
-                        strength lies in combining empathy and visual thinking (User
-                        Experience Design) with technical experience (8 years as a
-                        developer).
+                        strength lies in combining <strong>empathy and visual thinking</strong>{" "}
+                        (<strong>User Experience Design</strong>) with{" "}
+                        <strong>technical experience</strong> (
+                        <strong>8 years as a developer</strong>).
                       </strong>{" "}
-                      This holistic perspective allows me to translate metrics into
-                      meaningful product experiences that drive acquisition,
-                      retention, and long-term impact.
+                      This holistic perspective allows me to translate{" "}
+                      <strong>metrics into meaningful product experiences</strong>{" "}
+                      that drive <strong>acquisition, retention, and long-term impact</strong>.
                     </p>
                     <p className="cv-body-text">
                       <strong className="font-semibold text-[hsl(var(--cv-section-title))]">
-                        When it comes to building, I rely on data to surface real
-                        problems and opportunities, and I craft products that
-                        simplify people&apos;s lives.
+                        When it comes to building, I rely on <strong>data</strong> to
+                        surface real problems and opportunities, and I craft products
+                        that <strong>simplify people&apos;s lives</strong>.
                       </strong>{" "}
-                      I hold a Certified Scrum Product Owner (CSPO®), Certified
-                      Scrum Trainer (CST®), and several other certifications from
-                      world-class universities.
+                      I hold a <strong>Certified Scrum Product Owner (CSPO®)</strong>,
+                      <strong> Scrum Master Certified (SMC®)</strong>, and several
+                      other certifications from world-class universities.
                     </p>
                     <p className="cv-body-text">
                       <strong className="font-semibold text-[hsl(var(--cv-section-title))]">
-                        My mission is to build trust, empower teams, and deliver
-                        products that people love.
+                        My mission is to <strong>build trust, empower teams, and deliver products that people love</strong>.
                       </strong>
                     </p>
                   </div>
@@ -806,13 +808,13 @@ export default function App() {
                   <section className="mt-3" data-section="Key Achievements">
                     <p className="cv-body-text mb-1 font-bold">Key achievements</p>
                     <ul className="cv-body-text list-none space-y-0.5">
-                      <li>• Boosted Bitso&apos;s onboarding conversion by +262% for over 8M users.</li>
-                      <li>• Scaled Lemon from 60k to 2M users in 6 months (+3200% growth).</li>
-                      <li>• Built and scaled UNID (Unified Identity), unifying ~3M users across 30 companies within the Grupo Vázquez ecosystem.</li>
-                      <li>• Led multi-country onboarding launches across LatAm, acquiring over 1M users in the first year.</li>
-                      <li>• Led Bitso&apos;s product expansion, scaling from 4 million to nearly 7 million users (+75% annual growth).</li>
-                      <li>• Developed a new home screen for an exchange with over 8M users, driving a 35% increase in product activation.</li>
-                      <li>• Led cross-functional teams from 0 to 18+ across Argentina, Brazil, Mexico, Paraguay, Colombia and United States.</li>
+                      <li>• <strong>Boosted Bitso&apos;s onboarding conversion by +262%</strong> for over <strong>8M users</strong>.</li>
+                      <li>• <strong>Scaled Lemon from 60k to 2M users in 6 months</strong> (<strong>+3200% growth</strong>).</li>
+                      <li>• <strong>Built and scaled UNID (Unified Identity)</strong>, unifying <strong>~3M users across 30 companies</strong> within the Grupo Vázquez ecosystem.</li>
+                      <li>• <strong>Led multi-country onboarding launches across LatAm</strong>, acquiring <strong>over 1M users in the first year</strong>.</li>
+                      <li>• <strong>Led Bitso&apos;s product expansion</strong>, scaling from <strong>4 million to nearly 7 million users</strong> (<strong>+75% annual growth</strong>).</li>
+                      <li>• <strong>Developed a new home screen for an exchange with over 8M users</strong>, driving a <strong>35% increase in product activation</strong>.</li>
+                      <li>• <strong>Led cross-functional teams from 0 to 18+</strong> across <strong>Argentina, Brazil, Mexico, Paraguay, Colombia and United States</strong>.</li>
                     </ul>
                   </section>
                 </section>

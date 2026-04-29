@@ -67,6 +67,7 @@ type ToolItem = {
   name: string;
   category: string;
   logo: string;
+  url: string;
 };
 
 const tools: ToolItem[] = [
@@ -74,86 +75,103 @@ const tools: ToolItem[] = [
     name: "Figma",
     category: "Design & Prototyping",
     logo: "https://cdn.simpleicons.org/figma",
+    url: "https://www.figma.com/",
   },
   {
     name: "Miro",
     category: "Product Discovery & Workshops",
     logo: "https://cdn.simpleicons.org/miro",
+    url: "https://miro.com/",
   },
   {
     name: "ChatGPT",
     category: "AI Copilot & Product Strategy",
     logo: "/logos/openai.svg",
+    url: "https://chatgpt.com/",
   },
   {
     name: "Claude",
     category: "AI Writing & Analysis",
     logo: "https://cdn.simpleicons.org/anthropic",
+    url: "https://claude.com/",
   },
   {
     name: "Gemini",
     category: "AI Research & Productivity",
     logo: "https://cdn.simpleicons.org/googlegemini",
+    url: "https://gemini.google.com/",
   },
   {
     name: "Jira",
     category: "Delivery & Roadmapping",
     logo: "https://cdn.simpleicons.org/jira",
+    url: "https://www.atlassian.com/software/jira",
   },
   {
     name: "Confluence",
     category: "Documentation",
     logo: "https://cdn.simpleicons.org/confluence",
+    url: "https://www.atlassian.com/software/confluence",
   },
   {
     name: "Notion",
     category: "Product Docs & Knowledge Base",
     logo: "https://cdn.simpleicons.org/notion",
+    url: "https://www.notion.so/",
   },
   {
     name: "Slack",
     category: "Team Communication",
     logo: "/logos/slack.svg",
+    url: "https://slack.com/",
   },
   {
     name: "Amplitude",
     category: "Product Analytics",
     logo: "/logos/amplitude.svg",
+    url: "https://amplitude.com/",
   },
   {
     name: "Looker",
     category: "BI & Data Visualization",
     logo: "https://cdn.simpleicons.org/looker",
+    url: "https://cloud.google.com/looker",
   },
   {
     name: "CleverTap",
     category: "Lifecycle & Engagement",
     logo: "/logos/clevertap.svg",
+    url: "https://clevertap.com/",
   },
   {
     name: "Keycloak",
     category: "Identity & Authentication",
     logo: "https://cdn.simpleicons.org/keycloak",
+    url: "https://www.keycloak.org/",
   },
   {
     name: "Firebase",
     category: "App Infrastructure",
     logo: "/logos/firebase.svg",
+    url: "https://firebase.google.com/",
   },
   {
     name: "Postman",
     category: "API Testing",
     logo: "https://cdn.simpleicons.org/postman",
+    url: "https://www.postman.com/",
   },
   {
     name: "GitHub",
     category: "Code Collaboration",
     logo: "https://cdn.simpleicons.org/github",
+    url: "https://github.com/",
   },
   {
     name: "Vercel",
     category: "Frontend Deployment",
     logo: "https://cdn.simpleicons.org/vercel",
+    url: "https://vercel.com/",
   },
 ];
 
@@ -907,7 +925,7 @@ export default function App() {
                       <li
                         key={tool.name}
                         data-animate
-                        className="cv-load-in cv-load-in--stagger group flex h-full items-start gap-3 rounded-[16px] border border-[rgba(17,24,39,0.08)] bg-white px-3 py-3 shadow-[0_1px_2px_rgba(17,24,39,0.04)] transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(29,164,237,0.18)] hover:bg-white hover:shadow-[0_8px_24px_rgba(17,24,39,0.06)] motion-reduce:transform-none motion-reduce:transition-none"
+                        className="cv-load-in cv-load-in--stagger h-full"
                         style={{ animationDelay: `${index * 55}ms` }}
                         transition={
                           prefersReducedMotion
@@ -915,16 +933,24 @@ export default function App() {
                             : { duration: 0.45, ease: MOTION_EASE, delay: index * 0.04 }
                         }
                       >
-                        <ToolLogo {...tool} />
+                        <a
+                          href={tool.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Open ${tool.name} official website`}
+                          className="group flex h-full items-start gap-3 rounded-[16px] border border-[rgba(17,24,39,0.08)] bg-white px-3 py-3 text-left shadow-[0_1px_2px_rgba(17,24,39,0.04)] transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(29,164,237,0.18)] hover:bg-white hover:shadow-[0_8px_24px_rgba(17,24,39,0.06)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(29,164,237,0.35)] focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transform-none motion-reduce:transition-none"
+                        >
+                          <ToolLogo {...tool} />
 
-                        <div className="min-w-0 flex-1">
-                          <span className="block text-[13px] font-medium leading-[1.2] tracking-[0.01em] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))]">
-                            {tool.name}
-                          </span>
-                          <span className="mt-1 block text-[10px] leading-[1.4] text-[hsl(var(--cv-light-text))]">
-                            {tool.category}
-                          </span>
-                        </div>
+                          <div className="min-w-0 flex-1">
+                            <span className="block text-[13px] font-medium leading-[1.2] tracking-[0.01em] text-[hsl(var(--cv-section-title))] transition-colors duration-200 group-hover:text-[hsl(var(--cv-body))]">
+                              {tool.name}
+                            </span>
+                            <span className="mt-1 block text-[10px] leading-[1.4] text-[hsl(var(--cv-light-text))]">
+                              {tool.category}
+                            </span>
+                          </div>
+                        </a>
                       </li>
                     ))}
                   </ul>

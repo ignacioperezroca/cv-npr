@@ -732,36 +732,48 @@ export default function App() {
 
                   <div className="mt-2 space-y-2">
                     <p className="cv-body-text">
-                      I&apos;m a Senior Product Manager with 16+ years of experience
-                      building human-first, scalable onboarding journeys.
+                      <strong className="font-semibold text-[hsl(var(--cv-section-title))]">
+                        I&apos;m a Senior Product Manager with 16+ years of experience
+                        building human-first, scalable onboarding journeys.
+                      </strong>
                     </p>
                     <p className="cv-body-text">
-                      Over the years, I&apos;ve acquired a wide range of tools,
-                      tactics, and experience across various roles and industries. I
-                      specialize in digital identity, KYC, authentication, and
+                      <strong className="font-semibold text-[hsl(var(--cv-section-title))]">
+                        Over the years, I&apos;ve acquired a wide range of tools,
+                        tactics, and experience across various roles and industries.
+                      </strong>{" "}
+                      I specialize in digital identity, KYC, authentication, and
                       product-led growth. I&apos;ve led international teams from 0
                       to 18+ across Argentina, Brazil, Mexico, Paraguay, and
                       Colombia, successfully onboarding over 8 million users in
                       fintech, crypto, and Web3.
                     </p>
                     <p className="cv-body-text">
-                      Having built products from scratch in various roles, my
-                      strength lies in combining empathy and visual thinking (User
-                      Experience Design) with technical experience (8 years as a
-                      developer). This holistic perspective allows me to translate
-                      metrics into meaningful product experiences that drive
-                      acquisition, retention, and long-term impact.
+                      <strong className="font-semibold text-[hsl(var(--cv-section-title))]">
+                        Having built products from scratch in various roles, my
+                        strength lies in combining empathy and visual thinking (User
+                        Experience Design) with technical experience (8 years as a
+                        developer).
+                      </strong>{" "}
+                      This holistic perspective allows me to translate metrics into
+                      meaningful product experiences that drive acquisition,
+                      retention, and long-term impact.
                     </p>
                     <p className="cv-body-text">
-                      When it comes to building, I rely on data to surface real
-                      problems and opportunities, and I craft products that
-                      simplify people&apos;s lives. I hold a Certified Scrum Product
-                      Owner (CSPO®), Certified Scrum Trainer (CST®), and several
-                      other certifications from world-class universities.
+                      <strong className="font-semibold text-[hsl(var(--cv-section-title))]">
+                        When it comes to building, I rely on data to surface real
+                        problems and opportunities, and I craft products that
+                        simplify people&apos;s lives.
+                      </strong>{" "}
+                      I hold a Certified Scrum Product Owner (CSPO®), Certified
+                      Scrum Trainer (CST®), and several other certifications from
+                      world-class universities.
                     </p>
                     <p className="cv-body-text">
-                      My mission is to build trust, empower teams, and deliver
-                      products that people love.
+                      <strong className="font-semibold text-[hsl(var(--cv-section-title))]">
+                        My mission is to build trust, empower teams, and deliver
+                        products that people love.
+                      </strong>
                     </p>
                   </div>
 

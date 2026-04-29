@@ -292,7 +292,7 @@ const experience: ExperienceItem[] = [
 const languages: Language[] = [
   { code: "ES", name: "Español", level: "Native", value: 100, accent: "blue" },
   { code: "EN", name: "English", level: "Advanced", value: 90, accent: "blue", highlighted: true },
-  { code: "PT", name: "Portuguese", level: "Basic", value: 45, accent: "green" },
+  { code: "PT", name: "Portuguese", level: "Developing", value: 45, accent: "green" },
 ];
 
 function SkillDots({ filled }: { filled: number }) {
@@ -481,13 +481,14 @@ function LanguageCard({
   language: Language;
   index: number;
 }) {
+  const isBritishBlue = language.name === "English";
   const accent =
     language.accent === "blue"
       ? {
-          ring: "hsl(201 85% 52%)",
-          pillBg: "rgba(29,164,237,0.10)",
-          pillText: "text-[hsl(201_85%_52%)]",
-          pillBorder: "rgba(29,164,237,0.16)",
+          ring: isBritishBlue ? "hsl(215 100% 47%)" : "hsl(201 85% 52%)",
+          pillBg: isBritishBlue ? "rgba(17,92,214,0.10)" : "rgba(29,164,237,0.10)",
+          pillText: isBritishBlue ? "text-[hsl(215_100%_47%)]" : "text-[hsl(201_85%_52%)]",
+          pillBorder: isBritishBlue ? "rgba(17,92,214,0.16)" : "rgba(29,164,237,0.16)",
         }
       : {
           ring: "hsl(140 71% 29%)",
@@ -548,7 +549,7 @@ function LanguageCard({
             style={{
               backgroundColor: accent.pillBg,
               borderColor: accent.pillBorder,
-              color: language.accent === "blue" ? "hsl(201 85% 52%)" : "hsl(140 71% 29%)",
+              color: language.accent === "blue" ? (isBritishBlue ? "hsl(215 100% 47%)" : "hsl(201 85% 52%)") : "hsl(140 71% 29%)",
             }}
           >
             {language.level}

@@ -535,9 +535,6 @@ function LanguageCard({
               className="transition-[stroke-dashoffset,stroke] duration-300"
             />
           </svg>
-          <span className="absolute text-[14px] font-light tracking-[-0.04em] text-[hsl(var(--cv-section-title))]">
-            {language.value}
-          </span>
         </div>
 
         <div className="flex flex-col items-center gap-2 pb-1">

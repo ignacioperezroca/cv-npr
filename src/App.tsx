@@ -151,13 +151,19 @@ function LocaleSwitch({
   locale: Locale;
   onChange: (next: Locale) => void;
 }) {
+  const labels = {
+    en: { en: "English", es: "Spanish", pt: "Portuguese", group: "Language switcher" },
+    es: { en: "Inglés", es: "Español", pt: "Portugués", group: "Selector de idioma" },
+    pt: { en: "Inglês", es: "Espanhol", pt: "Português", group: "Seletor de idioma" },
+  }[locale];
+
   return (
     <div
       className="inline-flex rounded-full border border-[rgba(15,23,42,0.08)] bg-white/85 p-1 shadow-[0_10px_30px_rgba(15,23,42,0.06)] backdrop-blur-[2px]"
       role="group"
-      aria-label="Language switcher"
+      aria-label={labels.group}
     >
-      {(["en", "es"] as Locale[]).map((item) => {
+      {(["en", "es", "pt"] as Locale[]).map((item) => {
         const active = item === locale;
         return (
           <button
@@ -165,7 +171,14 @@ function LocaleSwitch({
             type="button"
             onClick={() => onChange(item)}
             aria-pressed={active}
-            aria-label={item === "en" ? "Switch to English" : "Cambiar a español"}
+            aria-label={
+              item === "en"
+                ? `Switch to ${labels.en}`
+                : item === "es"
+                  ? `${locale === "en" ? "Switch to" : locale === "es" ? "Cambiar a" : "Mudar para"} ${labels.es}`
+                  : `${locale === "en" ? "Switch to" : locale === "es" ? "Cambiar a" : "Mudar para"} ${labels.pt}`
+            }
+            title={item === "en" ? labels.en : item === "es" ? labels.es : labels.pt}
             className={`rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(29,164,237,0.35)] ${
               active
                 ? "bg-[hsl(var(--cv-contact-bar))] text-white shadow-[0_8px_18px_rgba(29,164,237,0.22)]"
@@ -538,7 +551,7 @@ export default function App() {
     ensureMeta('meta[name="description"]', "content", content.meta.description);
     ensureMeta('meta[property="og:title"]', "content", content.meta.ogTitle);
     ensureMeta('meta[property="og:description"]', "content", content.meta.ogDescription);
-    ensureMeta('meta[property="og:url"]', "content", `${window.location.origin}${locale === "es" ? "/es" : "/"}`);
+    ensureMeta('meta[property="og:url"]', "content", `${window.location.origin}${getPathForLocale(locale)}`);
     ensureMeta('meta[property="og:type"]', "content", "website");
     ensureMeta('meta[property="og:image"]', "content", `${window.location.origin}/og-image.svg`);
     ensureMeta('meta[name="twitter:card"]', "content", "summary_large_image");
@@ -546,10 +559,11 @@ export default function App() {
     ensureMeta('meta[name="twitter:description"]', "content", content.meta.ogDescription);
     ensureMeta('meta[name="twitter:image"]', "content", `${window.location.origin}/og-image.svg`);
 
-    const canonical = `${window.location.origin}${locale === "es" ? "/es" : "/"}`;
+    const canonical = `${window.location.origin}${getPathForLocale(locale)}`;
     const alternates = [
       { hreflang: "en", href: `${window.location.origin}/` },
       { hreflang: "es", href: `${window.location.origin}/es` },
+      { hreflang: "pt", href: `${window.location.origin}/pt` },
       { hreflang: "x-default", href: `${window.location.origin}/` },
     ];
 
@@ -579,7 +593,6 @@ export default function App() {
     const nextPath = getPathForLocale(nextLocale);
     window.history.pushState({}, "", nextPath);
     setLocale(nextLocale);
-    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
   };
 
   return (

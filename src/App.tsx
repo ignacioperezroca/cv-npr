@@ -152,9 +152,9 @@ function LocaleSwitch({
   onChange: (next: Locale) => void;
 }) {
   const labels = {
-    en: { en: "English", es: "Spanish", pt: "Portuguese", group: "Language switcher" },
-    es: { en: "Inglés", es: "Español", pt: "Portugués", group: "Selector de idioma" },
-    pt: { en: "Inglês", es: "Espanhol", pt: "Português", group: "Seletor de idioma" },
+    en: { en: "English", es: "Spanish", group: "Language switcher" },
+    es: { en: "Inglés", es: "Español", group: "Selector de idioma" },
+    pt: { en: "Inglês", es: "Espanhol", group: "Seletor de idioma" },
   }[locale];
 
   return (
@@ -163,7 +163,7 @@ function LocaleSwitch({
       role="group"
       aria-label={labels.group}
     >
-      {(["en", "es", "pt"] as Locale[]).map((item) => {
+      {(["en", "es"] as Locale[]).map((item) => {
         const active = item === locale;
         return (
           <button
@@ -171,14 +171,8 @@ function LocaleSwitch({
             type="button"
             onClick={() => onChange(item)}
             aria-pressed={active}
-            aria-label={
-              item === "en"
-                ? `Switch to ${labels.en}`
-                : item === "es"
-                  ? `${locale === "en" ? "Switch to" : locale === "es" ? "Cambiar a" : "Mudar para"} ${labels.es}`
-                  : `${locale === "en" ? "Switch to" : locale === "es" ? "Cambiar a" : "Mudar para"} ${labels.pt}`
-            }
-            title={item === "en" ? labels.en : item === "es" ? labels.es : labels.pt}
+            aria-label={item === "en" ? `Switch to ${labels.en}` : `Cambiar a ${labels.es}`}
+            title={item === "en" ? labels.en : labels.es}
             className={`rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(29,164,237,0.35)] ${
               active
                 ? "bg-[hsl(var(--cv-contact-bar))] text-white shadow-[0_8px_18px_rgba(29,164,237,0.22)]"
@@ -320,11 +314,21 @@ function SpecialtyNode({
 function LanguageCard({
   language,
   index,
+  locale,
+  onSelect,
 }: {
   language: Language;
   index: number;
+  locale: Locale;
+  onSelect: (next: Locale) => void;
 }) {
   const isBritishBlue = language.name === "English";
+  const isActive = locale === (language.code === "ES" ? "es" : language.code === "EN" ? "en" : "pt");
+  const labelMap = {
+    en: "Switch language to",
+    es: "Cambiar idioma a",
+    pt: "Alterar idioma para",
+  }[locale];
   const accent =
     language.accent === "blue"
       ? {
@@ -344,9 +348,17 @@ function LanguageCard({
   const dashOffset = circumference - (language.value / 100) * circumference;
 
   return (
-    <article
+    <button
+      type="button"
       data-animate
-      className="cv-load-in cv-load-in--stagger group flex h-full flex-col rounded-[24px] border border-[rgba(15,23,42,0.08)] bg-white px-4 py-4 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(15,23,42,0.14)] hover:shadow-[0_12px_32px_rgba(15,23,42,0.08)] motion-reduce:transform-none motion-reduce:transition-none"
+      aria-label={`${labelMap} ${language.name}`}
+      aria-pressed={isActive}
+      onClick={() => onSelect(language.code === "ES" ? "es" : language.code === "EN" ? "en" : "pt")}
+      className={`cv-load-in cv-load-in--stagger group flex h-full w-full flex-col rounded-[24px] border bg-white px-4 py-4 text-left shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(15,23,42,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(29,164,237,0.35)] motion-reduce:transform-none motion-reduce:transition-none ${
+        isActive
+          ? "border-[rgba(29,164,237,0.22)] shadow-[0_12px_32px_rgba(29,164,237,0.10)]"
+          : "border-[rgba(15,23,42,0.08)] hover:border-[rgba(15,23,42,0.14)]"
+      }`}
       style={{ animationDelay: `${index * 60}ms` }}
     >
       <div className="flex flex-1 flex-col items-center justify-between gap-3 py-1.5">
@@ -392,7 +404,7 @@ function LanguageCard({
           </span>
         </div>
       </div>
-    </article>
+    </button>
   );
 }
 
@@ -856,6 +868,8 @@ export default function App() {
                         key={language.code}
                         language={language}
                         index={index}
+                        locale={locale}
+                        onSelect={navigateToLocale}
                       />
                     ))}
                   </div>

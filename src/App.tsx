@@ -28,8 +28,6 @@ import {
   BarChart3,
   Database,
   Triangle,
-  Phone,
-  Link2,
 } from "lucide-react";
 
 const MOTION_EASE = [0.22, 1, 0.36, 1] as const;
@@ -314,6 +312,34 @@ function SkillDots({ filled }: { filled: number }) {
 
 function DottedSeparator() {
   return <hr className="cv-dotted-separator" />;
+}
+
+function WhatsAppIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true" fill="none">
+      <path
+        d="M12 4.5c-4.142 0-7.5 3.09-7.5 6.898 0 1.393.433 2.69 1.176 3.773L4.5 19.5l4.488-1.088A8.03 8.03 0 0 0 12 18.3c4.142 0 7.5-3.09 7.5-6.902C19.5 7.59 16.142 4.5 12 4.5Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M10.12 8.98c.15-.34.35-.35.52-.35h.44c.14 0 .34-.05.52.37.17.4.58 1.4.63 1.5.05.1.08.22.02.35-.06.13-.09.22-.18.34-.09.12-.19.27-.27.36-.09.1-.18.21-.07.4.11.2.5.83 1.07 1.34.74.66 1.36.87 1.55.97.2.1.32.08.44-.05.12-.14.52-.61.66-.82.14-.2.28-.17.47-.1.18.07 1.15.54 1.35.64.2.1.33.16.38.25.05.1.05.57-.12 1.12-.18.55-1.03 1.06-1.44 1.11-.4.05-.86.08-1.4-.11-.33-.12-.76-.28-1.31-.52-.56-.24-1.27-.63-2.18-1.32-.8-.61-1.34-1.35-1.56-1.58-.22-.23-1-1.17-1.1-1.99-.1-.82.31-1.23.43-1.39.12-.16.26-.25.35-.4.1-.15.14-.23.21-.38Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function MediumIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true" fill="none">
+      <path
+        d="M5.5 7.25h2.1l2.95 8 2.9-8h2.05v9.5h-1.47v-6.9l-2.54 6.9h-1.44l-2.56-6.9v6.9H5.5v-9.5Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
 }
 
 function TagPill({ children }: { children: string }) {
@@ -691,7 +717,7 @@ export default function App() {
                         aria-label="Call +54 911 5807 7847"
                       >
                         <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(15,23,42,0.08)] bg-white/80 text-[hsl(var(--cv-contact-bar))] transition duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:bg-[rgba(29,164,237,0.06)]">
-                          <Phone className="h-4 w-4" aria-hidden="true" />
+                        <WhatsAppIcon />
                         </span>
                         <span>+54 911 5807 7847</span>
                       </a>
@@ -704,7 +730,7 @@ export default function App() {
                         aria-label="Open medium.com/@ignacio-perezroca"
                       >
                         <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(15,23,42,0.08)] bg-white/80 text-[hsl(var(--cv-contact-bar))] transition duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:bg-[rgba(29,164,237,0.06)]">
-                          <Link2 className="h-4 w-4" aria-hidden="true" />
+                        <MediumIcon />
                         </span>
                         <span>medium.com/@ignacio-perezroca</span>
                       </a>
@@ -973,7 +999,7 @@ export default function App() {
                   data-section="Education"
                   
                 >
-                  <h2 data-animate className="education-title cv-section-title">
+                  <h2 data-animate className="education-title cv-section-title mb-2">
                     EDUCATION &amp; CERTIFICATIONS
                   </h2>
                   <p className="cv-section-subtitle">

@@ -462,7 +462,7 @@ function SpecialtyNode({
 }) {
   return (
     <div className="flex w-full flex-col items-center md:w-auto">
-      <div className="flex h-[104px] w-[104px] items-center justify-center rounded-full border-[1.5px] border-[hsl(var(--cv-dotted-line))] sm:h-[110px] sm:w-[110px] md:h-[104px] md:w-[104px]">
+      <div className="mb-[10px] flex h-[104px] w-[104px] items-center justify-center rounded-full border-[1.5px] border-[hsl(var(--cv-dotted-line))] sm:h-[110px] sm:w-[110px] md:h-[104px] md:w-[104px]">
         <div className={iconClassName}>{icon}</div>
       </div>
       <span className="-mt-[2px] h-[8px] w-[8px] rounded-full bg-[hsl(var(--cv-section-title))]" />

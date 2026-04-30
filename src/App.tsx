@@ -566,16 +566,46 @@ export default function App() {
     ensureMeta('meta[property="og:url"]', "content", `${window.location.origin}${getPathForLocale(locale)}`);
     ensureMeta('meta[property="og:site_name"]', "content", "Ignacio Pérez Roca");
     ensureMeta('meta[property="og:type"]', "content", "website");
-    ensureMeta('meta[property="og:image"]', "content", `${window.location.origin}/og-image.png`);
-    ensureMeta('meta[property="og:image:secure_url"]', "content", `${window.location.origin}/og-image.png`);
-    ensureMeta('meta[property="og:image:type"]', "content", "image/png");
-    ensureMeta('meta[property="og:image:width"]', "content", "1200");
-    ensureMeta('meta[property="og:image:height"]', "content", "630");
-    ensureMeta('meta[property="og:image:alt"]', "content", "Ignacio Pérez Roca, Senior Product Manager specialized in fintech, crypto, digital identity, onboarding, KYC, authentication and growth.");
+    const ogImages = [
+      {
+        url: `${window.location.origin}/social-preview-v3.jpg`,
+        secureUrl: `${window.location.origin}/social-preview-v3.jpg`,
+        type: "image/jpeg",
+      },
+      {
+        url: `${window.location.origin}/social-preview-v3.png`,
+        secureUrl: `${window.location.origin}/social-preview-v3.png`,
+        type: "image/png",
+      },
+    ];
+
+    const ogImageMetas = Array.from(document.head.querySelectorAll<HTMLMetaElement>('meta[property="og:image"]'));
+    const ogSecureMetas = Array.from(document.head.querySelectorAll<HTMLMetaElement>('meta[property="og:image:secure_url"]'));
+    const ogTypeMetas = Array.from(document.head.querySelectorAll<HTMLMetaElement>('meta[property="og:image:type"]'));
+    const ogWidthMetas = Array.from(document.head.querySelectorAll<HTMLMetaElement>('meta[property="og:image:width"]'));
+    const ogHeightMetas = Array.from(document.head.querySelectorAll<HTMLMetaElement>('meta[property="og:image:height"]'));
+    const ogAltMetas = Array.from(document.head.querySelectorAll<HTMLMetaElement>('meta[property="og:image:alt"]'));
+
+    const ensureAt = (list: HTMLMetaElement[], index: number, selector: string) => {
+      if (list[index]) return list[index];
+      const el = document.createElement("meta");
+      el.setAttribute("property", selector);
+      document.head.appendChild(el);
+      return el;
+    };
+
+    ogImages.forEach((image, index) => {
+      ensureAt(ogImageMetas, index, "og:image").setAttribute("content", image.url);
+      ensureAt(ogSecureMetas, index, "og:image:secure_url").setAttribute("content", image.secureUrl);
+      ensureAt(ogTypeMetas, index, "og:image:type").setAttribute("content", image.type);
+      ensureAt(ogWidthMetas, index, "og:image:width").setAttribute("content", "1200");
+      ensureAt(ogHeightMetas, index, "og:image:height").setAttribute("content", "630");
+      ensureAt(ogAltMetas, index, "og:image:alt").setAttribute("content", "Ignacio Pérez Roca, Senior Product Manager specialized in fintech, crypto, digital identity, onboarding, KYC, authentication and growth.");
+    });
     ensureMeta('meta[name="twitter:card"]', "content", "summary_large_image");
     ensureMeta('meta[name="twitter:title"]', "content", content.meta.ogTitle);
     ensureMeta('meta[name="twitter:description"]', "content", content.meta.ogDescription);
-    ensureMeta('meta[name="twitter:image"]', "content", `${window.location.origin}/og-image.png`);
+    ensureMeta('meta[name="twitter:image"]', "content", `${window.location.origin}/social-preview-v3.jpg`);
     ensureMeta('meta[name="twitter:image:alt"]', "content", "Ignacio Pérez Roca, Senior Product Manager specialized in fintech, crypto, digital identity, onboarding, KYC, authentication and growth.");
 
     const canonical = `${window.location.origin}${getPathForLocale(locale)}`;

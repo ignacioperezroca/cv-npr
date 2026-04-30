@@ -1,4 +1,24 @@
 {
+  "headers": [
+    {
+      "source": "/social-preview-v3.jpg",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/social-preview-v3.png",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
   "rewrites": [
     { "source": "/es", "destination": "/" },
     { "source": "/es/", "destination": "/" },

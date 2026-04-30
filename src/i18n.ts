@@ -56,10 +56,10 @@ const english: Translation = {
   meta: {
     title: 'Ignacio Pérez Roca | Senior Product Manager',
     description:
-      'Senior Product Manager specialized in fintech, crypto, onboarding, KYC, authentication, identity, and product-led growth.',
+      'Senior Product Manager specialized in fintech, crypto, digital identity, KYC, onboarding, authentication and product-led growth across LatAm.',
     ogTitle: 'Ignacio Pérez Roca | Senior Product Manager',
     ogDescription:
-      'Senior Product Manager specialized in fintech, crypto, onboarding, KYC, authentication, identity, and product-led growth.',
+      'Senior Product Manager specialized in fintech, crypto, digital identity, KYC, onboarding, authentication and product-led growth across LatAm.',
   },
   header: {
     headline: 'Senior Product Manager | Identity, KYC, Authentication & Growth',
@@ -164,10 +164,10 @@ const spanish: Translation = {
   meta: {
     title: 'Ignacio Pérez Roca | Senior Product Manager',
     description:
-      'Senior Product Manager especializado en fintech, crypto, onboarding, KYC, authentication, identity y product-led growth.',
+      'Senior Product Manager especializado en fintech, crypto, digital identity, KYC, onboarding, authentication y product-led growth en LatAm.',
     ogTitle: 'Ignacio Pérez Roca | Senior Product Manager',
     ogDescription:
-      'Senior Product Manager especializado en fintech, crypto, onboarding, KYC, authentication, identity y product-led growth.',
+      'Senior Product Manager especializado en fintech, crypto, digital identity, KYC, onboarding, authentication y product-led growth en LatAm.',
   },
   header: {
     headline: 'Senior Product Manager | Identity, KYC, Authentication & Growth',
@@ -272,10 +272,10 @@ const portuguese: Translation = {
   meta: {
     title: 'Ignacio Pérez Roca | Senior Product Manager',
     description:
-      'Senior Product Manager especializado em fintech, crypto, onboarding, KYC, authentication, identity e product-led growth.',
+      'Senior Product Manager especializado em fintech, crypto, digital identity, KYC, onboarding, authentication e product-led growth na LatAm.',
     ogTitle: 'Ignacio Pérez Roca | Senior Product Manager',
     ogDescription:
-      'Senior Product Manager especializado em fintech, crypto, onboarding, KYC, authentication, identity e product-led growth.',
+      'Senior Product Manager especializado em fintech, crypto, digital identity, KYC, onboarding, authentication e product-led growth na LatAm.',
   },
   header: {
     headline: 'Senior Product Manager | Identity, KYC, Authentication & Growth',

@@ -788,7 +788,7 @@ export default function App() {
               </div>
 
               <div className="relative rounded-[30px] border border-[rgba(15,23,42,0.08)] bg-[rgba(255,255,255,0.92)] px-6 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] backdrop-blur-[2px] sm:px-7 sm:py-7 md:px-8 md:py-8">
-                <div className="absolute right-4 top-4 md:right-6 md:top-6">
+                <div className="mb-4 flex justify-end md:absolute md:right-6 md:top-6 md:mb-0">
                   <LocaleSwitch
                     locale={locale}
                     onChange={(nextLocale) =>

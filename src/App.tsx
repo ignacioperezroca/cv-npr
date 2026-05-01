@@ -35,6 +35,17 @@ import {
   translations,
   type Locale,
 } from "./i18n";
+import {
+  trackContactStarted,
+  trackEducationLinkClicked,
+  trackLanguageChanged,
+  trackLinkedInOpened,
+  trackNavigationClicked,
+  trackPageViewed,
+  trackSectionViewed,
+  trackSocialLinkClicked,
+  trackToolLinkClicked,
+} from "./analytics";
 
 const MOTION_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -408,7 +419,17 @@ function LanguageCard({
   );
 }
 
-function EducationTimelineItem({ item, index }: { item: EducationItem; index: number }) {
+function EducationTimelineItem({
+  item,
+  index,
+  locale,
+  pageTitle,
+}: {
+  item: EducationItem;
+  index: number;
+  locale: Locale;
+  pageTitle: string;
+}) {
   const prefersReducedMotion = false;
 
   return (
@@ -431,9 +452,32 @@ function EducationTimelineItem({ item, index }: { item: EducationItem; index: nu
       </div>
 
       <div className="rounded-[12px] px-0 py-0">
-        <p className="text-[13px] font-semibold leading-[1.3] text-[hsl(var(--cv-section-title))]">
-          {item.title}
-        </p>
+        {item.url ? (
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open ${item.title}`}
+            className="text-[13px] font-semibold leading-[1.3] text-[hsl(var(--cv-section-title))] transition-colors duration-200 hover:text-[hsl(var(--cv-body))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(29,164,237,0.35)]"
+            onClick={() =>
+              trackEducationLinkClicked({
+                locale,
+                page_title: pageTitle,
+                component_name: "Education Timeline",
+                element_text: item.title,
+                destination_url: item.url,
+                education_title: item.title,
+                education_org: item.org,
+              })
+            }
+          >
+            {item.title}
+          </a>
+        ) : (
+          <p className="text-[13px] font-semibold leading-[1.3] text-[hsl(var(--cv-section-title))]">
+            {item.title}
+          </p>
+        )}
         <p className="mt-0.5 text-[12px] leading-[1.4] text-[hsl(var(--cv-light-text))]">
           {item.org}
         </p>
@@ -465,13 +509,40 @@ export default function App() {
   const languages = content.sections.languages.items;
 
   useEffect(() => {
+    trackPageViewed({
+      locale,
+      page_title: content.meta.title,
+      canonical_url: `${window.location.origin}${getPathForLocale(locale)}`,
+      component_name: "App Shell",
+      element_type: "page",
+    });
+  }, [content.meta.title, locale]);
+
+  useEffect(() => {
+    const seenSections = new Set<string>();
+    const sectionNameMap: Record<string, string> = {
+      "Personal Statement": "Personal Statement",
+      "Key Achievements": "Key Achievements",
+      Experience: "Experience",
+      Specialty: "Specialty",
+      Languages: "Languages",
+      Skills: "Tools & Skills",
+      Education: "Education & Certifications",
+    };
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const sectionName = entry.target.getAttribute("data-section");
-            if (sectionName) {
-              amplitude.track("cv section reached", { section_name: sectionName });
+            if (sectionName && !seenSections.has(sectionName)) {
+              seenSections.add(sectionName);
+              trackSectionViewed({
+                locale,
+                page_title: content.meta.title,
+                component_name: "CV Sections",
+                section_name: sectionNameMap[sectionName] ?? sectionName,
+                element_type: "section",
+              });
               observer.unobserve(entry.target);
             }
           }
@@ -481,7 +552,7 @@ export default function App() {
     );
     document.querySelectorAll("[data-section]").forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [content.meta.title, locale]);
 
   useEffect(() => {
     const section = document.querySelector<HTMLElement>('[data-section="Education"]');
@@ -644,6 +715,36 @@ export default function App() {
     setLocale(nextLocale);
   };
 
+  const handleLocaleSelection = (
+    nextLocale: Locale,
+    componentName: string,
+    elementText: string,
+  ) => {
+    if (nextLocale === locale) return;
+    const nextPath = getPathForLocale(nextLocale);
+
+    trackNavigationClicked({
+      locale,
+      from_locale: locale,
+      to_locale: nextLocale,
+      page_title: content.meta.title,
+      component_name: componentName,
+      element_text: elementText,
+      destination_url: nextPath,
+    });
+    trackLanguageChanged({
+      locale,
+      from_locale: locale,
+      to_locale: nextLocale,
+      page_title: content.meta.title,
+      component_name: componentName,
+      element_text: elementText,
+      destination_url: nextPath,
+    });
+
+    navigateToLocale(nextLocale);
+  };
+
   return (
     <>
       <main
@@ -688,7 +789,12 @@ export default function App() {
 
               <div className="relative rounded-[30px] border border-[rgba(15,23,42,0.08)] bg-[rgba(255,255,255,0.92)] px-6 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] backdrop-blur-[2px] sm:px-7 sm:py-7 md:px-8 md:py-8">
                 <div className="absolute right-4 top-4 md:right-6 md:top-6">
-                  <LocaleSwitch locale={locale} onChange={navigateToLocale} />
+                  <LocaleSwitch
+                    locale={locale}
+                    onChange={(nextLocale) =>
+                      handleLocaleSelection(nextLocale, "Locale Switch", nextLocale.toUpperCase())
+                    }
+                  />
                 </div>
                 <div className="text-center md:text-left">
                   <h1 className="text-[34px] font-semibold tracking-[-0.03em] text-[hsl(var(--cv-section-title))] sm:text-[40px] lg:text-[46px]">
@@ -707,6 +813,17 @@ export default function App() {
                         href="tel:+5491158077847"
                         className="group flex items-center gap-3 text-[13px] text-[hsl(var(--cv-body))] transition-colors duration-200 hover:text-[hsl(var(--cv-section-title))]"
                         aria-label={content.header.phoneAria}
+                        onClick={() =>
+                          trackContactStarted({
+                            locale,
+                            page_title: content.meta.title,
+                            component_name: "Hero Contact",
+                            element_text: "+54 911 5807 7847",
+                            destination_url: "tel:+5491158077847",
+                            contact_type: "phone",
+                            element_type: "link",
+                          })
+                        }
                       >
                         <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(15,23,42,0.08)] bg-white/80 text-[hsl(var(--cv-contact-bar))] transition duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:bg-[rgba(29,164,237,0.06)]">
                         <WhatsAppIcon />
@@ -720,6 +837,17 @@ export default function App() {
                         rel="noopener noreferrer"
                         className="group flex items-center gap-3 text-[13px] text-[hsl(var(--cv-body))] transition-colors duration-200 hover:text-[hsl(var(--cv-section-title))]"
                         aria-label={content.header.linkedinAria}
+                        onClick={() =>
+                          trackLinkedInOpened({
+                            locale,
+                            page_title: content.meta.title,
+                            component_name: "Hero Contact",
+                            element_text: content.header.linkedinLabel,
+                            destination_url: "https://www.linkedin.com/in/ignacio-perez-roca-10101010/",
+                            link_type: "social",
+                            element_type: "link",
+                          })
+                        }
                       >
                         <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(15,23,42,0.08)] bg-white/80 text-[hsl(var(--cv-contact-bar))] transition duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:bg-[rgba(29,164,237,0.06)]">
                           <LinkedInIcon />
@@ -733,6 +861,17 @@ export default function App() {
                         rel="noopener noreferrer"
                         className="group flex items-center gap-3 text-[13px] text-[hsl(var(--cv-body))] transition-colors duration-200 hover:text-[hsl(var(--cv-section-title))]"
                         aria-label={content.header.mediumAria}
+                        onClick={() =>
+                          trackSocialLinkClicked({
+                            locale,
+                            page_title: content.meta.title,
+                            component_name: "Hero Contact",
+                            element_text: content.header.mediumLabel,
+                            destination_url: "https://medium.com/@ignacio-perezroca",
+                            link_type: "social",
+                            element_type: "link",
+                          })
+                        }
                       >
                         <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(15,23,42,0.08)] bg-white/80 text-[hsl(var(--cv-contact-bar))] transition duration-200 group-hover:border-[rgba(29,164,237,0.18)] group-hover:bg-[rgba(29,164,237,0.06)]">
                         <MediumIcon />
@@ -906,7 +1045,9 @@ export default function App() {
                         language={language}
                         index={index}
                         locale={locale}
-                        onSelect={navigateToLocale}
+                        onSelect={(nextLocale) =>
+                          handleLocaleSelection(nextLocale, "Languages Section", language.name)
+                        }
                       />
                     ))}
                   </div>
@@ -944,14 +1085,26 @@ export default function App() {
                             ? { duration: 0 }
                             : { duration: 0.45, ease: MOTION_EASE, delay: index * 0.04 }
                         }
-                      >
-                        <a
-                          href={tool.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`Open ${tool.name} official website`}
-                          className="group flex h-full items-start gap-3 rounded-[16px] border border-[rgba(17,24,39,0.08)] bg-white px-3 py-3 text-left shadow-[0_1px_2px_rgba(17,24,39,0.04)] transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(29,164,237,0.18)] hover:bg-white hover:shadow-[0_8px_24px_rgba(17,24,39,0.06)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(29,164,237,0.35)] focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transform-none motion-reduce:transition-none"
                         >
+                          <a
+                            href={tool.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`Open ${tool.name} official website`}
+                            className="group flex h-full items-start gap-3 rounded-[16px] border border-[rgba(17,24,39,0.08)] bg-white px-3 py-3 text-left shadow-[0_1px_2px_rgba(17,24,39,0.04)] transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(29,164,237,0.18)] hover:bg-white hover:shadow-[0_8px_24px_rgba(17,24,39,0.06)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(29,164,237,0.35)] focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transform-none motion-reduce:transition-none"
+                            onClick={() =>
+                              trackToolLinkClicked({
+                                locale,
+                                page_title: content.meta.title,
+                                component_name: "Tools & Skills",
+                                element_text: tool.name,
+                                destination_url: tool.url,
+                                tool_name: tool.name,
+                                tool_category: tool.category,
+                                element_type: "link",
+                              })
+                            }
+                          >
                           <ToolLogo {...tool} />
 
                           <div className="min-w-0 flex-1">
@@ -982,7 +1135,13 @@ export default function App() {
                   <DottedSeparator />
                   <ul className="education-list cv-load-in cv-load-in--row mt-3 list-none">
                     {education.map((item, index) => (
-                      <EducationTimelineItem key={`${item.year}-${item.title}`} item={item} index={index} />
+                      <EducationTimelineItem
+                        key={`${item.year}-${item.title}`}
+                        item={item}
+                        index={index}
+                        locale={locale}
+                        pageTitle={content.meta.title}
+                      />
                     ))}
                   </ul>
                 </section>
